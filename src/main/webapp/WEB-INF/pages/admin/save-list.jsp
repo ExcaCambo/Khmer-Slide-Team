@@ -69,7 +69,7 @@
 													</div>
 												</div>
 											</td>
-											<td>វិទ្យាសាស្ត្រកុំព្យូទ័រ</td>
+											<td>{{s.DOC_ID.DOC_TITLE}}</td>
 											<td>{{s.USER_ID.USER_NAME}}</td>
 											<td class="text-center" ng-class="(s.STATUS == 1) ? 'text-success':'text-danger'"><i ng-class="(s.STATUS == 1) ? 'ti-check' : 'ti-close'"></i></td>
 											<td>
