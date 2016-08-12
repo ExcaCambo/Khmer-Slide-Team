@@ -7,7 +7,7 @@
 <jsp:include page="../include/admin/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
-<body data-sidebar-color="sidebar-light" class="sidebar-light">
+<body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="saveList" ng-controller="saveListCtrl">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/admin/header.jsp -->
@@ -46,7 +46,7 @@
 							</div>
 							<div class="widget-body">
 								<table id="save-list-table" style="width: 100%"
-									class="table table-hover dt-responsive nowrap">
+									class="table table-hover dt-responsive nowrap" datatable="ng" dt-options="dtOptions">
 									<thead>
 										<tr>
 											<th style="width: 16%">លេខរៀង</th>
@@ -59,19 +59,19 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>#6546</td>
+										<tr ng-repeat="s in savelist | orderBy:'SL_NAME'">
+											<td>{{ $index+1 }}</td>
 											<td>
 												<div class="media">
 													<div class="media-body">
-														<h5 class="media-heading">វិទ្យាសាស្ត្រកុំព្យូទ័រ</h5>
-														<p class="text-muted mb-0">បង្កើតថ្ងៃទី: 31 July, 2016</p>
+														<h5 class="media-heading">{{s.SL_NAME}}</h5>
+														<p class="text-muted mb-0">បង្កើតថ្ងៃទី: {{s.SAVED_DATE}}</p>
 													</div>
 												</div>
 											</td>
 											<td>វិទ្យាសាស្ត្រកុំព្យូទ័រ</td>
-											<td>ចាន់ ឧត្តម</td>
-											<td class="text-center text-success"><i class="ti-check"></i></td>
+											<td>{{s.USER_ID.USER_NAME}}</td>
+											<td class="text-center" ng-class="(s.STATUS == 1) ? 'text-success':'text-danger'"><i ng-class="(s.STATUS == 1) ? 'ti-check' : 'ti-close'"></i></td>
 											<td>
 												<div role="toolbar" aria-label="Toolbar with button groups"
 													class="btn-toolbar">
@@ -87,36 +87,7 @@
 													</div>
 												</div>
 											</td>
-											<td>I got something to talk to you if you want me too!</td>
-										</tr>
-										<tr>
-											<td>#6941</td>
-											<td>
-												<div class="media">
-													<div class="media-body">
-														<h5 class="media-heading">វិទ្យាសាស្ត្រកុំព្យូទ័រ</h5>
-														<p class="text-muted mb-0">បង្កើតថ្ងៃទី: 31 July, 2016</p>
-													</div>
-												</div>
-											</td>
-											<td>វិទ្យាសាស្ត្រកុំព្យូទ័រ</td>
-											<td>ចាន់ ឧត្តម</td>
-											<td class="text-center text-success"><i class="ti-check"></i></td>
-											<td>
-												<div role="toolbar" aria-label="Toolbar with button groups"
-													class="btn-toolbar">
-													<div role="group" aria-label="First group"
-														class="btn-group">
-														<button type="button" class="btn btn-outline btn-success">
-															<i class="ti-eye"></i>
-														</button>
-														<button type="button" class="btn btn-outline btn-danger">
-															<i class="ti-trash"></i>
-														</button>
-													</div>
-												</div>
-											</td>
-											<td></td>
+											<td>{{s.DESCRIPTION}}</td>
 										</tr>
 									</tbody>
 								</table>
