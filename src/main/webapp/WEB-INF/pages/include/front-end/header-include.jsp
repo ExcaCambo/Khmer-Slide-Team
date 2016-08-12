@@ -11,7 +11,7 @@
 							class="fa fa-bars"></span>
 					</button>
 					<div class="logo">
-						<a class="navbar-brand" href="index.html"><img
+					<a class="navbar-brand" href="${pageContext.request.contextPath}/"><img
 							src="${pageContext.request.contextPath}/resources/static/front-end/img/logo.png"
 							alt=""></a>
 					</div>
