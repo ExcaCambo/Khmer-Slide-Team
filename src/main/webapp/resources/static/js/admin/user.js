@@ -15,7 +15,7 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 
 	};
 
-	// DataTables configurable options
+// 	=================================DataTables configurable options for Table User=================================
 	$scope.dtOptions = DTOptionsBuilder.newOptions().withLanguage({
 		lengthChange : !1,
 		pageLength : 5,
@@ -46,10 +46,10 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 
 	$scope.list();
 
+//	=================================Add User Function=================================
 	$scope.role = function(roleId) {
 		$scope.usertype = roleId;
 	}
-
 	$scope.status = 1;
 	$scope.photo = "default-user-image.png";
 	$scope.date = $filter('date')(new Date(), 'dd-MMM-yyyy');
@@ -80,6 +80,8 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 		});
 	}
 
+	
+//	=================================Edit User Function=================================
 	$scope.update = function(id) {
 		// alert(id);
 		$http({
@@ -129,6 +131,8 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 		});
 	}
 
+	
+//	=================================Delete user Function==================================
 	$scope.remove = function(id) {
 		swal({
 			title : "ពិតជាចង់ធ្វើការលុបទិន្នន័យនេះមែន?",

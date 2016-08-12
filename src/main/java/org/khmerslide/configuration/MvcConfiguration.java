@@ -21,9 +21,12 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		registry.addViewController("/admin/add-user").setViewName("/admin/add-user");
 		registry.addViewController("/admin/edit-user/**").setViewName("/admin/edit-user");
 		registry.addViewController("/admin/doc-list").setViewName("/admin/doc-list");
-		registry.addViewController("/user").setViewName("/user/index");
+		//registry.addViewController("/user").setViewName("/user/index");
 		registry.addViewController("/user/index").setViewName("/user/index");
 		registry.addViewController("/user/home").setViewName("/user/index");
+		registry.addViewController("/user/my-document").setViewName("/user/my-document");
+		registry.addViewController("/user/history").setViewName("/user/history");
+		registry.addViewController("/user/upload-file").setViewName("/user/upload-file");
 //		registry.addViewController("/user").setViewName("/user/user");
 //		registry.addViewController("/dba").setViewName("/dba");
 		registry.addViewController("/login").setViewName("/login");

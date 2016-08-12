@@ -7,7 +7,8 @@
 <jsp:include page="../include/admin/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
-<body data-sidebar-color="sidebar-light" class="sidebar-light">
+<body data-sidebar-color="sidebar-light" class="sidebar-light"
+	ng-app="categoryList" ng-controller="categoryListCtrl">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/admin/header.jsp -->
@@ -35,10 +36,10 @@
 								role="button">មីនុយ</a>
 								<ul aria-labelledby="dropdownMenu2"
 									class="dropdown-menu fs-12 animated fadeInDown">
-									<li><a data-toggle="modal" data-target=".modalAdd" ><i class="ti-plus mr-5"></i>
-											បញ្ចួលថ្មី</a></li>
-									<li><a data-toggle="modal" data-target=".modalEdit"><i class="ti-pencil mr-5"></i>
-											កំណែប្រែថ្មី</a></li>
+									<li><a data-toggle="modal" data-target=".modalAdd"><i
+											class="ti-plus mr-5"></i> បញ្ចួលថ្មី</a></li>
+									<li><a data-toggle="modal" data-target=".modalEdit"><i
+											class="ti-pencil mr-5"></i> កំណែប្រែថ្មី</a></li>
 								</ul></li>
 							<li class="active">តារាង</li>
 						</ol>
@@ -58,32 +59,36 @@
 							</div>
 							<div class="widget-body">
 								<table id="cat-list-table" style="width: 100%"
-									class="table table-hover dt-responsive nowrap">
+									class="table table-hover dt-responsive nowrap" datatable="ng"
+									dt-options="dtOptions">
 									<thead>
 										<tr>
-											<th style="width: 16%">លេខរៀង</th>
+											<th style="width: 5%">លេខរៀង</th>
 											<th style="width: 30%">ឈ្មោះមីនុយ</th>
 											<th style="width: 5%">ស្ថិតក្រោមមីនុយ</th>
 											<th style="width: 12%">បញ្ចុលដោយ</th>
 											<th style="width: 10%">ស្ថានភាព</th>
-											<th style="width: 15%">សកម្មភាព</th>
+											<th style="width: 35%">&nbsp;&nbsp;&nbsp;&nbsp;សកម្មភាព&nbsp;&nbsp;&nbsp;&nbsp;</th>
 											<th style="width: 5%">ពត៌មានបន្ថែម</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>#6546</td>
+										<tr data-ng-repeat="c in category">
+											<td>{{ $index + 1}}</td>
 											<td>
 												<div class="media">
 													<div class="media-body">
-														<h5 class="media-heading">វិទ្យាសាស្ត្រកុំព្យូទ័រ</h5>
-														<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី: 31 July, 2016</p>
+														<h5 class="media-heading">{{c.CAT_NAME}}</h5>
+														<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី:
+															{{c.CREATED_DATE}}</p>
 													</div>
 												</div>
 											</td>
-											<td>វិទ្យាសាស្ត្រកុំព្យូទ័រ</td>
-											<td>ចាន់ ឧត្តម</td>
-											<td class="text-center text-success"><i class="ti-check"></i></td>
+											<td>{{c.PARENT.CAT_NAME}}</td>
+											<td>{{c.USER.USER_NAME}}</td>
+											<td class="text-center"
+												ng-class="(c.STATUS == 1) ? 'text-success':'text-danger'"><i
+												ng-class="(c.STATUS == 1) ? 'ti-check' : 'ti-close'"></i></td>
 											<td>
 												<div role="toolbar" aria-label="Toolbar with button groups"
 													class="btn-toolbar">
@@ -99,39 +104,16 @@
 													</div>
 												</div>
 											</td>
-											<td>I got something to talk to you if you want me too!</td>
-										</tr>
-										<tr>
-											<td>#6941</td>
-											<td>
-												<div class="media">
-													<div class="media-body">
-														<h5 class="media-heading">វិទ្យាសាស្ត្រកុំព្យូទ័រ</h5>
-														<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី: 31 July, 2016</p>
-													</div>
-												</div>
-											</td>
-											<td>វិទ្យាសាស្ត្រកុំព្យូទ័រ</td>
-											<td>ចាន់ ឧត្តម</td>
-											<td class="text-center text-success"><i class="ti-check"></i></td>
-											<td>
-												<div role="toolbar" aria-label="Toolbar with button groups"
-													class="btn-toolbar">
-													<div role="group" aria-label="First group"
-														class="btn-group">
-														<button type="button" class="btn btn-outline btn-warning">
-															<i class="ti-pencil"></i>
-														</button>
-														<button type="button" class="btn btn-outline btn-danger">
-															<i class="ti-trash"></i>
-														</button>
-													</div>
-												</div>
-											</td>
-											<td></td>
+											<td>{{c.DESCRIPTION}}</td>
 										</tr>
 									</tbody>
 								</table>
+								<!-- Add Modal -->
+								<jsp:include
+									page="../include/admin/modal/category/category-add-include.jsp"></jsp:include>
+								<!-- Edit Modal -->
+								<jsp:include
+									page="../include/admin/modal/category/category-edit-include.jsp"></jsp:include>
 							</div>
 						</div>
 					</div>
@@ -147,10 +129,8 @@
 	<!-- including js from include/admin/js-include.jsp -->
 	<jsp:include page="../include/admin/js-include.jsp"></jsp:include>
 
-	<!-- Add Modal -->
-	<jsp:include page="../include/admin/modal/category/category-add-include.jsp"></jsp:include>
-	<!-- Edit Modal -->
-	<jsp:include page="../include/admin/modal/category/category-edit-include.jsp"></jsp:include>
-	
+
+
+
 </body>
 </html>

@@ -92,7 +92,8 @@
 											<div role="toolbar" aria-label="Toolbar with button groups"
 												class="btn-toolbar">
 												<div role="group" aria-label="First group" class="btn-group">
-													<button type="button" class="btn btn-outline btn-success">
+													<button type="button" class="btn btn-outline btn-success" 
+													data-toggle="modal" data-target=".modalView" ng-click="view({{ u.USER_ID }})">
 														<i class="ti-eye"></i>
 													</button>
 													<a type="button" href="/admin/edit-user/{{u.USER_ID}}" class="btn btn-outline btn-warning">
@@ -125,7 +126,7 @@
 	<div class="col-md-3 col-sm-6">
 		<div tabindex="-1" role="dialog"
 			aria-labelledby="myAnimationModalLabel"
-			class="modal animated fadeInLeft bs-example-modal-animation">
+			class="modal animated fadeInLeft modalView">
 			<div role="document" class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">

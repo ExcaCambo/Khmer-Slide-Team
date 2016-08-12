@@ -81,4 +81,6 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/angular-datatables.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/user.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/user-type.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/category.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/doc-list.js"></script>
 

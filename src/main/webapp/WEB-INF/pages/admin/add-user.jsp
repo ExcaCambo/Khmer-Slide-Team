@@ -95,7 +95,7 @@
 												<option value="ស្រី">ស្រី</option>
 											</select>
 										</div>
-										<div class="form-group" ng-controller="userTypeListCtrl">
+										<div class="form-group">
 											<label for="ddlRole">តួនាទី</label><label class="text-danger">
 												*</label> <select id="ddlRole" name="ddlRole" ng-model="ddlRole"
 												data-rule-required="true" class="form-control"

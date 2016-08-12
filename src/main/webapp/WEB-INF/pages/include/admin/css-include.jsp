@@ -18,6 +18,8 @@
 	href="${pageContext.request.contextPath}/resources/static/plugins/themify-icons/themify-icons.css">
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/static/plugins/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/static/plugins/font-awesome/fonts/FontAwesome.otf">
 <!-- Malihu Scrollbar-->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/static/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css">
