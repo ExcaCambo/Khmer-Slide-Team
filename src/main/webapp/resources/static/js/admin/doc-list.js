@@ -1,8 +1,8 @@
-var app = angular.module('categoryList', ["datatables"]);
+var app = angular.module('documentList', ["datatables"]);
 
 	//create controller
-	app.controller('categoryListCtrl', function ($scope, $http, DTOptionsBuilder) {
-		$scope.category = '';
+	app.controller('documentListCtrl', function ($scope, $http, DTOptionsBuilder) {
+		$scope.document = '';
 		
 		// DataTables configurable options
 	    $scope.dtOptions = DTOptionsBuilder.newOptions()
@@ -25,11 +25,11 @@ var app = angular.module('categoryList', ["datatables"]);
 
 			$scope.list = function(){
 				$http({
-				url: 'http://localhost:8080/rest/category',
+				url: 'http://localhost:8080/rest/document-list',
 				method: 'GET'
 			}).then(function(repsonse){
 				// console.log(repsonse);
-				$scope.category=repsonse.data.DATA;
+				$scope.document=repsonse.data.DATA;
 			}, function(){
 
 			});

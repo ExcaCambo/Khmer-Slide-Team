@@ -1,8 +1,8 @@
-var app = angular.module('categoryList', ["datatables"]);
+var app = angular.module('saveList', ["datatables"]);
 
 	//create controller
-	app.controller('categoryListCtrl', function ($scope, $http, DTOptionsBuilder) {
-		$scope.category = '';
+	app.controller('saveListCtrl', function ($scope, $http, DTOptionsBuilder) {
+		$scope.savelist = '';
 		
 		// DataTables configurable options
 	    $scope.dtOptions = DTOptionsBuilder.newOptions()
@@ -25,11 +25,11 @@ var app = angular.module('categoryList', ["datatables"]);
 
 			$scope.list = function(){
 				$http({
-				url: 'http://localhost:8080/rest/category',
+				url: 'http://localhost:8080/rest/save-list',
 				method: 'GET'
 			}).then(function(repsonse){
 				// console.log(repsonse);
-				$scope.category=repsonse.data.DATA;
+				$scope.savelist=repsonse.data.DATA;
 			}, function(){
 
 			});

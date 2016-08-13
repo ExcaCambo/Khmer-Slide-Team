@@ -12,7 +12,7 @@
 						<span aria-hidden="true"><i class="ti-close"></i></span>
 					</button>
 					<h3 id="myAnimationModalLabel"
-						class="modal-title text-primary text-center">បញ្ចូលមីនុយថ្មី្មី</h3>
+						class="modal-title text-primary text-center">បញ្ចូលមីនុយថ្មី្ម</h3>
 				</div>
 				<div class="modal-body">
 					<div class="row">
@@ -21,7 +21,7 @@
 								<div class="widget-body">
 									<form id="form-vertical" method="post" novalidate="novalidate">
 										<div class="col-md-12">
-											<div class="form-group">
+											<div class="form-group" >
 												<label for="txtCatName">ឈ្មោះមីនុយ</label><label
 													class="text-danger"> *</label> <input id="txtCatName"
 													type="text" name="txtCatName"
@@ -32,8 +32,8 @@
 												<label for="ddlCategory">ស្ថិតក្រោមមីនុយ</label> <select
 													id="ddlCategory" name="ddlCategory" class="form-control">
 													<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
-													<option value="1">វិទ្យាសាស្ត្រកុំព្យូទ័រ</option>
-													<option value="2">ការរេចនាគហេទំព៏រ</option>
+													<option value="1"></option>
+												
 												</select>
 											</div>
 											<div class="form-group">
@@ -42,8 +42,8 @@
 													name="ddlStatus" data-rule-required="true"
 													class="form-control">
 													<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
-													<option value="1">ដំណើរការ</option>
-													<option value="2">មិនដំណើរការ</option>
+													<option value="1"></option>
+												
 												</select>
 											</div>
 											<div class="form-group">

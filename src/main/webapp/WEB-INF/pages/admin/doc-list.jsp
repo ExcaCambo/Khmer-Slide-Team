@@ -7,7 +7,7 @@
 <jsp:include page="../include/admin/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
-<body data-sidebar-color="sidebar-light" class="sidebar-light">
+<body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="documentList" ng-controller="documentListCtrl">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/admin/header.jsp -->
@@ -55,7 +55,7 @@
 					<div class="col-md-12">
 						<div class="widget no-border">
 							<table id="doc-list-table" style="width: 100%"
-								class="table table-hover dt-responsive nowrap">
+								class="table table-hover dt-responsive nowrap" datatable="ng" dt-options="dtOptions">
 								<thead>
 									<tr>
 										<th style="width: 10%">លេងរៀង</th>
@@ -70,8 +70,8 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>#6546</td>
+									<tr ng-repeat="d in document | orderBy:'DOC_TITLE'">
+										<td>{{ $index+1 }}</td>
 										<td>
 											<div class="media">
 												<div class="media-left avatar">
@@ -81,11 +81,10 @@
 														class="status bg-success"></span>
 												</div>
 												<div class="media-body">
-													<h5 class="media-heading">ភាសា Java</h5>
-													<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី: 29th July,
+													<h5 class="media-heading">{{d.DOC_TITLE}}</h5>
+													<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី: {{d.UPLOADED_DATE}},
 														2016</p>
-													<p class="text-muted mb-0">ទីតាំងឯកសារ:
-														https://drive.google.com/drive/</p>
+													<p class="text-muted mb-0">ទីតាំងឯកសារ:{{d.URL}}</p>
 												</div>
 											</div>
 										</td>
@@ -93,275 +92,16 @@
 										<td>
 											<div class="media">
 												<div class="media-body">
-													<p class="text-muted mb-0">ពេញចិត្ត: 500 ដង</p>
-													<p class="text-muted mb-0">ចែកចាយ: 100 ដង</p>
-													<p class="text-muted mb-0">ចូលមើល: 5000 ដង</p>
+													<p class="text-muted mb-0">ពេញចិត្ត: {{d.LIKED}} ដង</p>
+													<p class="text-muted mb-0">ចែកចាយ: {{d.SHARED}} ដង</p>
+													<p class="text-muted mb-0">ចូលមើល: {{d.VIEWED}} ដង</p>
 												</div>
 											</div>
 										</td>
-										<td>វិទ្យាសាស្ត្រកុំព្យូទ័រ</td>
-										<td>ចាន់ ឧត្តម</td>
+										<td>{{d.CATEGORY.CAT_NAME}}</td>
+										<td>{{d.USER.USER_NAME}}</td>
 										<td></td>
-										<td class="text-center text-success"><i class="ti-check"></i></td>
-										<td>
-											<div role="toolbar" aria-label="Toolbar with button groups"
-												class="btn-toolbar">
-												<div role="group" aria-label="First group" class="btn-group">
-													<button type="button" class="btn btn-outline btn-success">
-														<i class="ti-eye"></i>
-													</button>
-													<button type="button" class="btn btn-outline btn-warning">
-														<i class="ti-pencil"></i>
-													</button>
-													<button type="button" class="btn btn-outline btn-danger">
-														<i class="ti-trash"></i>
-													</button>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>#6941</td>
-										<td>
-											<div class="media">
-												<div class="media-left avatar">
-													<img
-														src="${pageContext.request.contextPath}/resources/static/img/users/20.jpg"
-														alt="" class="media-object img-circle"><span
-														class="status bg-success"></span>
-												</div>
-												<div class="media-body">
-													<h5 class="media-heading">Web Design</h5>
-													<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី: 29th July,
-														2016</p>
-													<p class="text-muted mb-0">ទីតាំងឯកសារ:
-														https://drive.google.com/drive/</p>
-												</div>
-											</div>
-										</td>
-										<td>Slide</td>
-										<td>
-											<div class="media">
-												<div class="media-body">
-													<p class="text-muted mb-0">ពេញចិត្ត: 500 ដង</p>
-													<p class="text-muted mb-0">ចែកចាយ: 100 ដង</p>
-													<p class="text-muted mb-0">ចូលមើល: 5000 ដង</p>
-												</div>
-											</div>
-										</td>
-										<td>វិទ្យាសាស្ត្រកុំព្យូទ័រ</td>
-										<td>ចាន់ ឧត្តម</td>
-										<td>I gotta do something that I want to do today coz tmr
-											I wont know wether I will be able to do or not!</td>
-										<td class="text-center text-danger"><i class="ti-close"></i></td>
-										<td>
-											<div role="toolbar" aria-label="Toolbar with button groups"
-												class="btn-toolbar">
-												<div role="group" aria-label="First group" class="btn-group">
-													<button type="button" class="btn btn-outline btn-success"
-														data-toggle="modal"
-														data-target=".bs-example-modal-animation">
-														<i class="ti-eye"></i>
-													</button>
-													<button type="button" class="btn btn-outline btn-warning">
-														<i class="ti-pencil"></i>
-													</button>
-													<button type="button" class="btn btn-outline btn-danger">
-														<i class="ti-trash"></i>
-													</button>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>#6546</td>
-										<td>
-											<div class="media">
-												<div class="media-left avatar">
-													<img
-														src="${pageContext.request.contextPath}/resources/static/img/users/21.jpg"
-														alt="" class="media-object img-circle"><span
-														class="status bg-success"></span>
-												</div>
-												<div class="media-body">
-													<h5 class="media-heading">ភាសា Java</h5>
-													<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី: 29th July,
-														2016</p>
-													<p class="text-muted mb-0">ទីតាំងឯកសារ:
-														https://drive.google.com/drive/</p>
-												</div>
-											</div>
-										</td>
-										<td>PDF</td>
-										<td>
-											<div class="media">
-												<div class="media-body">
-													<p class="text-muted mb-0">ពេញចិត្ត: 500 ដង</p>
-													<p class="text-muted mb-0">ចែកចាយ: 100 ដង</p>
-													<p class="text-muted mb-0">ចូលមើល: 5000 ដង</p>
-												</div>
-											</div>
-										</td>
-										<td>វិទ្យាសាស្ត្រកុំព្យូទ័រ</td>
-										<td>ចាន់ ឧត្តម</td>
-										<td></td>
-										<td class="text-center text-success"><i class="ti-check"></i></td>
-										<td>
-											<div role="toolbar" aria-label="Toolbar with button groups"
-												class="btn-toolbar">
-												<div role="group" aria-label="First group" class="btn-group">
-													<button type="button" class="btn btn-outline btn-success"
-														data-toggle="modal"
-														data-target=".bs-example-modal-animation">
-														<i class="ti-eye"></i>
-													</button>
-													<button type="button" class="btn btn-outline btn-warning">
-														<i class="ti-pencil"></i>
-													</button>
-													<button type="button" class="btn btn-outline btn-danger">
-														<i class="ti-trash"></i>
-													</button>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>#6941</td>
-										<td>
-											<div class="media">
-												<div class="media-left avatar">
-													<img
-														src="${pageContext.request.contextPath}/resources/static/img/users/20.jpg"
-														alt="" class="media-object img-circle"><span
-														class="status bg-success"></span>
-												</div>
-												<div class="media-body">
-													<h5 class="media-heading">Web Design</h5>
-													<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី: 29th July,
-														2016</p>
-													<p class="text-muted mb-0">ទីតាំងឯកសារ:
-														https://drive.google.com/drive/</p>
-												</div>
-											</div>
-										</td>
-										<td>PDF</td>
-										<td>
-											<div class="media">
-												<div class="media-body">
-													<p class="text-muted mb-0">ពេញចិត្ត: 500 ដង</p>
-													<p class="text-muted mb-0">ចែកចាយ: 100 ដង</p>
-													<p class="text-muted mb-0">ចូលមើល: 5000 ដង</p>
-												</div>
-											</div>
-										</td>
-										<td>វិទ្យាសាស្ត្រកុំព្យូទ័រ</td>
-										<td>ចាន់ ឧត្តម</td>
-										<td>I gotta do something that I want to do today coz tmr
-											I wont know wether I will be able to do or not!</td>
-										<td class="text-center text-danger"><i class="ti-close"></i></td>
-										<td>
-											<div role="toolbar" aria-label="Toolbar with button groups"
-												class="btn-toolbar">
-												<div role="group" aria-label="First group" class="btn-group">
-													<button type="button" class="btn btn-outline btn-success">
-														<i class="ti-eye"></i>
-													</button>
-													<button type="button" class="btn btn-outline btn-warning">
-														<i class="ti-pencil"></i>
-													</button>
-													<button type="button" class="btn btn-outline btn-danger">
-														<i class="ti-trash"></i>
-													</button>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>#6546</td>
-										<td>
-											<div class="media">
-												<div class="media-left avatar">
-													<img
-														src="${pageContext.request.contextPath}/resources/static/img/users/21.jpg"
-														alt="" class="media-object img-circle"><span
-														class="status bg-success"></span>
-												</div>
-												<div class="media-body">
-													<h5 class="media-heading">ភាសា Java</h5>
-													<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី: 29th July,
-														2016</p>
-													<p class="text-muted mb-0">ទីតាំងឯកសារ:
-														https://drive.google.com/drive/</p>
-												</div>
-											</div>
-										</td>
-										<td>Microsoft Word</td>
-										<td>
-											<div class="media">
-												<div class="media-body">
-													<p class="text-muted mb-0">ពេញចិត្ត: 500 ដង</p>
-													<p class="text-muted mb-0">ចែកចាយ: 100 ដង</p>
-													<p class="text-muted mb-0">ចូលមើល: 5000 ដង</p>
-												</div>
-											</div>
-										</td>
-										<td>វិទ្យាសាស្ត្រកុំព្យូទ័រ</td>
-										<td>ចាន់ ឧត្តម</td>
-										<td></td>
-										<td class="text-center text-success"><i class="ti-check"></i></td>
-										<td>
-											<div role="toolbar" aria-label="Toolbar with button groups"
-												class="btn-toolbar">
-												<div role="group" aria-label="First group" class="btn-group">
-													<button type="button" class="btn btn-outline btn-success"
-														data-toggle="modal"
-														data-target=".bs-example-modal-animation">
-														<i class="ti-eye"></i>
-													</button>
-													<button type="button" class="btn btn-outline btn-warning">
-														<i class="ti-pencil"></i>
-													</button>
-													<button type="button" class="btn btn-outline btn-danger">
-														<i class="ti-trash"></i>
-													</button>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>#6941</td>
-										<td>
-											<div class="media">
-												<div class="media-left avatar">
-													<img
-														src="${pageContext.request.contextPath}/resources/static/img/users/20.jpg"
-														alt="" class="media-object img-circle"><span
-														class="status bg-success"></span>
-												</div>
-												<div class="media-body">
-													<h5 class="media-heading">Web Design</h5>
-													<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី: 29th July,
-														2016</p>
-													<p class="text-muted mb-0">ទីតាំងឯកសារ:
-														https://drive.google.com/drive/</p>
-												</div>
-											</div>
-										</td>
-										<td>Microsoft Word</td>
-										<td>
-											<div class="media">
-												<div class="media-body">
-													<p class="text-muted mb-0">ពេញចិត្ត: 500 ដង</p>
-													<p class="text-muted mb-0">ចែកចាយ: 100 ដង</p>
-													<p class="text-muted mb-0">ចូលមើល: 5000 ដង</p>
-												</div>
-											</div>
-										</td>
-										<td>វិទ្យាសាស្ត្រកុំព្យូទ័រ</td>
-										<td>ចាន់ ឧត្តម</td>
-										<td>I gotta do something that I want to do today coz tmr
-											I wont know wether I will be able to do or not!</td>
-										<td class="text-center text-danger"><i class="ti-close"></i></td>
+										<td class="text-center" ng-class="(d.STATUS == 1) ? 'text-success':'text-danger'"><i ng-class="(d.STATUS == 1) ? 'ti-check' : 'ti-close'"></i></td>
 										<td>
 											<div role="toolbar" aria-label="Toolbar with button groups"
 												class="btn-toolbar">

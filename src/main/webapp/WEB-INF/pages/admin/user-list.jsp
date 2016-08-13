@@ -7,7 +7,7 @@
 <jsp:include page="../include/admin/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
-<body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="CombineModule">
+<body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="userList" ng-controller="userListCtrl">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/admin/header.jsp -->
@@ -49,7 +49,7 @@
 				<!-- including user-board from include/admin/user-board-include.jsp -->
 				<jsp:include page="../include/admin/user-board-include.jsp"></jsp:include>
 
-				<div class="row" ng-controller="userListCtrl">
+				<div class="row">
 					<div class="col-md-12">
 						<div class="widget no-border">
 							<table id="user-list-table" style="width: 100%"
