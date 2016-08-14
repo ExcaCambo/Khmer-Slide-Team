@@ -12,21 +12,16 @@
 	<div data-mcs-theme="minimal-dark"
 		class="tab-content nav-sidebar-content mCustomScrollbar">
 		<div id="role" role="tabpanel" class="tab-pane fade in active">
-<<<<<<< HEAD
+
 			<div class="row" ng-controller="userTypeListCtrl">
 				<div class="widget ">
-=======
 			<div class="row" ng-app="userTypeList"
 				ng-controller="userTypeListCtrl">
 				<div class="widget">
->>>>>>> refs/remotes/JayzWalker/JayzWalker
 					<table id="role-table" style="width: 100%"
-<<<<<<< HEAD
 						class="table table-hover dt-responsive nowrap" datatable="ng" dt-options="dtOptions">
-=======
 						class="table table-hover dt-responsive nowrap" datatable="ng"
 						dt-options="dtOptions">
->>>>>>> refs/remotes/JayzWalker/JayzWalker
 						<thead>
 							<tr>
 								<th style="width: 1%">ល.រ</th>
@@ -37,26 +32,22 @@
 							</tr>
 						</thead>
 						<tbody>
-<<<<<<< HEAD
 							<tr ng-repeat="ut in userType | orderBy:'role_name'">
-=======
+
 
 							<tr ng-repeat="ut in userType">
->>>>>>> refs/remotes/JayzWalker/JayzWalker
 								<td>{{ $index + 1 }}</td>
 								<td>
 									<div class="media">
 										<div class="media-body">
-<<<<<<< HEAD
+
 											<h5 class="media-heading">{{ (ut.ROLE_NAME) == 'admin' ? 'អ្នកគ្រប់គ្រងប្រព័ន្ធ':'អ្នកប្រើប្រាស់' }}</h5>
-=======
+
 											<h5 class="media-heading">{{(ut.ROLE_NAME) == 'admin' ?
 												'អ្នកគ្រប់គ្រងប្រព័ន្ធ':'អ្នកប្រើប្រាស់'}}</h5>
->>>>>>> refs/remotes/JayzWalker/JayzWalker
 										</div>
 									</div>
 								</td>
-<<<<<<< HEAD
 								<td class="text-center" ng-class="(u.STATUS == 1) ? 'text-success':'text-danger'"><i ng-class="(u.STATUS == 1) ? 'ti-check' : 'ti-close'"></i></td>
 								<td>{{ ut.DESCRIPTION }}</td>
 								<td>
@@ -71,7 +62,6 @@
 											</button>
 										</div>
 									</div>
-=======
 								<td class="text-center"
 									ng-class="(u.STATUS == 1) ? 'text-success':'text-danger'"><i
 									ng-class="(u.STATUS == 1) ? 'ti-check' : 'ti-close'"></i></td>
@@ -88,7 +78,7 @@
 										</button>
 									</div>
 								</div>
->>>>>>> refs/remotes/JayzWalker/JayzWalker
+
 								</td>
 							</tr>
 						</tbody>
