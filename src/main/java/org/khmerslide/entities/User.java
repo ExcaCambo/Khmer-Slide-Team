@@ -1,4 +1,4 @@
-package org.khmerslide.entities;
+/*package org.khmerslide.entities;
 
 import java.util.ArrayList;
 
@@ -90,3 +90,4 @@ public class User {
 		this.status = status;
 	}
 }
+*/

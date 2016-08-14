@@ -79,6 +79,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'Chivon' of https://github.com/SR-SKL/khmerslide.git
      <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/save-list.js"></script>
      <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/doc-list.js"></script>
             <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/confirm-doc.js"></script>

@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="savelist">
 <head>
+<!-- angular lib -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 <!-- including style from include/admin/css-include.jsp -->
 <jsp:include page="../include/admin/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
-<body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="saveList" ng-controller="saveListCtrl">
+<body data-sidebar-color="sidebar-light" class="sidebar-light">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/admin/header.jsp -->
@@ -23,7 +25,7 @@
 			<jsp:include page="../include/admin/main-sidebar-include.jsp"></jsp:include>
 		</aside>
 		<!-- Main Sidebar end-->
-		<div class="page-container">
+		<div class="page-container" ng-controller="savelistController">
 			<div class="page-header clearfix">
 				<div class="row">
 					<div class="col-sm-12">
@@ -53,41 +55,44 @@
 											<th style="width: 30%">បញ្ជីរឈ្មោះ</th>
 											<th style="width: 5%">រក្សាទុកឯកសារ</th>
 											<th style="width: 12%">បង្កើតដោយ</th>
-											<th style="width: 10%">ស្ថានភាព</th>
+										  <th style="width: 10%">ស្ថានភាព</th>
 											<th style="width: 15%">សកម្មភាព</th>
 											<th style="width: 5%">ពត៌មានបន្ថែម</th>
 										</tr>
 									</thead>
+									 <!--  -->
 									<tbody>
-										<tr ng-repeat="s in savelist | orderBy:'SL_NAME'">
+										<tr ng-repeat="SL in savelist | orderBy:'SL_NAME'">
 											<td>{{ $index+1 }}</td>
 											<td>
 												<div class="media">
 													<div class="media-body">
-														<h5 class="media-heading">{{s.SL_NAME}}</h5>
-														<p class="text-muted mb-0">បង្កើតថ្ងៃទី: {{s.SAVED_DATE}}</p>
+														<h5 class="media-heading">{{SL.SL_NAME}}</h5>
+														<p class="text-muted mb-0">បង្កើតថ្ងៃទី: {{SL.SAVED_DATE}}</p>
 													</div>
 												</div>
 											</td>
-											<td>{{s.DOC_ID.DOC_TITLE}}</td>
-											<td>{{s.USER_ID.USER_NAME}}</td>
+											<td>{{SL.DOC_ID.DOC_TITLE}}</td>
+											<td>{{SL.USER_ID.USER_NAME}}</td>
 											<td class="text-center" ng-class="(s.STATUS == 1) ? 'text-success':'text-danger'"><i ng-class="(s.STATUS == 1) ? 'ti-check' : 'ti-close'"></i></td>
 											<td>
 												<div role="toolbar" aria-label="Toolbar with button groups"
 													class="btn-toolbar">
 													<div role="group" aria-label="First group"
 														class="btn-group">
-														<button type="button" class="btn btn-outline btn-success"
-															data-toggle="modal" data-target=".modalView">
+														 <!-- button view -->
+														<!-- <button type="button" class="btn btn-outline btn-success"
+																data-toggle="modal" data-target=".modalView">
 															<i class="ti-eye"></i>
-														</button>
-														<button type="button" class="btn btn-outline btn-danger">
+														</button> -->
+														 <!-- button delete -->
+														<button type="button" ng-click="deleteSaveList(SL.SL_ID)" class="btn btn-outline btn-danger">
 															<i class="ti-trash"></i>
 														</button>
 													</div>
 												</div>
 											</td>
-											<td>{{s.DESCRIPTION}}</td>
+											<td>{{SL.DESCRIPTION}}</td>
 										</tr>
 									</tbody>
 								</table>

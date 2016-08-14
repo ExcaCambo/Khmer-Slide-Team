@@ -1,7 +1,7 @@
-var app = angular.module('saveList', ["datatables"]);
+var app = angular.module('savelist', ["datatables"]);
 
 	//create controller
-	app.controller('saveListCtrl', function ($scope, $http, DTOptionsBuilder) {
+	app.controller('savelistController', function ($scope, $http, DTOptionsBuilder) {
 		$scope.savelist = '';
 		
 		// DataTables configurable options
@@ -24,16 +24,33 @@ var app = angular.module('saveList', ["datatables"]);
 
 
 			$scope.list = function(){
-				$http({
-				url: 'http://localhost:8080/rest/save-list',
-				method: 'GET'
-			}).then(function(repsonse){
-				// console.log(repsonse);
-				$scope.savelist=repsonse.data.DATA;
-			}, function(){
-
-			});
+					$http({
+						method: 'GET',
+						url: 'http://localhost:8080/rest/save-list/get-savelist'
+						
+					}).then(function(repsonse){
+						console.log(repsonse);
+						$scope.savelist=repsonse.data.DATA;
+					
+					}, function(){
+						$scope.savelist = response.statusText;
+					});
 			}
-
 			$scope.list();
+			
+		
+	$scope.deleteSaveList = function(SL_ID){
+		alert("TEST SAVELIST" + SL_ID);
+		
+		$http({
+			method: 'DELETE',
+			url: 'http://localhost:8080/rest/save-list/delete-savelist/'+ SL_ID
+		}).then(function(repsonse){
+			console.log(repsonse);
+			alert("DELETE SUCCESS");
+			$scope.list();
+		}, function(){
+		
+		});
+	}
 });

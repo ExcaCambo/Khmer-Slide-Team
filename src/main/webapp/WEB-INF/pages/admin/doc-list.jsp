@@ -83,11 +83,17 @@
 												<div class="media-body">
 													<h5 class="media-heading">{{d.DOC_TITLE}}</h5>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'Chivon' of https://github.com/SR-SKL/khmerslide.git
 													<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី: {{d.UPLOADED_DATE}},
 														2016</p>
+<<<<<<< HEAD
 =======
 													<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី: {{d.UPLOADED_DATE}}</p>
 >>>>>>> refs/remotes/JayzWalker/JayzWalker
+=======
+>>>>>>> branch 'Chivon' of https://github.com/SR-SKL/khmerslide.git
 													<p class="text-muted mb-0">ទីតាំងឯកសារ:{{d.URL}}</p>
 												</div>
 											</div>
