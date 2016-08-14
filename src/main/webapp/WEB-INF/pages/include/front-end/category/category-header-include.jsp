@@ -11,7 +11,7 @@
 							class="fa fa-bars"></span>
 					</button>
 					<div class="logo">
-						<a class="navbar-brand" href="index.html"><img
+						<a class="navbar-brand" href="${pageContext.request.contextPath}/"><img
 							src="${pageContext.request.contextPath}/resources/static/front-end/img/logo.png"
 							alt=""></a>
 					</div>
@@ -28,7 +28,7 @@
 				</form> -->
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="../index"><i class="fa fa-home"></i>ទំព័រដើម</a></li>
+						<li><a href="${pageContext.request.contextPath}/user"><i class="fa fa-home"></i>ទំព័រដើម</a></li>
 						<li><a href="#"><i class="fa fa-info-circle"></i> អំពីយើង</a></li>
 						<li><a href="#"><i class="fa fa-mobile"></i> ទំនាក់ទំនង</a></li>
 						<li><a href="#"><i class="fa fa-sign-in"></i> គណនី</a></li>

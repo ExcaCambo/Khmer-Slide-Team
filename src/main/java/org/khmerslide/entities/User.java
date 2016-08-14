@@ -1,8 +1,4 @@
-/*package org.khmerslide.entities;
-
-import java.util.ArrayList;
-
-import org.khmerslide.security.Role;
+package org.khmerslide.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -26,14 +22,16 @@ public class User {
 	@JsonProperty("STATUS")
 	private int status;
 	@JsonProperty("ROLE")
-	private ArrayList<Role> role;
+	private User_Type role;
 	
 	
-	public ArrayList<Role> getRole() {
+	
+	
+	public User_Type getRole() {
 		return role;
 	}
-	public void setRole(ArrayList<Role> roles) {
-		this.role = roles;
+	public void setRole(User_Type role) {
+		this.role = role;
 	}
 	public int getUser_id() {
 		return user_id;
@@ -90,4 +88,3 @@ public class User {
 		this.status = status;
 	}
 }
-*/

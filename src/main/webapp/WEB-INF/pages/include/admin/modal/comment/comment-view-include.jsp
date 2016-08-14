@@ -13,21 +13,17 @@
 					</button>
 					<h4 id="myAnimationModalLabel" class="modal-title text-primary text-center">ពត៌មានលម្អិតពីយោបល់របស់អ្នកប្រើប្រាស់</h4>
 				</div>
-				<div class="modal-body">
+				<!-- <div class="modal-body">
 					<div class="row">
 						<div class="col-sm-12">
-							<p>ចំណងជើងឯកសារ: វិទ្យាសាស្ត្រកុំព្យូទ័រ</p>
-							<p>បញ្ចេញយោបល់ដោយ: ណែម សុធា</p>
-							<p>នៅថ្ងៃទី: 29th July, 2016</p>
+							<p>ចំណងជើងឯកសារ: {{c.DOC_ID.DOC_TITLE}}</p>
+							<p>បញ្ចេញយោបល់ដោយ: {{c.USER_ID.USER_NAME}}</p>
+							<p>នៅថ្ងៃទី: {{c.CMT_DATE}}</p>
 							<p>ស្ថានភាព: ដំណើរការ</p>
-							<p>ពត៌មានផ្សេងៗ: I am a comment :P</p>
-							<div>មានអត្ថន័យរដូចខាងក្រោម:
-								<br>
-								<p style="text-indent: 25px;">I gotta know you</p>
-							</div>
+							<p>ពត៌មានផ្សេងៗ:{{c.DISCRIPTION}}</p>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="modal-footer">
 					<button type="button" data-dismiss="modal"
 						class="btn btn-raised btn-danger">

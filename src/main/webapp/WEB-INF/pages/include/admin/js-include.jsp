@@ -64,7 +64,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/page-content/charts/other-charts.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/page-content/forms/forms-validation.js"></script>
     <!-- Sweet Alert -->
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/plugins/sweetalert/dist/sweetalert-dev.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/plugins/sweetalert/dist/sweetalert.min.js"></script>
 <%--     <!-- Bootstrap TouchSpin-->
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
     <!-- Bootstrap Tags Input-->
@@ -78,10 +78,6 @@
     <!-- Angular Js -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> branch 'Chivon' of https://github.com/SR-SKL/khmerslide.git
      <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/save-list.js"></script>
      <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/doc-list.js"></script>
             <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/confirm-doc.js"></script>
@@ -90,11 +86,3 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/category.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/user-type-list.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/angular-datatables.min.js"></script>
-=======
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/angular-datatables.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/user.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/user-type.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/category.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/doc-list.js"></script>
-
->>>>>>> refs/remotes/JayzWalker/JayzWalker

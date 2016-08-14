@@ -76,24 +76,14 @@
 											<div class="media">
 												<div class="media-left avatar">
 													<img
-														src="${pageContext.request.contextPath}/resources/static/img/thumbnails/{{ d.THUMBNAIL }}"
-														alt="" class="media-object" width="150" height="100"><span
+														src="${pageContext.request.contextPath}/resources/static/img/users/21.jpg"
+														alt="" class="media-object img-circle"><span
 														class="status bg-success"></span>
 												</div>
 												<div class="media-body">
 													<h5 class="media-heading">{{d.DOC_TITLE}}</h5>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> branch 'Chivon' of https://github.com/SR-SKL/khmerslide.git
 													<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី: {{d.UPLOADED_DATE}},
 														2016</p>
-<<<<<<< HEAD
-=======
-													<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី: {{d.UPLOADED_DATE}}</p>
->>>>>>> refs/remotes/JayzWalker/JayzWalker
-=======
->>>>>>> branch 'Chivon' of https://github.com/SR-SKL/khmerslide.git
 													<p class="text-muted mb-0">ទីតាំងឯកសារ:{{d.URL}}</p>
 												</div>
 											</div>

@@ -27,11 +27,7 @@
 							<div class="blog-image">
 								<div
 									class='embed-container embed-responsive embed-responsive-4by3'>
-<<<<<<< HEAD
 									<!-- <iframe
-=======
-									<iframe
->>>>>>> refs/remotes/JayzWalker/JayzWalker
 										src="https://docs.google.com/presentation/d/1E59nEYMieNSMEZlAVpbbDggJtiCuLoLr4_8Tn-MXL2g/embed?start=true&loop=true&delayms=30000"
 										frameborder="0"
 										allowfullscreen="true" mozallowfullscreen="true" 

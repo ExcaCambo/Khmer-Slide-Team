@@ -7,7 +7,7 @@
 <jsp:include page="../include/user/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
-<body data-sidebar-color="sidebar-light" class="sidebar-light">
+<body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="viewhistoryList" ng-controller="viewhistoryListCtrl">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/user/header.jsp -->
@@ -40,7 +40,7 @@
 			<div class="page-content container-fluid">
 				<div class="row">
 					<div class="pricing-table pricing-3">
-						<div class="row row-0">
+						<div class="row row-0" ng-repeat="h in viewhistory | orderBy:'DOC_TITLE'">
 							<div class="col-md-3 pricing-item">
 								<div class="item cat1">
 										<div class="shop-item-list entry">
@@ -52,7 +52,7 @@
 											</div>
 											<div class="shop-item-title clearfix">
 												<h4 class="text-center">
-													<a href="course-single.html">Web Design & Development</a>
+													<a href="course-single.html">{{h.DOC_ID.DOC_TITLE}}</a>
 												</h4>
 												<div class="shopmeta">
 													<span class="pull-left">12 views</span>

@@ -40,7 +40,6 @@ public class UserTypeController {
 //		ResponseEntity<Map> response = rest.exchange(WS_URL + "/user", HttpMethod.POST , request , Map.class) ;
 //		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 //	}
-
 	
 
 }

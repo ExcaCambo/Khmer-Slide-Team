@@ -70,11 +70,11 @@
 													class="btn-toolbar">
 													<div role="group" aria-label="First group"
 														class="btn-group">
-														<button type="button" class="btn btn-outline btn-success"
+														<!-- <button type="button" class="btn btn-outline btn-success"
 															data-toggle="modal" data-target=".modalView">
 															<i class="ti-eye"></i>
-														</button>
-														<button type="button" class="btn btn-outline btn-danger">
+														</button> -->
+														<button type="button" class="btn btn-outline btn-danger" ng-click="premove(comment.cmt_id)">
 															<i class="ti-trash"></i>
 														</button>
 													</div>
@@ -104,12 +104,13 @@
 		<jsp:include page="../include/admin/right-side-bar.jsp"></jsp:include>
 		<!-- Right Sidebar end-->
 	</div>
-
+<!-- View Modal -->
+	<jsp:include page="../include/admin/modal/comment/comment-view-include.jsp"></jsp:include>
+	
 	<!-- including js from include/admin/js-include.jsp -->
 	<jsp:include page="../include/admin/js-include.jsp"></jsp:include>
 
-	<!-- View Modal -->
-	<jsp:include page="../include/admin/modal/comment/comment-view-include.jsp"></jsp:include>
+	
 	
 </body>
 </html>

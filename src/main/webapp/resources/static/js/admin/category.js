@@ -1,14 +1,10 @@
 var app = angular.module('categoryList', ["datatables"]);
 
 	//create controller
-<<<<<<< HEAD
 	app.controller('categoryListCtrl', function ($scope, $http, DTOptionsBuilder) {
-=======
-	app.controller('categoryListCtrl', function ($scope, $http, $filter, DTOptionsBuilder) {
->>>>>>> refs/remotes/JayzWalker/JayzWalker
 		$scope.category = '';
 		
-//	 	=================================DataTables configurable options for Table Category=================================
+		// DataTables configurable options
 	    $scope.dtOptions = DTOptionsBuilder.newOptions()
 	        .withLanguage({
 	        	lengthChange : !1,
@@ -34,49 +30,10 @@ var app = angular.module('categoryList', ["datatables"]);
 			}).then(function(repsonse){
 				// console.log(repsonse);
 				$scope.category=repsonse.data.DATA;
-<<<<<<< HEAD
-=======
-				//alert($scope.ddlCategory);
->>>>>>> refs/remotes/JayzWalker/JayzWalker
 			}, function(){
 
 			});
 			}
 
 			$scope.list();
-			
-//			=================================Add Category Function=================================
-			$scope.cat = function(catId) {
-				$scope.parent = catId;
-			}
-			$scope.txtCreateBy = 1;
-			$scope.status = 1;
-			$scope.date = $filter('date')(new Date(), 'dd-MMM-yyyy');
-			$scope.insert = function() {
-				$http({
-					url : 'http://localhost:8080/rest/category',
-					data :{
-						  "parent_id": $scope.parent,
-						  "cat_name": $scope.txtCatName,
-						  "status": $scope.status,
-						  "user_id": $scope.txtCreateBy,
-						  "description": $scope.txtDescription,
-						  "icon": $scope.ddlIcon,
-						  "folder_google_drive": $scope.txtCatName,
-						  "created_date": $scope.date
-					},
-					method : 'POST'
-				}).then(function() {
-					// console.log(respsonse.data);
-//					$scope.txtName = '';
-//					$scope.ddlGender = '';
-//					$scope.txtEmail = '';
-//					$scope.txtPassword = '';
-//					$scope.txtConfirmPassword = '';
-					$scope.list();
-				}, function() {
-
-				});
-			}
-			
 });

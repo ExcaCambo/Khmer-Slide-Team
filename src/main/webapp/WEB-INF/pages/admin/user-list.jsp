@@ -7,9 +7,7 @@
 <jsp:include page="../include/admin/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
-
-<body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="userList">
-
+<body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="userList" ng-controller="userListCtrl">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/admin/header.jsp -->
@@ -51,7 +49,7 @@
 				<!-- including user-board from include/admin/user-board-include.jsp -->
 				<jsp:include page="../include/admin/user-board-include.jsp"></jsp:include>
 
-				<div class="row" ng-controller="userListCtrl">
+				<div class="row">
 					<div class="col-md-12">
 						<div class="widget no-border">
 							<table id="user-list-table" style="width: 100%"
@@ -73,37 +71,30 @@
 											<div class="media">
 												<div class="media-left avatar">
 													<img
-														src="${pageContext.request.contextPath}/resources/static/img/users/{{ u.PHOTO }}"
+														src="${pageContext.request.contextPath}/resources/static/img/users/21.jpg"
 														alt="" class="media-object img-circle"><span
 														class="status bg-success"></span>
 												</div>
 												<div class="media-body">
-													<h5 class="media-heading">{{u.USER_NAME}}</h5>
+													<h5 class="media-heading">{{u.NAME}}</h5>
 													<p class="text-muted mb-0">អីុមែល: {{u.EMAIL}}</p>
 												</div>
 											</div>
 										</td>
 										<td>{{u.GENDER}}</td>
-<<<<<<< HEAD
 										<td>{{(u.ROLE.ROLE_NAME) == 'admin' ? 'អ្នកគ្រប់គ្រងប្រព័ន្ធ':'អ្នកប្រើប្រាស់' }}</td>
-=======
-
-										<td>{{(u.ROLE.ROLE_NAME) == 'admin' ? 'អ្នកគ្រប់គ្រងប្រព័ន្ធ':'អ្នកប្រើប្រាស់'}}</td>
-
->>>>>>> refs/remotes/JayzWalker/JayzWalker
 										<td class="text-center" ng-class="(u.STATUS == 1) ? 'text-success':'text-danger'"><i ng-class="(u.STATUS == 1) ? 'ti-check' : 'ti-close'"></i></td>
 										<td>
 											<div role="toolbar" aria-label="Toolbar with button groups"
 												class="btn-toolbar">
 												<div role="group" aria-label="First group" class="btn-group">
-													<button type="button" class="btn btn-outline btn-success" 
-													data-toggle="modal" data-target=".modalView" ng-click="view({{ u.USER_ID }})">
+													<button type="button" class="btn btn-outline btn-success">
 														<i class="ti-eye"></i>
 													</button>
-													<a type="button" href="/admin/edit-user/{{u.USER_ID}}" class="btn btn-outline btn-warning">
+													<button type="button" class="btn btn-outline btn-warning">
 														<i class="ti-pencil"></i>
-													</a>
-													<button type="button" class="btn btn-outline btn-danger" ng-click="remove(u.USER_ID)">
+													</button>
+													<button type="button" class="btn btn-outline btn-danger">
 														<i class="ti-trash"></i>
 													</button>
 												</div>
@@ -119,7 +110,7 @@
 		</div>
 
 		<!-- Right Sidebar start-->
-		<%-- <jsp:include page="../include/admin/right-side-bar.jsp"></jsp:include> --%>
+		<jsp:include page="../include/admin/right-side-bar.jsp"></jsp:include>
 		<!-- Right Sidebar end-->
 	</div>
 
@@ -130,7 +121,7 @@
 	<div class="col-md-3 col-sm-6">
 		<div tabindex="-1" role="dialog"
 			aria-labelledby="myAnimationModalLabel"
-			class="modal animated fadeInLeft modalView">
+			class="modal animated fadeInLeft bs-example-modal-animation">
 			<div role="document" class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">

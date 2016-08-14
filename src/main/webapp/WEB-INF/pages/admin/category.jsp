@@ -7,12 +7,7 @@
 <jsp:include page="../include/admin/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
-<<<<<<< HEAD
 <body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="categoryList" ng-controller="categoryListCtrl">
-=======
-<body data-sidebar-color="sidebar-light" class="sidebar-light"
-	ng-app="categoryList" ng-controller="categoryListCtrl">
->>>>>>> refs/remotes/JayzWalker/JayzWalker
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/admin/header.jsp -->
@@ -40,10 +35,10 @@
 								role="button">មីនុយ</a>
 								<ul aria-labelledby="dropdownMenu2"
 									class="dropdown-menu fs-12 animated fadeInDown">
-									<li><a data-toggle="modal" data-target=".modalAdd"><i
-											class="ti-plus mr-5"></i> បញ្ចួលថ្មី</a></li>
-									<li><a data-toggle="modal" data-target=".modalEdit"><i
-											class="ti-pencil mr-5"></i> កំណែប្រែថ្មី</a></li>
+									<li><a data-toggle="modal" data-target=".modalAdd" ><i class="ti-plus mr-5"></i>
+											បញ្ចួលថ្មី</a></li>
+									<li><a data-toggle="modal" data-target=".modalEdit"><i class="ti-pencil mr-5"></i>
+											កំណែប្រែថ្មី</a></li>
 								</ul></li>
 							<li class="active">តារាង</li>
 						</ol>
@@ -63,52 +58,32 @@
 							</div>
 							<div class="widget-body">
 								<table id="cat-list-table" style="width: 100%"
-<<<<<<< HEAD
 									class="table table-hover dt-responsive nowrap" datatable="ng" dt-options="dtOptions">
-=======
-									class="table table-hover dt-responsive nowrap" datatable="ng"
-									dt-options="dtOptions">
->>>>>>> refs/remotes/JayzWalker/JayzWalker
 									<thead>
 										<tr>
-											<th style="width: 5%">លេខរៀង</th>
+											<th style="width: 16%">លេខរៀង</th>
 											<th style="width: 30%">ឈ្មោះមីនុយ</th>
 											<th style="width: 5%">ស្ថិតក្រោមមីនុយ</th>
 											<th style="width: 12%">បញ្ចុលដោយ</th>
 											<th style="width: 10%">ស្ថានភាព</th>
-											<th style="width: 35%">&nbsp;&nbsp;&nbsp;&nbsp;សកម្មភាព&nbsp;&nbsp;&nbsp;&nbsp;</th>
+											<th style="width: 15%">សកម្មភាព</th>
 											<th style="width: 5%">ពត៌មានបន្ថែម</th>
 										</tr>
 									</thead>
 									<tbody>
-<<<<<<< HEAD
 										<tr ng-repeat="c in category | orderBy:'CAT_NAME'">
-=======
-										<tr data-ng-repeat="c in category">
->>>>>>> refs/remotes/JayzWalker/JayzWalker
 											<td>{{ $index + 1}}</td>
 											<td>
 												<div class="media">
 													<div class="media-body">
 														<h5 class="media-heading">{{c.CAT_NAME}}</h5>
-<<<<<<< HEAD
 														<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី: {{c.CREATED_DATE}}</p>
-=======
-														<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី:
-															{{c.CREATED_DATE}}</p>
->>>>>>> refs/remotes/JayzWalker/JayzWalker
 													</div>
 												</div>
 											</td>
 											<td>{{c.PARENT.CAT_NAME}}</td>
 											<td>{{c.USER.USER_NAME}}</td>
-<<<<<<< HEAD
 											<td class="text-center" ng-class="(c.STATUS == 1) ? 'text-success':'text-danger'"><i ng-class="(c.STATUS == 1) ? 'ti-check' : 'ti-close'"></i></td>
-=======
-											<td class="text-center"
-												ng-class="(c.STATUS == 1) ? 'text-success':'text-danger'"><i
-												ng-class="(c.STATUS == 1) ? 'ti-check' : 'ti-close'"></i></td>
->>>>>>> refs/remotes/JayzWalker/JayzWalker
 											<td>
 												<div role="toolbar" aria-label="Toolbar with button groups"
 													class="btn-toolbar">
@@ -128,12 +103,6 @@
 										</tr>
 									</tbody>
 								</table>
-								<!-- Add Modal -->
-								<jsp:include
-									page="../include/admin/modal/category/category-add-include.jsp"></jsp:include>
-								<!-- Edit Modal -->
-								<jsp:include
-									page="../include/admin/modal/category/category-edit-include.jsp"></jsp:include>
 							</div>
 						</div>
 					</div>
@@ -149,8 +118,10 @@
 	<!-- including js from include/admin/js-include.jsp -->
 	<jsp:include page="../include/admin/js-include.jsp"></jsp:include>
 
-
-
-
+	<!-- Add Modal -->
+	<jsp:include page="../include/admin/modal/category/category-add-include.jsp"></jsp:include>
+	<!-- Edit Modal -->
+	<jsp:include page="../include/admin/modal/category/category-edit-include.jsp"></jsp:include>
+	
 </body>
 </html>

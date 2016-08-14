@@ -5,7 +5,7 @@
 		style="height: 130px; width: 130px; line-height: 100px; padding: 15px;"
 		class="easy-pie-chart">
 		<img
-			src="${pageContext.request.contextPath}/resources/static/img/users/default-user-image.png"
+			src="${pageContext.request.contextPath}/resources/static/img/users/21.jpg"
 			alt="" class="avatar img-circle"><span
 			class="status bg-success"></span>
 	</div>

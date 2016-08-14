@@ -49,11 +49,6 @@ public class SaveListController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
-	/*@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Map<String , Object>> addSaveList(){
-		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/savelist/get-getsavelist?page=" , HttpMethod.POST , request , Map.class) ;
-		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
-	}*/
+
 	
 }

@@ -28,7 +28,7 @@ var app = angular.module('commentList', ["datatables"]);
 				url: 'http://localhost:8080/rest/comment',
 				method: 'GET'
 			}).then(function(repsonse){
-				// console.log(repsonse);
+		
 				$scope.comment=repsonse.data.DATA;
 			}, function(){
 
@@ -36,4 +36,32 @@ var app = angular.module('commentList', ["datatables"]);
 			}
 
 			$scope.list();
+			
+			//delete comment
+		    $scope.premove = function (id) {
+	            swal({title: "Are you sure?",
+	                        text: "You will not be able to recover this imaginary file!",
+	                        type: "warning",   showCancelButton: true,
+	                        confirmButtonColor: "#DD6B55",   confirmButtonText: "Yes, delete it!",
+	                        cancelButtonText: "No, cancel pls!",
+	                        closeOnConfirm: false,
+	                        closeOnCancel: false },
+	                    function(isConfirm){
+	                        if (isConfirm) {
+	                            $http.delete('http://localhost:8080/rest/comment/'+ cmt_id +'').then(
+	                                    function (repsonse) {
+	                                        $scope.list();
+	                                    }
+	                            ), (function(){
+
+	                            });
+	                            swal("Deleted!", "Your imaginary file has been deleted.", "success");
+	                        }
+	                        else
+	                        {
+	                            swal("Cancelled", "Your imaginary file is safe :)", "error");
+	                        }
+	                    })
+	        }
+			
 });
