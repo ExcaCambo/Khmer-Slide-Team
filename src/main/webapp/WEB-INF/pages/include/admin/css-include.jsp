@@ -18,6 +18,8 @@
 	href="${pageContext.request.contextPath}/resources/static/plugins/themify-icons/themify-icons.css">
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/static/plugins/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/static/plugins/font-awesome/fonts/FontAwesome.otf">
 <!-- Malihu Scrollbar-->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/static/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css">
@@ -78,7 +80,7 @@
     <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 <!-- Sweet Alert-->
-<%--     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/plugins/sweetalert/sweetalert.css"> --%>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/plugins/sweetalert/dist/sweetalert.css">
 <%--  	<!-- Bootstrap TouchSpin-->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css">
     

@@ -6,8 +6,10 @@
 <!-- including style from include/admin/css-include.jsp -->
 <jsp:include page="../include/admin/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
+
 </head>
-<body data-sidebar-color="sidebar-light" class="sidebar-light">
+<body data-sidebar-color="sidebar-light" class="sidebar-light"
+	ng-app="CombineModule">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/admin/header.jsp -->
@@ -49,72 +51,94 @@
 				<!-- including user-board from include/admin/user-board-include.jsp -->
 				<jsp:include page="../include/admin/user-board-include.jsp"></jsp:include>
 
-				<div class="row">
+				<div class="row" ng-controller="userListCtrl">
 					<div class="widget">
 						<div class="widget-heading text-center">
 							<h3 class="widget-title">កំណែប្រែពត៌មានរបស់អ្នកប្រើប្រាស់</h3>
 						</div>
 						<div class="widget-body">
-							<form id="form-vertical" method="post" novalidate="novalidate">
+							<form id="form-vertical" method="post" name="insertForm"
+								novalidate="novalidate">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="txtName">ឈ្មោះអ្នកប្រើប្រាស់</label><label
 											class="text-danger"> *</label> <input id="txtName"
-											type="text" name="txtName" placeholder="Enter name"
-											data-rule-required="true" data-rule-rangelength="[3,15]"
-											class="form-control">
+											type="text" name="txtName" ng-model="txtName"
+											placeholder="Enter name" data-rule-required="true"
+											data-rule-rangelength="[3,15]" class="form-control"
+											required="required">
 									</div>
 									<div class="form-group">
-										<label for="txtEmail">អីុមែល</label><label class="text-danger">
-											*</label> <input id="txtEmail" type="text" name="txtEmail"
-											placeholder="Enter email" data-rule-required="true"
-											data-rule-rangelength="[10,30]" data-rule-email="true"
-											class="form-control">
-									</div>
+											<label for="ddlGender">ភេទ</label><label class="text-danger" required="required">
+												*</label> <select id="ddlGender" name="ddlGender"
+												ng-model="ddlGender" data-rule-required="true"
+												class="form-control">
+												<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
+												<option value="ប្រុស">ប្រុស</option>
+												<option value="ស្រី">ស្រី</option>
+											</select>
+										</div>
 									<div class="form-group">
 										<label for="txtPassword">លេខសម្ងាត់</label><label
 											class="text-danger"> *</label> <input id="txtPassword"
-											type="password" name="txtPassword"
+											type="password" name="txtPassword" ng-model="txtPassword"
 											placeholder="Enter password" data-rule-required="true"
-											data-rule-rangelength="[5,30]" class="form-control">
+											data-rule-rangelength="[5,30]" class="form-control"
+											required="required">
 									</div>
-
 								</div>
 
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="ddlGender">ភេទ</label><label class="text-danger">
-											*</label> <select id="ddlGender" name="ddlGender"
-											data-rule-required="true" class="form-control">
+										<label for="ddlStatus">ស្ថានភាព</label><label class="text-danger"
+											required="required"> *</label> <select id="ddlStatus"
+											name="ddlStatus" ng-model="ddlStatus"
+											data-rule-required="true" class="form-control" 
+											ng-change="statuses(ddlStatus)" required="required">
 											<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
-											<option value="male">ប្រុស</option>
-											<option value="female">ស្រី</option>
+											<option value="1">ដំណើរការ</option>
+											<option value="2">មិនដំណើរការ</option>
 										</select>
 									</div>
-									<div class="form-group">
+									<div class="form-group" ng-controller="userTypeListCtrl">
 										<label for="ddlRole">តួនាទី</label><label class="text-danger">
-											*</label> <select id="ddlRole" name="ddlRole"
-											data-rule-required="true" class="form-control">
+											*</label> <select id="ddlRole" name="ddlRole" ng-model="ddlRole"
+											data-rule-required="true" class="form-control"
+											ng-change="role(ddlRole)" required="required">
 											<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
-											<option value="admin">អ្នកគ្រប់គ្រងប្រព័ន្ធ</option>
-											<option value="subscriber">អ្នកប្រើប្រាស់</option>
+											<option value="{{ut.ROLE_ID}}" ng-repeat="ut in userType">{{(ut.ROLE_NAME)
+												== 'admin' ? 'អ្នកគ្រប់គ្រងប្រព័ន្ធ':'អ្នកប្រើប្រាស់'}}</option>
 										</select>
 									</div>
 									<div class="form-group">
 										<label for="txtConfirmPassword">បំពេញលេខសម្ងាត់ម្តងទៀត</label>
 										<input id="txtConfirmPassword" type="password"
-											name="txtConfirmPassword"
+											name="txtConfirmPassword" ng-model="txtConfirmPassword"
 											placeholder="Re-enter confirm password"
 											data-rule-required="true" data-rule-equalto="#txtPassword"
-											class="form-control">
+											class="form-control" required="required">
+									</div>
+									<div class="form-group">
+										<input id="txtRegisterDate" type="hidden"
+											name="txtRegisterDate" ng-model="txtRegisterDate"
+											class="form-control" value="{{date | date:'dd-MMM-yyyy'}}">
+									</div>
+									<div class="form-group">
+										<input id="txtStatus" type="hidden" name="txtStatus"
+											ng-model="txtStatus" class="form-control">
+									</div>
+									<div class="form-group">
+										<input id="txtPhoto" type="hidden" name="txtPhoto"
+											ng-model="txtPhoto" class="form-control"
+											value="{{default-user-image.png}}">
 									</div>
 								</div>
 								<div class="text-right">
 									<a href="user-list" class="btn btn-raised btn-danger"><i
 										class="ti-close"></i> បោះបង់</a>
-									<button type="submit" name="btnSubmit"
+									<button ng-click="submit()" ng-disabled="insertForm.$invalid"
 										class="btn btn-raised btn-success">
-										<i class="ti-pencil"></i> កែប្រែ
+										<i class="ti-save"></i> រក្សាទុក
 									</button>
 								</div>
 							</form>
@@ -125,7 +149,7 @@
 		</div>
 	</div>
 	<!-- Right Sidebar start-->
-	<jsp:include page="../include/admin/right-side-bar.jsp"></jsp:include>
+	<%-- <jsp:include page="../include/admin/right-side-bar.jsp"></jsp:include> --%>
 	<!-- Right Sidebar end-->
 	</div>
 

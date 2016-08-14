@@ -7,7 +7,7 @@
               <button type="button" class="btn btn-default search-bar-toggle"><i class="ti-close"></i></button></span>
           </div>
         </form>
-      </div><a href="index.jsp" class="brand pull-left"><img src="${pageContext.request.contextPath}/resources/static/img/logo/logo-light.png" alt="" width="100"></a><a href="javascript:;" role="button" class="hamburger-menu pull-left"><span></span></a>
+      </div><a href="index.jsp" class="brand pull-left"><img src="${pageContext.request.contextPath}/resources/static/img/logo/admin.png" alt="" width="100"></a><a href="javascript:;" role="button" class="hamburger-menu pull-left"><span></span></a>
       <form class="search-form pull-left hidden-xs">
         <div class="form-group has-feedback mb-0">
           <input type="text" aria-describedby="inputSearchFor" placeholder="ស្វែងរក..." style="width: 200px" class="form-control rounded"><span aria-hidden="true" class="ti-search form-control-feedback"></span><span id="inputSearchFor" class="sr-only">(default)</span>
@@ -78,7 +78,7 @@
         </li>
         <li class="dropdown visible-lg visible-md"><a id="dropdownMenu2" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle header-icon lh-1 pt-15 pb-15">
             <div class="media mt-0">
-              <div class="media-left avatar"><img src="${pageContext.request.contextPath}/resources/static/img/users/21.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+              <div class="media-left avatar"><img src="${pageContext.request.contextPath}/resources/static/img/users/default-user-image.png" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
               <div class="media-right media-middle pl-0">
                 <p class="fs-12 mb-0">សួរស្តី! Jayz Walker</p>
               </div>
@@ -89,5 +89,5 @@
             <li><a href="login.jsp"><i class="ti-power-off mr-5"></i> ចាកចេញ</a></li>
           </ul>
         </li>
-        <li><a href="javascript:;" role="button" class="right-sidebar-toggle bubble header-icon"><i class="ti-layout-sidebar-right"></i><span class="dot bg-danger"></span></a></li>
+        <li><a href="javascript:;" role="button" class="right-sidebar-toggle bubble header-icon"><i class="ti-layout-sidebar-right"></i></a></li>
       </ul>

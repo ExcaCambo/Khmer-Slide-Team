@@ -1,8 +1,8 @@
-var app = angular.module('userList', ["datatables"]);
+var app = angular.module('saveList', ["datatables"]);
 
 	//create controller
-	app.controller('userListCtrl', function ($scope, $http, DTOptionsBuilder) {
-		$scope.user = '';
+	app.controller('saveListCtrl', function ($scope, $http, DTOptionsBuilder) {
+		$scope.savelist = '';
 		
 		// DataTables configurable options
 	    $scope.dtOptions = DTOptionsBuilder.newOptions()
@@ -25,11 +25,11 @@ var app = angular.module('userList', ["datatables"]);
 
 			$scope.list = function(){
 				$http({
-				url: 'http://localhost:8080/rest/user',
+				url: 'http://localhost:8080/rest/save-list',
 				method: 'GET'
 			}).then(function(repsonse){
 				// console.log(repsonse);
-				$scope.user=repsonse.data.DATA;
+				$scope.savelist=repsonse.data.DATA;
 			}, function(){
 
 			});
@@ -37,7 +37,3 @@ var app = angular.module('userList', ["datatables"]);
 
 			$scope.list();
 });
-
-	
-	
-	

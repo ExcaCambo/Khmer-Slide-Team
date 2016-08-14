@@ -7,7 +7,7 @@
               <button type="button" class="btn btn-default search-bar-toggle"><i class="ti-close"></i></button></span>
           </div>
         </form> -->
-      </div><a href="index.jsp" class="brand pull-left"><img src="${pageContext.request.contextPath}/resources/static/img/logo/logo-light.png" alt="" width="100"></a><a href="javascript:;" role="button" class="hamburger-menu pull-left"><span></span></a>
+      </div><a href="index.jsp" class="brand pull-left"><img src="${pageContext.request.contextPath}/resources/static/img/logo/admin.png" alt="" width="100"></a><a href="javascript:;" role="button" class="hamburger-menu pull-left"><span></span></a>
       <form class="search-form pull-left hidden-xs">
         <!-- <div class="form-group has-feedback mb-0">
           <input type="text" aria-describedby="inputSearchFor" placeholder="ស្វែងរក..." style="width: 200px" class="form-control rounded"><span aria-hidden="true" class="ti-search form-control-feedback"></span><span id="inputSearchFor" class="sr-only">(default)</span>

@@ -52,8 +52,17 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/page-content/dashboard/index.js"></script>
     <!-- <script type="text/javascript" src="../../js/page-content/charts/other-charts.js"></script> -->
     
+<<<<<<< HEAD
      <!-- Angular Js -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/user-type-list.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/angular-datatables.min.js"></script>
+=======
+        <!-- Angular Js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/angular-datatables.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/user-type.js"></script>
+
+>>>>>>> refs/remotes/JayzWalker/JayzWalker

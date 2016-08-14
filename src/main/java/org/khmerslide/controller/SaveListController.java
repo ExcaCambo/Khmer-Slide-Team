@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/rest/document")
-public class DocController {
+@RequestMapping("/rest/save-list")
+public class SaveListController {
 	
 	
 	@Autowired
@@ -30,13 +30,13 @@ public class DocController {
 	private String WS_URL;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> document(
+	public ResponseEntity<Map<String , Object>> savelist(
 										  @RequestParam(value = "page", required = false , defaultValue="1") int page 
 									    , @RequestParam(value="item" , required = false , defaultValue="10") int item){
 		System.out.println("Test");
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
 		//ResponseEntity<Map> response = rest.exchange("http://localhost:9999/api/category/get-category?page=1&limit=10", HttpMethod.GET , request , Map.class) ;
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/docs/get-document?page=" + page + "&limit="+ item, HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/savelist/get-getsavelist?page=" + page + "&limit="+ item, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
