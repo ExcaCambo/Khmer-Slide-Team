@@ -7,7 +7,8 @@
 <jsp:include page="../include/admin/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
-<body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="docsList" ng-controller="docsListCtrl">
+<body data-sidebar-color="sidebar-light" class="sidebar-light"
+	ng-app="docsList" ng-controller="docsListCtrl">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/admin/header.jsp -->
@@ -55,7 +56,8 @@
 					<div class="col-md-12">
 						<div class="widget no-border">
 							<table id="accept-table" style="width: 100%"
-								class="table table-hover dt-responsive nowrap" datatable="ng" dt-options="dtOptions">
+								class="table table-hover dt-responsive nowrap" datatable="ng"
+								dt-options="dtOptions">
 								<thead>
 									<tr>
 										<th style="width: 5%">ល.រ</th>
@@ -69,7 +71,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="d in document | orderBy:'DOC_TITLE'" >
+									<tr ng-repeat="d in document | orderBy:'DOC_TITLE'">
 										<td>{{ $index+1 }}</td>
 										<td>
 											<div class="media">
@@ -89,27 +91,32 @@
 										<td>{{d.CATEGORY.CAT_NAME}}</td>
 										<td>{{d.USER.USER_NAME}}</td>
 										<td></td>
-										<td class="text-center" ng-class="(d.STATUS == 1) ? 'text-success':'text-danger'"><i ng-class="(d.STATUS == 1) ? 'ti-check' : 'ti-close'"></i></td>
+										<td class="text-center"
+											ng-class="(d.STATUS == 1) ? 'text-success':'text-danger'"><i
+											ng-class="(d.STATUS == 1) ? 'ti-check' : 'ti-close'"></i></td>
 										<td>
 											<div role="toolbar" aria-label="Toolbar with button groups"
 												class="btn-toolbar">
 												<div role="group" aria-label="First group" class="btn-group">
 													<button type="button" data-toggle="modal"
-											data-target=".bs-example-modal-animation" class="btn btn-outline btn-success">
+														data-target=".bs-example-modal-animation"
+														class="btn btn-outline btn-success">
 														<i class="ti-eye"></i>
 													</button>
 													<button type="button" class="btn btn-outline btn-warning">
 														<i class="ti-pencil"></i>
 													</button>
-													<button type="button" class="btn btn-outline btn-danger">
+													<button type="button" class="btn btn-outline btn-danger"
+														ng-click="deleteDocList(d.DOC_ID)">
 														<i class="ti-trash"></i>
 													</button>
 												</div>
 											</div>
 										</td>
 									</tr>
-									
+
 								</tbody>
+
 							</table>
 						</div>
 					</div>
@@ -138,7 +145,7 @@
 												class="form-control">
 												<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
 												<option value="1">{{d.DOC.DOC_NAME}}</option>
-												
+
 											</select>
 										</div>
 									</div>

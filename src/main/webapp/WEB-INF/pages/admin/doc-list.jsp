@@ -7,7 +7,8 @@
 <jsp:include page="../include/admin/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
-<body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="documentList" ng-controller="documentListCtrl">
+<body data-sidebar-color="sidebar-light" class="sidebar-light"
+	ng-app="documentList" ng-controller="documentListCtrl">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/admin/header.jsp -->
@@ -55,7 +56,8 @@
 					<div class="col-md-12">
 						<div class="widget no-border">
 							<table id="doc-list-table" style="width: 100%"
-								class="table table-hover dt-responsive nowrap" datatable="ng" dt-options="dtOptions">
+								class="table table-hover dt-responsive nowrap" datatable="ng"
+								dt-options="dtOptions">
 								<thead>
 									<tr>
 										<th style="width: 10%">លេងរៀង</th>
@@ -70,7 +72,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="d in document | orderBy:'DOC_TITLE'">
+									<tr ng-repeat="D in document | orderBy:'DOC_TITLE'">
 										<td>{{ $index+1 }}</td>
 										<td>
 											<div class="media">
@@ -82,9 +84,9 @@
 												</div>
 												<div class="media-body">
 													<h5 class="media-heading">{{d.DOC_TITLE}}</h5>
-													<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី: {{d.UPLOADED_DATE}},
-														2016</p>
-													<p class="text-muted mb-0">ទីតាំងឯកសារ:{{d.URL}}</p>
+													<p class="text-muted mb-0">បញ្ចូលថ្ងៃទី:
+														{{D.UPLOADED_DATE}}, 2016</p>
+													<p class="text-muted mb-0">ទីតាំងឯកសារ:{{D.URL}}</p>
 												</div>
 											</div>
 										</td>
@@ -92,27 +94,36 @@
 										<td>
 											<div class="media">
 												<div class="media-body">
-													<p class="text-muted mb-0">ពេញចិត្ត: {{d.LIKED}} ដង</p>
-													<p class="text-muted mb-0">ចែកចាយ: {{d.SHARED}} ដង</p>
-													<p class="text-muted mb-0">ចូលមើល: {{d.VIEWED}} ដង</p>
+													<p class="text-muted mb-0">ពេញចិត្ត: {{D.LIKED}} ដង</p>
+													<p class="text-muted mb-0">ចែកចាយ: {{D.SHARED}} ដង</p>
+													<p class="text-muted mb-0">ចូលមើល: {{D.VIEWED}} ដង</p>
 												</div>
 											</div>
 										</td>
-										<td>{{d.CATEGORY.CAT_NAME}}</td>
-										<td>{{d.USER.USER_NAME}}</td>
+										<td>{{D.CATEGORY.CAT_NAME}}</td>
+										<td>{{D.USER.USER_NAME}}</td>
 										<td></td>
-										<td class="text-center" ng-class="(d.STATUS == 1) ? 'text-success':'text-danger'"><i ng-class="(d.STATUS == 1) ? 'ti-check' : 'ti-close'"></i></td>
+										<td class="text-center"
+											ng-class="(D.STATUS == 1) ? 'text-success':'text-danger'"><i
+											ng-class="(D.STATUS == 1) ? 'ti-check' : 'ti-close'"></i></td>
 										<td>
 											<div role="toolbar" aria-label="Toolbar with button groups"
 												class="btn-toolbar">
 												<div role="group" aria-label="First group" class="btn-group">
-													<button type="button" class="btn btn-outline btn-success">
+													<!-- <button type="button" class="btn btn-outline btn-success">
 														<i class="ti-eye"></i>
-													</button>
-													<button type="button" class="btn btn-outline btn-warning">
+													</button> -->
+
+													<button type="button" ng-click="listByID(D.DOC_ID)"
+														class="btn btn-outline btn-warning" data-toggle="modal"
+														data-target=".modalEdit">
+
+
+
 														<i class="ti-pencil"></i>
 													</button>
-													<button type="button" class="btn btn-outline btn-danger">
+													<button type="button" class="btn btn-outline btn-danger"
+														ng-click="deleteDocList(D.DOC_ID)">
 														<i class="ti-trash"></i>
 													</button>
 												</div>
@@ -121,19 +132,26 @@
 									</tr>
 								</tbody>
 							</table>
+
+							<!-- Edit Modal -->
+							<jsp:include
+								page="../include/admin/modal/doc-list/doc-edit-include.jsp"></jsp:include>
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
+		<!-- including js from include/admin/js-include.jsp -->
+		<jsp:include page="../include/admin/js-include.jsp"></jsp:include>
+
 		<!-- Right Sidebar start-->
 		<jsp:include page="../include/admin/right-side-bar.jsp"></jsp:include>
 		<!-- Right Sidebar end-->
 	</div>
 
-	<!-- including js from include/admin/js-include.jsp -->
-	<jsp:include page="../include/admin/js-include.jsp"></jsp:include>
+
 
 	<!-- View Modal -->
 	<div class="col-md-3 col-sm-6">
