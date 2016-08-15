@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div class="col-md-3 col-sm-6">
+<div class="col-md-3 col-sm-6" >
 	<div tabindex="-1" role="dialog"
 		aria-labelledby="myAnimationModalLabel"
 		class="modal animated fadeInLeft modalEdit">
@@ -14,7 +14,7 @@
 					<h3 id="myAnimationModalLabel"
 						class="modal-title text-primary text-center">កំណែប្រែពត៌មានរបស់មីនុយ</h3>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body" >
 					<div class="row">
 						<div class="col-md-12">
 							<div class="widget">
@@ -25,21 +25,20 @@
 												<label for="txtCatName">ឈ្មោះមីនុយ</label><label
 													class="text-danger"> *</label> <input id="txtCatName"
 													type="text" name="txtCatName"
-													placeholder="Enter category name" data-rule-required="true"
-													data-rule-rangelength="[3,30]" class="form-control">
+													 class="form-control" ng-model="txtCatName">
 											</div>
 											<div class="form-group">
-												<label for="ddlCategory">ស្ថិតក្រោមមីនុយ</label> <select
-													id="ddlCategory" name="ddlCategory" class="form-control">
-													<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
-													<option value="1">វិទ្យាសាស្ត្រកុំព្យូទ័រ</option>
-													<option value="2">ការរេចនាគហេទំព៏រ</option>
+												<label for="ddlCategory">ស្ថិតក្រោមមីនុយ</label> 
+												<select id="ddlCategory" name="ddlCategory" ng-model="ddlCategory" class="form-control" ng-option="cate.PARENT_ID as cate.CAT_NAME for cate in categoryList">
+													<option value="" >-- សូមធ្វើការជ្រើសរើស --</option>
+													<!-- <option value="{{ddlCategory}}" selected="selected" ng-repeat="CAT in categoryList">{{CAT.CAT_NAME}}</option> -->
+													
 												</select>
 											</div>
 											<div class="form-group">
 												<label for="ddlStatus">ស្ថានភាព</label><label
 													class="text-danger"> *</label> <select id="ddlStatus"
-													name="ddlStatus" data-rule-required="true"
+													name="ddlStatus" ng-model = "ddlStatus" data-rule-required="true"
 													class="form-control">
 													<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
 													<option value="1">ដំណើរការ</option>
