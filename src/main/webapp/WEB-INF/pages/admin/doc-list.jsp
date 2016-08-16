@@ -87,7 +87,11 @@
 												</div>
 											</div>
 										</td>
-										<td>Slide</td>
+										<td>
+											<span data-ng-if="d.TYPE == '1'">SLIDE</span>
+											<span data-ng-if="d.TYPE == '2'">PDF</span>
+											<span data-ng-if="d.TYPE == '3'">WORD</span>
+										</td>
 										<td>
 											<div class="media">
 												<div class="media-body">

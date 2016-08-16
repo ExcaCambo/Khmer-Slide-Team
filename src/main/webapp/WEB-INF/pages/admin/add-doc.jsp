@@ -7,7 +7,8 @@
 <jsp:include page="../include/admin/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
-<body data-sidebar-color="sidebar-light" class="sidebar-light">
+<body data-sidebar-color="sidebar-light" class="sidebar-light"
+	ng-app="CombineModule">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/admin/header.jsp -->
@@ -51,97 +52,114 @@
 				<!-- including user-board from include/admin/doc-board-include.jsp -->
 				<jsp:include page="../include/admin/doc-board-include.jsp"></jsp:include>
 
-				<div class="row">
+				<div class="row" ng-controller="documentListCtrl">
 					<div class="col-md-12">
 						<div class="widget">
 							<div class="widget-heading text-center">
 								<h3 class="widget-title">បញ្ចូលឯកសារថ្មី</h3>
 							</div>
 							<div class="widget-body">
-								<form id="form-vertical" method="post" novalidate="novalidate">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="txtDoc">ឯកសារ</label><label class="text-danger">
-												*</label> <input id="input-14" name="input14[]" type="file"
-												multiple="" class="file-loading">
-										</div>
-										<div class="form-group">
-											<label for="txtTitle">ចំណងជើងឯកសារ</label><label
-												class="text-danger"> *</label> <input id="txtTitle"
-												type="text" name="txtTitle" placeholder="Enter title"
-												data-rule-required="true" data-rule-rangelength="[3,30]"
-												class="form-control">
+								<form id="form-vertical" method="post" name="insertForm"
+									novalidate="novalidate" ng-submit="submitForm()">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="txtTitle">ចំណងជើងឯកសារ</label><label
+													class="text-danger"> *</label> <input id="txtTitle"
+													type="text" name="txtTitle" ng-model="txtTitle"
+													placeholder="Enter title" data-rule-required="true"
+													data-rule-rangelength="[3,30]" class="form-control" required="required">
+											</div>
+
+											<div class="form-group" data-ng-controller="categoryListCtrl">
+												<label for="ddlCategories">ស្ថិតក្រោមមីនុយ</label> <select
+													id="ddlCategories" name="ddlCategories"
+													class="form-control" data-ng-model="ddlCategories"
+													data-ng-change="categories(ddlCategories)" required="required">
+													<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
+													<option value="{{cat.CAT_ID}},{{cat.FOLDER}}"
+														data-ng-repeat="cat in category">{{cat.CAT_NAME}}</option>
+												</select>
+											</div>
 										</div>
 
-										<div class="form-group">
-											<label for="ddlCategory">ស្ថិតក្នុងមីនុយ</label><label
-												class="text-danger"> *</label> <select id="ddlCategory"
-												name="ddlCategory" data-rule-required="true"
-												class="form-control">
-												<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
-												<option value="education">ការអប់រំ</option>
-												<option value="technology">តិចណូឡូហ្គី</option>
-											</select>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="ddlType">ប្រភេទឯកសារ</label><label
+													class="text-danger"> *</label> <select id="ddlType"
+													name="ddlType" ng-model="ddlType"
+													ng-change="docType(ddlType)" data-rule-required="true"
+													class="form-control" required="required">
+													<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
+													<option value="1">Slide</option>
+													<option value="2">PDF</option>
+													<option value="3">Microsoft Word</option>
+												</select>
+											</div>
+
+											<div class="form-group">
+												<label for="ddlStatus">ស្ថានភាព</label><label
+													class="text-danger"> *</label> <select id="ddlStatus"
+													name="ddlStatus" ng-model="ddlStatus"
+													ng-change="status(ddlStatus)" data-rule-required="true"
+													class="form-control" required="required">
+													<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
+													<option value="1">ដំណើរការ</option>
+													<option value="2">មិនដំណើរការ</option>
+												</select>
+											</div>
 										</div>
 									</div>
-
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="txtDoc">រូបភាពគំរបមុខឯកសារ</label> <input
-												id="input-10" type="file" accept="image/*"
-												class="file-loading">
-										</div>
-										<div class="form-group">
-											<label for="ddlType">ប្រភេទឯកសារ</label><label
-												class="text-danger"> *</label> <select id="ddlType"
-												name="ddlType" data-rule-required="true"
-												class="form-control">
-												<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
-												<option value="1">Slide</option>
-												<option value="2">PDF</option>
-												<option value="3">Microsoft Word</option>
-											</select>
-										</div>
-
-										<div class="form-group">
-											<label for="ddlStatus">ស្ថានភាព</label><label
-												class="text-danger"> *</label> <select id="ddlStatus"
-												name="ddlStatus" data-rule-required="true"
-												class="form-control">
-												<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
-												<option value="4">Public</option>
-												<option value="5">Private</option>
-											</select>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="ddlCategory">ប្រភពឯកសារ</label> <input
+													id="txtSource" type="text" name="txtSource"
+													ng-model="txtSource" class="form-control"
+													placeholder="Ex: www.khmerslide.org">
+											</div>
+											<div class="form-group">
+												<textarea id="txtDescription" name="txtDescription"
+													ng-model="txtDescription" class="form-control"
+													placeholder="ពត៌មានបន្ថែម"></textarea>
+											</div>
+											<div class="form-group">
+												<input id="txtUploadDate" type="hidden" name="txtUploadDate"
+													class="form-control">
+											</div>
+											<div class="form-group">
+												<input id="txtUploadBy" type="hidden" name="txtUploadBy"
+													class="form-control">
+											</div>
+											<div class="form-group">
+												<input id="txtURL" type="hidden" name="txtURL"
+													class="form-control">
+											</div>
 										</div>
 									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<label for="ddlCategory">ប្រភពឯកសារ</label> <input
-												id="txtSource" type="text" name="txtSource"
-												class="form-control" placeholder="Ex: www.khmerslide.org">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="txtImg">រូបភាពគំរបមុខឯកសារ</label> <input
+													id="input-10" type="file" accept="image/*"
+													class="file-loading" ng-model="txtImg">
+											</div>
+
 										</div>
-										<div class="form-group">
-											<textarea id="txtDescription" name="txtDescription"
-												class="form-control" placeholder="ពត៌មានបន្ថែម"></textarea>
-										</div>
-										<div class="form-group">
-											<input id="txtUploadDate" type="hidden" name="txtUploadDate"
-												class="form-control">
-										</div>
-										<div class="form-group">
-											<input id="txtUploadBy" type="hidden" name="txtUploadBy"
-												class="form-control">
-										</div>
-										<div class="form-group">
-											<input id="txtURL" type="hidden" name="txtURL"
-												class="form-control">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="txtDoc">ឯកសារ</label><label class="text-danger">
+													*</label> <input id="input-14" name="input14[]" type="file"
+													multiple="" class="file-loading" ng-model="txtDoc"
+													ng-disabled="insertForm.$invalid">
+											</div>
 										</div>
 									</div>
 									<div class="text-right">
 										<a href="doc-list" class="btn btn-raised btn-danger"><i
 											class="ti-close"></i> បោះបង់</a>
-										<button type="submit" name="btnSubmit"
-											class="btn btn-raised btn-success">
+										<button type="submit" name="btnSubmit" ng-click="insertDoc()"
+											class="btn btn-raised btn-success" ng-disabled="insertForm.$invalid">
 											<i class="ti-export"></i> បញ្ចូល
 										</button>
 									</div>
@@ -161,51 +179,40 @@
 	<!-- including js from include/admin/js-include.jsp -->
 	<jsp:include page="../include/admin/js-include.jsp"></jsp:include>
 
-	<!-- View Modal -->
-	<div class="col-md-3 col-sm-6">
-		<div tabindex="-1" role="dialog"
-			aria-labelledby="myAnimationModalLabel"
-			class="modal animated fadeInLeft bs-example-modal-animation">
-			<div role="document" class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" data-dismiss="modal" aria-label="Close"
-							class="close">
-							<span aria-hidden="true">×</span>
-						</button>
-						<h4 id="myAnimationModalLabel" class="modal-title text-primary">ពត៌មានលម្អិតរបស់អ្នកប្រើប្រាស់</h4>
-					</div>
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-sm-6">
-								<p>ឈ្មោះ: ឃួន សុវណ្ណវត្តី</p>
-								<p>ភេទ: ស្រី</p>
-								<p>អីុមែល: vateykhuon@gmail.com</p>
-								<p>តួនាទី: អ្នកគ្រប់គ្រងប្រព័ន្ធ</p>
-								<p>ចុះឈ្មោះចូលប្រើថ្ងៃទី: 29th July, 2016</p>
-								<p>ស្ថានភាព: ដំណើរការ</p>
-								<p>អំពីខ្ញុំ: I am a girl who is beautiful :P</p>
-							</div>
-							<div class="col-sm-6">
-								<div class="panel panel-info">
-									<div class="panel-body" style="text-align: center;">
-										<img
-											src="${pageContext.request.contextPath}/resources/static/img/users/22.jpg"
-											alt="" class="avatar" width="150" height="150">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" data-dismiss="modal"
-							class="btn btn-raised btn-danger">
-							<i class="fa fa-close text"></i> បោះបង់
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<!-- 	<script>
+		$(function() {
+			
+			$("#insert")
+					.click(
+							function() {
+								var formData = new FormData();
+								formData.append('doc',
+										$("#input-14")[0].files[0]);
+										.ajax({
+											url : "http://localhost:9999/api/docs/add-ducument/file",
+											type : "POST",
+											enctype : 'multipart/form-data',
+											data : formData,
+											cache : false,
+											crossDomain : true,
+											processData : false, // tell jQuery not to process the data
+											contentType : false, // tell jQuery not to set contentType
+											beforeSend : function(xhr) {
+												//		xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+												xhr
+														.setRequestHeader(
+																'Authorization',
+																'Basic a3NsOmtzbGFwaQ==');
+											},
+											success : function(data) {
+												console.log(data);
+											},
+											error : function(data) {
+												console.log(data);
+											}
+										});
+							});
+		});
+	</script> -->
 </body>
 </html>

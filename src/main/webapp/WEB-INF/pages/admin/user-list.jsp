@@ -67,7 +67,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="u in user | orderBy:'user_name'">
+									<tr ng-repeat="u in user">
 										<td>{{ $index + 1 }}</td>
 										<td>
 											<div class="media">

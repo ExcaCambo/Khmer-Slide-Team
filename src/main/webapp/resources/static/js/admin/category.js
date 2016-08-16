@@ -39,23 +39,29 @@ var app = angular.module('categoryList', ["datatables"]);
 			$scope.list();
 			
 //			=================================Add Category Function=================================
-			$scope.cat = function(catId) {
-				$scope.parent = catId;
+			// get value from the change of category menu select with option 2 values then split it
+			$scope.categ = function(catId) {
+				$scope.catID = catId.split(",");
+				$scope.id = $scope.catID[0];
+				$scope.folder = $scope.catID[1];
 			}
+			// end split
 			$scope.txtCreateBy = 1;
 			$scope.status = 1;
 			$scope.date = $filter('date')(new Date(), 'dd-MMM-yyyy');
 			$scope.insert = function() {
+				alert($scope.id);
+				alert($scope.folder);
 				$http({
 					url : 'http://localhost:8080/rest/category',
 					data :{
-						  "parent_id": $scope.parent,
+						  "parent_id": $scope.id,
 						  "cat_name": $scope.txtCatName,
 						  "status": $scope.status,
 						  "user_id": $scope.txtCreateBy,
 						  "description": $scope.txtDescription,
 						  "icon": $scope.ddlIcon,
-						  "folder_google_drive": $scope.txtCatName,
+						  "folder_google_drive": $scope.folder,
 						  "created_date": $scope.date
 					},
 					method : 'POST'
@@ -73,3 +79,4 @@ var app = angular.module('categoryList', ["datatables"]);
 			}
 			
 });
+	

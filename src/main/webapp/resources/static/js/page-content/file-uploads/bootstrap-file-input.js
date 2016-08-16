@@ -40,11 +40,13 @@ $(document).ready(function () {
         previewFileIcon: '<i class="fa fa-file"></i>',
         allowedPreviewTypes: null,
         previewFileIconSettings: {
+        	'docx': '<i class="fa fa-file-word-o text-primary"></i>',
+        	'doc': '<i class="fa fa-file-word-o text-primary"></i>',
             'pptx': '<i class="fa fa-file-powerpoint-o text-danger"></i>',
             'ppt': '<i class="fa fa-file-powerpoint-o text-danger"></i>',
-            'pptx': '<i class="fa fa-file-pdf-o text-danger"></i>',
+            'pdf': '<i class="fa fa-file-pdf-o text-danger"></i>',
         },
-        allowedFileExtensions: ["pptx", "pdf", "ppt"]
+        allowedFileExtensions: ["pptx", "pdf", "ppt", "docx", "doc"]
     }), $("#input-15").fileinput({
         maxFileCount: 10,
         allowedFileExtensions: ["jpg", "gif", "png", "txt"]
