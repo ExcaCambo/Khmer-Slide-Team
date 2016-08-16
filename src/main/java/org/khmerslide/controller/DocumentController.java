@@ -58,5 +58,13 @@ public class DocumentController {
 				request, Map.class);
 		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = { "/update-document-id/{DOC_ID}" }, method = RequestMethod.PUT)
+	public ResponseEntity<Map<String, Object>> updateDocumentId(@PathVariable(value = "DOC_ID") int DOC_ID) {
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/docs/update-document/" + DOC_ID, HttpMethod.PUT,
+				request, Map.class);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
+	}
 
 }
