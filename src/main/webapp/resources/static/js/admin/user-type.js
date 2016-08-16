@@ -17,6 +17,7 @@
 			}).then(function(repsonse){
 				// console.log(repsonse);
 				$scope.userType=repsonse.data.DATA;
+			//	alert($scope.userType);
 			}, function(){
 
 			});
@@ -24,4 +25,4 @@
 
 			$scope.list();
 });
-	angular.module("CombineModule", ["userList", "userTypeList"]);
+	angular.module("User", ["userList", "userTypeList"]);

@@ -8,7 +8,7 @@
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
 <body data-sidebar-color="sidebar-light" class="sidebar-light"
-	ng-app="CombineModule">
+	data-ng-app="User">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/admin/header.jsp -->
@@ -50,7 +50,7 @@
 				<!-- including user-board from include/admin/user-board-include.jsp -->
 				<jsp:include page="../include/admin/user-board-include.jsp"></jsp:include>
 
-				<div class="row" ng-controller="userListCtrl">
+				<div class="row" data-ng-controller="userListCtrl">
 					<div class="col-md-12">
 						<div class="widget">
 							<div class="widget-heading text-center">
@@ -95,7 +95,7 @@
 												<option value="ស្រី">ស្រី</option>
 											</select>
 										</div>
-										<div class="form-group">
+										<div class="form-group" data-ng-controller="userTypeListCtrl">
 											<label for="ddlRole">តួនាទី</label><label class="text-danger">
 												*</label> <select id="ddlRole" name="ddlRole" ng-model="ddlRole"
 												data-rule-required="true" class="form-control"

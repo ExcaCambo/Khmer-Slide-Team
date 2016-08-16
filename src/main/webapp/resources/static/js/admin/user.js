@@ -54,6 +54,7 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 	$scope.photo = "default-user-image.png";
 	$scope.date = $filter('date')(new Date(), 'dd-MMM-yyyy');
 	$scope.insert = function() {
+		alert($scope.ddlRole);
 		$http({
 			url : 'http://localhost:8080/rest/user',
 			data : {
@@ -124,8 +125,8 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 			method : 'PUT'
 		}).then(function(response) {
 			console.log(response);
-			//swal("កំណែប្រែ!", "ទិន្នន័យត្រូវបានកែប្រែបានសម្រាច់", "success");
-			//window.location.href = "/admin/user-list";
+			swal("កំណែប្រែ!", "ទិន្នន័យត្រូវបានកែប្រែបានសម្រាច់", "success");
+			window.location.href = "/admin/user-list";
 		}, function() {
 
 		});
@@ -169,3 +170,5 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 		})
 	}
 });
+
+

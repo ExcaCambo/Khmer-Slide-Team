@@ -9,7 +9,7 @@
 
 </head>
 <body data-sidebar-color="sidebar-light" class="sidebar-light"
-	ng-app="CombineModule">
+	ng-app="User">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/admin/header.jsp -->
