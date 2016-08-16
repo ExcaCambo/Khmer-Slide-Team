@@ -40,7 +40,7 @@
 			<div class="page-content container-fluid">
 				<div class="row">
 					<div class="pricing-table pricing-3">
-						<div class="row row-0" ng-repeat="h in viewhistory | orderBy:'DOC_TITLE'">
+						<div class="row row-0">
 							<div class="col-md-3 pricing-item">
 								<div class="item cat1">
 										<div class="shop-item-list entry">
@@ -52,7 +52,7 @@
 											</div>
 											<div class="shop-item-title clearfix">
 												<h4 class="text-center">
-													<a href="course-single.html">{{h.DOC_ID.DOC_TITLE}}</a>
+													<a href="course-single.html">{{DOC_ID.DOC_TITLE}}</a>
 												</h4>
 												<div class="shopmeta">
 													<span class="pull-left">12 views</span>
@@ -298,11 +298,13 @@
 				</div>
 			</div>
 		</div>
+		<!-- including js from include/user/js-include.jsp -->
+	<jsp:include page="../include/user/dashboard-js-include.jsp"></jsp:include>
 		<!-- Right Sidebar start-->
 		<jsp:include page="../include/user/right-side-bar.jsp"></jsp:include>
 		<!-- Right Sidebar end-->
 	</div>
-	<!-- including js from include/user/js-include.jsp -->
-	<jsp:include page="../include/user/dashboard-js-include.jsp"></jsp:include>
+	
+	
 </body>
 </html>

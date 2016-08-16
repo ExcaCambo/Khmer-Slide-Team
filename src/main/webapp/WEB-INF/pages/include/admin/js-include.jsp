@@ -132,8 +132,7 @@
 	src="${pageContext.request.contextPath}/resources/static/js/admin/doc-list.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/static/js/admin/confirm-doc.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/static/js/admin/comment.js"></script>
+
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/static/js/admin/user-list.js"></script>
 <script type="text/javascript"

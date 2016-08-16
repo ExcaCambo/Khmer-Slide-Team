@@ -1,3 +1,4 @@
+
     <!-- jQuery-->
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap JavaScript-->
@@ -80,5 +81,6 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/plugins/bootstrap-fileinput/js/plugins/canvas-to-blob.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/plugins/bootstrap-fileinput/js/fileinput.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/page-content/file-uploads/bootstrap-file-input.js"></script>
-<!-- user files -->
-     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/user/view-history.js"></script>
+    
+
+   

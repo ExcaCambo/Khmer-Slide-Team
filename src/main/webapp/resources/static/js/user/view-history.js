@@ -3,7 +3,7 @@ var app = angular.module('viewhistoryList', ["datatables"]);
 	//create controller
 	app.controller('viewhistoryListCtrl', function ($scope, $http, DTOptionsBuilder) {
 		$scope.viewhistory = '';
-		
+	/*	
 		// DataTables configurable options
 	    $scope.dtOptions = DTOptionsBuilder.newOptions()
 	        .withLanguage({
@@ -21,7 +21,7 @@ var app = angular.module('viewhistoryList', ["datatables"]);
 				search : "",
 				searchPlaceholder : "ស្វែងរក..."
 	        });
-
+*/
 
 			$scope.list = function(){
 				$http({
