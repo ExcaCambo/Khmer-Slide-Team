@@ -55,7 +55,12 @@
     
         <!-- Angular Js -->
 	<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-	<script	src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+	<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/static/js/angular-datatables.min.js"></script>
     <!-- user files -->
      <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/user/view-history.js"></script>
+     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/user/my-document.js"></script>
+     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/user/user.js"></script>
+     
    

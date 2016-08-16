@@ -7,7 +7,7 @@
 <jsp:include page="../include/user/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
-<body data-sidebar-color="sidebar-light" class="sidebar-light">
+<body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="documentList" ng-controller="documentListCtrl">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/user/header.jsp -->
@@ -34,26 +34,26 @@
 				</div>
 			</div>
 			<div class="page-content container-fluid">
-				<div class="row">
+				<div class="row" class="clearfix">
 					<div class="pricing-table pricing-3">
 						<div class="row row-0">
-							<div class="col-md-3 pricing-item">
+							<div class="col-md-3 pricing-item" ng-repeat="D in document">
 								<div class="item cat1">
 									<div class="shop-item-list entry">
 										<div class="">
 											<img
-												src="${pageContext.request.contextPath}/resources/static/img/upload/course_01.png"
+												src="${pageContext.request.contextPath}/resources/static/img/upload/{{D.THUMBNAIL}}"
 												alt="">
 											<div class="magnifier"></div>
 										</div>
 										<div class="shop-item-title clearfix">
 											<h4 class="text-center">
-												<a href="course-single.html">Web Design & Development</a>
+												<a href="course-single.html">{{D.DOC_TITLE}}</a>
 											</h4>
 											<div class="shopmeta">
-												<span class="pull-left">12 views</span>
+												<span class="pull-left">{{D.VIEWED}} views</span>
 												<div class="pull-right">
-													<span class="pull-left"><i class="fa fa-thumbs-o-up text-primary"></i>102 Likes</span>
+													<span class="pull-left"><i class="fa fa-thumbs-o-up text-primary"></i>{{D.LIKED}} Likes</span>
 												</div>
 												<!-- end rating -->
 											</div>
@@ -72,266 +72,6 @@
 								</div>
 								<!-- end col -->
 							</div>
-							<div class="col-md-3 pricing-item">
-								<div class="item cat1 cat2">
-									<div class="shop-item-list entry">
-										<div class="">
-											<img
-												src="${pageContext.request.contextPath}/resources/static/img/upload/course_04.png"
-												alt="">
-											<div class="magnifier"></div>
-										</div>
-										<div class="shop-item-title clearfix">
-											<h4>
-												<a href="course-single.html">WordPress Blogging, Tumblr
-													and Blogger</a>
-											</h4>
-											<div class="shopmeta">
-												<span class="pull-left">12 views</span>
-												<div class="pull-right">
-													<span class="pull-left"><i class="fa fa-thumbs-o-up text-primary"></i>102 Likes</span>
-												</div>
-												<!-- end rating -->
-											</div>
-											<!-- end shop-meta -->
-										</div>
-										<!-- end shop-item-title -->
-										<div class="visible-buttons">
-											<a href="#"><span
-												class="ti-eye"></span></a> 
-											<a href="#"><span 
-												class="ti-settings"></span></a>
-										</div>
-										<!-- end buttons -->
-									</div>
-									<!-- end relative -->
-								</div>
-								<!-- end col -->
-							</div>
-							<div class="col-md-3 pricing-item">
-								<div class="item cat2">
-									<div class="shop-item-list entry">
-										<div class="">
-											<img
-												src="${pageContext.request.contextPath}/resources/static/img/upload/course_02.png"
-												alt="">
-											<div class="magnifier"></div>
-										</div>
-										<div class="shop-item-title clearfix">
-											<h4>
-												<a href="course-single.html">Graphic Design & Logo
-													Mockups Course</a>
-											</h4>
-											<div class="shopmeta">
-												<span class="pull-left">12 views</span>
-												<div class="pull-right">
-													<span class="pull-left"><i class="fa fa-thumbs-o-up text-primary"></i>102 Likes</span>
-												</div>
-												<!-- end rating -->
-											</div>
-											<!-- end shop-meta -->
-										</div>
-										<!-- end shop-item-title -->
-										<div class="visible-buttons">
-											<a href="#"><span
-												class="ti-eye"></span></a> 
-											<a href="#"><span 
-												class="ti-settings"></span></a>
-										</div>
-										<!-- end buttons -->
-									</div>
-									<!-- end relative -->
-								</div>
-								<!-- end col -->
-							</div>
-							<div class="col-md-3 pricing-item">
-								<div class="item cat2">
-									<div class="shop-item-list entry">
-										<div class="">
-											<img
-												src="${pageContext.request.contextPath}/resources/static/img/upload/course_02.png"
-												alt="">
-											<div class="magnifier"></div>
-										</div>
-										<div class="shop-item-title clearfix">
-											<h4>
-												<a href="course-single.html">Graphic Design & Logo
-													Mockups Course</a>
-											</h4>
-											<div class="shopmeta">
-												<span class="pull-left">12 views</span>
-												<div class="pull-right">
-													<span class="pull-left"><i class="fa fa-thumbs-o-up text-primary"></i>102 Likes</span>
-												</div>
-												<!-- end rating -->
-											</div>
-											<!-- end shop-meta -->
-										</div>
-										<!-- end shop-item-title -->
-										<div class="visible-buttons">
-											<a href="#"><span
-												class="ti-eye"></span></a> 
-											<a href="#"><span 
-												class="ti-settings"></span></a>
-										</div>
-										<!-- end buttons -->
-									</div>
-									<!-- end relative -->
-								</div>
-								<!-- end col -->
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="pricing-table pricing-3">
-						<div class="row row-0">
-							<div class="col-md-3 pricing-item">
-								<div class="item cat1">
-									<div class="shop-item-list entry">
-										<div class="">
-											<img
-												src="${pageContext.request.contextPath}/resources/static/img/upload/course_01.png"
-												alt="">
-											<div class="magnifier"></div>
-										</div>
-										<div class="shop-item-title clearfix">
-											<h4 class="text-center">
-												<a href="course-single.html">Web Design & Development</a>
-											</h4>
-											<div class="shopmeta">
-												<span class="pull-left">12 views</span>
-												<div class="pull-right">
-													<span class="pull-left"><i class="fa fa-thumbs-o-up text-primary"></i>102 Likes</span>
-												</div>
-												<!-- end rating -->
-											</div>
-											<!-- end shop-meta -->
-										</div>
-										<!-- end shop-item-title -->
-										<div class="visible-buttons">
-											<a href="#"><span
-												class="ti-eye"></span></a> 
-											<a href="#"><span 
-												class="ti-settings"></span></a>
-										</div>
-										<!-- end buttons -->
-									</div>
-									<!-- end relative -->
-								</div>
-								<!-- end col -->
-							</div>
-							<div class="col-md-3 pricing-item">
-								<div class="item cat1 cat2">
-									<div class="shop-item-list entry">
-										<div class="">
-											<img
-												src="${pageContext.request.contextPath}/resources/static/img/upload/course_04.png"
-												alt="">
-											<div class="magnifier"></div>
-										</div>
-										<div class="shop-item-title clearfix">
-											<h4>
-												<a href="course-single.html">WordPress Blogging, Tumblr
-													and Blogger</a>
-											</h4>
-											<div class="shopmeta">
-												<span class="pull-left">12 </span>
-												<div class="pull-right">
-													<span class="pull-left"><i class="fa fa-thumbs-o-up text-primary"></i>102 Likes</span>
-												</div>
-												<!-- end rating -->
-											</div>
-											<!-- end shop-meta -->
-										</div>
-										<!-- end shop-item-title -->
-										<div class="visible-buttons">
-											<a href="#"><span
-												class="ti-eye"></span></a> 
-											<a href="#"><span 
-												class="ti-settings"></span></a>
-										</div>
-										<!-- end buttons -->
-									</div>
-									<!-- end relative -->
-								</div>
-								<!-- end col -->
-							</div>
-							<div class="col-md-3 pricing-item">
-								<div class="item cat2">
-									<div class="shop-item-list entry">
-										<div class="">
-											<img
-												src="${pageContext.request.contextPath}/resources/static/img/upload/course_02.png"
-												alt="">
-											<div class="magnifier"></div>
-										</div>
-										<div class="shop-item-title clearfix">
-											<h4>
-												<a href="course-single.html">Graphic Design & Logo
-													Mockups Course</a>
-											</h4>
-											<div class="shopmeta">
-												<span class="pull-left">12 views</span>
-												<div class="pull-right">
-													<span class="pull-left"><i class="fa fa-thumbs-o-up text-primary"></i>102 Likes</span>
-												</div>
-												<!-- end rating -->
-											</div>
-											<!-- end shop-meta -->
-										</div>
-										<!-- end shop-item-title -->
-										<div class="visible-buttons">
-											<a href="#"><span
-												class="ti-eye"></span></a> 
-											<a href="#"><span 
-												class="ti-settings"></span></a>
-										</div>
-										<!-- end buttons -->
-									</div>
-									<!-- end relative -->
-								</div>
-								<!-- end col -->
-							</div>
-							<div class="col-md-3 pricing-item">
-								<div class="item cat2">
-									<div class="shop-item-list entry">
-										<div class="">
-											<img
-												src="${pageContext.request.contextPath}/resources/static/img/upload/course_02.png"
-												alt="">
-											<div class="magnifier"></div>
-										</div>
-										<div class="shop-item-title clearfix">
-											<h4>
-												<a href="course-single.html">Graphic Design & Logo
-													Mockups Course</a>
-											</h4>
-											<div class="shopmeta">
-												<span class="pull-left">12 views</span>
-												<div class="pull-right">
-													<span class="pull-left"><i class="fa fa-thumbs-o-up text-primary"></i>102 Likes</span>
-												</div>
-												<!-- end rating -->
-											</div>
-											<!-- end shop-meta -->
-										</div>
-										<!-- end shop-item-title -->
-										<div class="visible-buttons">
-											<a href="#"><span
-												class="ti-eye"></span></a> 
-											<a href="#"><span 
-												class="ti-settings"></span></a>
-										</div>
-										<!-- end buttons -->
-									</div>
-									<!-- end relative -->
-								</div>
-								<!-- end col -->
-							</div>
-						</div>
-					</div>
-				</div>
 				<div class="row">
 					<div class="col-sm-12 text-center">
 						<button type="submit" name="btnLoadMore"

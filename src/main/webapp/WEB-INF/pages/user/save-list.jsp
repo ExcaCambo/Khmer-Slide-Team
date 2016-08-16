@@ -7,7 +7,7 @@
 <jsp:include page="../include/user/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
-<body data-sidebar-color="sidebar-light" class="sidebar-light">
+<body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="saveList" ng-controller="saveListCtrl">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/user/header.jsp -->
@@ -45,180 +45,46 @@
 							</div>
 							<div class="widget-body">
 								<table id="my-doc-table" style="width: 100%"
-									class="table table-hover dt-responsive nowrap">
+									class="table table-hover dt-responsive nowrap" datatable="ng" dt-options="dtOptions">
 									<thead>
 										<tr>
 											<th style="width: 5%"></th>
 											<th style="width: 90%"></th>
-											<th style="width: 5%"></th>
+											<th style="width: 10%"></th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>1</td>
+										<tr ng-repeat="SL in savelist">
+											<td>{{$index+1}}</td>
 											<td>
 												<div class="media">
 													<div class="media-left">
 														<a href="#">
 														<img
-															src="${pageContext.request.contextPath}/resources/static/img/thumbnails/course_01.png"
+															src="${pageContext.request.contextPath}/resources/static/img/thumbnails/{{SL.DOC_ID.THUMBNAIL}}"
 															alt="" class="media-object" width="100" height="70"></a>
 															<span class="status bg-success"></span>
 													</div>
 													<div class="media-body">
-														<h5 class="media-heading">ភាសា Java</h5>
-														<p class="text-muted mb-0">បញ្ចូលដោយ: ណែម សុធា</p>	
+														<h5 class="media-heading">{{SL.DOC_ID.DOC_TITLE}}</h5>
+														<p class="text-muted mb-0">បញ្ចូលដោយ:{{SL.USER_ID.USER_NAME}}</p>	
 													</div>
 												</div>
 											</td>
+											
 											<td>
 												<div role="toolbar" aria-label="Toolbar with button groups"
 													class="btn-toolbar">
 													<div role="group" aria-label="First group"
 														class="btn-group">
-														<button type="button" class="btn btn-outline btn-danger">
-															<i class="ti-close"></i>
+														<!-- button edit -->
+														<button type="button" class="btn btn-outline btn-warning"
+															data-toggle="modal" data-target=".modalEdit">
+															<i class="ti-pencil"></i>
 														</button>
-													</div>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>
-												<div class="media">
-													<div class="media-left">
-														<img
-															src="${pageContext.request.contextPath}/resources/static/img/thumbnails/course_02.png"
-															alt="" class="media-object" width="100" height="70"><span
-															class="status bg-success"></span>
-													</div>
-													<div class="media-body">
-														<h5 class="media-heading">Web Design</h5>
-														<p class="text-muted mb-0">បញ្ចូលដោយ: ណែម សុធា,
-</p>
-													</div>
-												</div>
-											</td>
-											<td>
-												<div role="toolbar" aria-label="Toolbar with button groups"
-													class="btn-toolbar">
-													<div role="group" aria-label="First group"
-														class="btn-group">
+														<!-- button delete -->
 														<button type="button" class="btn btn-outline btn-danger">
-															<i class="ti-close"></i>
-														</button>
-													</div>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>
-												<div class="media">
-													<div class="media-left">
-														<img
-															src="${pageContext.request.contextPath}/resources/static/img/thumbnails/course_01.png"
-															alt="" class="media-object" width="100" height="70"><span
-															class="status bg-success"></span>
-													</div>
-													<div class="media-body">
-														<h5 class="media-heading">ភាសា Java</h5>
-														<p class="text-muted mb-0">បញ្ចូលដោយ: ណែម សុធា</p>	
-													</div>
-												</div>
-											</td>
-											<td>
-												<div role="toolbar" aria-label="Toolbar with button groups"
-													class="btn-toolbar">
-													<div role="group" aria-label="First group"
-														class="btn-group">
-														<button type="button" class="btn btn-outline btn-danger">
-															<i class="ti-close"></i>
-														</button>
-													</div>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>
-												<div class="media">
-													<div class="media-left">
-														<img
-															src="${pageContext.request.contextPath}/resources/static/img/thumbnails/course_02.png"
-															alt="" class="media-object" width="100" height="70"><span
-															class="status bg-success"></span>
-													</div>
-													<div class="media-body">
-														<h5 class="media-heading">Web Design</h5>
-														<p class="text-muted mb-0">បញ្ចូលដោយ: ណែម សុធា</p>
-													</div>
-												</div>
-											</td>	
-											<td>
-												<div role="toolbar" aria-label="Toolbar with button groups"
-													class="btn-toolbar">
-													<div role="group" aria-label="First group"
-														class="btn-group">
-														<button type="button" class="btn btn-outline btn-danger">
-															<i class="ti-close"></i>
-														</button>
-													</div>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>5</td>
-											<td>
-												<div class="media">
-													<div class="media-left">
-														<img
-															src="${pageContext.request.contextPath}/resources/static/img/thumbnails/course_01.png"
-															alt="" class="media-object" width="100" height="70"><span
-															class="status bg-success"></span>
-													</div>
-													<div class="media-body">
-														<h5 class="media-heading">ភាសា Java</h5>
-														<p class="text-muted mb-0">បញ្ចូលដោយ: ណែម សុធា</p>
-													</div>
-												</div>
-											</td>
-											<td>
-												<div role="toolbar" aria-label="Toolbar with button groups"
-													class="btn-toolbar">
-													<div role="group" aria-label="First group"
-														class="btn-group">
-														<button type="button" class="btn btn-outline btn-danger">
-															<i class="ti-close"></i>
-														</button>
-													</div>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>6</td>
-											<td>
-												<div class="media">
-													<div class="media-left">
-														<img
-															src="${pageContext.request.contextPath}/resources/static/img/thumbnails/course_02.png"
-															alt="" class="media-object" width="100" height="70"><span
-															class="status bg-success"></span>
-													</div>
-													<div class="media-body">
-														<h5 class="media-heading">Web Design</h5>
-														<p class="text-muted mb-0">បញ្ចូលដោយ: ណែម សុធា</p>
-													</div>
-												</div>
-											</td>
-											<td>
-												<div role="toolbar" aria-label="Toolbar with button groups"
-													class="btn-toolbar">
-													<div role="group" aria-label="First group"
-														class="btn-group">
-														<button type="button" class="btn btn-outline btn-danger">
-															<i class="ti-close"></i>
+															<i class="ti-trash"></i>
 														</button>
 													</div>
 												</div>

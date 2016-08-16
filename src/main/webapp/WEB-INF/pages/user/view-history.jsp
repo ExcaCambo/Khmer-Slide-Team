@@ -7,7 +7,7 @@
 <jsp:include page="../include/user/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
-<body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="viewhistoryList" ng-controller="viewhistoryListCtrl">
+<body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="history" ng-controller="viewhistoryListCtrl">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/user/header.jsp -->
@@ -38,27 +38,27 @@
 				</div>
 			</div>
 			<div class="page-content container-fluid">
-				<div class="row">
+				<div class="row" class="clearfix">
 					<div class="pricing-table pricing-3">
 						<div class="row row-0">
-							<div class="col-md-3 pricing-item">
+							<div class="col-md-3 pricing-item"  ng-repeat="H in viewhistory">
 								<div class="item cat1">
 										<div class="shop-item-list entry">
 											<div class="">
 												<img
-													src="${pageContext.request.contextPath}/resources/static/img/upload/course_01.png"
+													src="${pageContext.request.contextPath}/resources/static/img/upload/{{H.DOC_ID.THUMBNAIL}}"
 													alt="">
 												<div class="magnifier"></div>
 											</div>
 											<div class="shop-item-title clearfix">
 												<h4 class="text-center">
-													<a href="course-single.html">{{DOC_ID.DOC_TITLE}}</a>
+													<a href="course-single.html">{{H.DOC_ID.DOC_TITLE}}</a>
 												</h4>
 												<div class="shopmeta">
-													<span class="pull-left">12 views</span>
+													<span class="pull-left">{{H.DOC_ID.VIEWED}}views</span>
 													<div class="pull-right">
 														<span class="pull-left"><i
-															class="fa fa-thumbs-o-up text-primary"></i>102 </span>
+															class="fa fa-thumbs-o-up text-primary"></i>{{H.DOC_ID.LIKED}} </span>
 													</div>
 													<!-- end rating -->
 												</div>
@@ -68,227 +68,11 @@
 										</div>
 									<!-- end relative -->
 								</div>
-								<!-- end col -->
-							</div>
-							<div class="col-md-3 pricing-item">
-								<div class="item cat1 cat2">
-									<div class="shop-item-list entry">
-										<div class="">
-											<img
-												src="${pageContext.request.contextPath}/resources/static/img/upload/course_04.png"
-												alt="">
-											<div class="magnifier"></div>
-										</div>
-										<div class="shop-item-title clearfix">
-											<h4>
-												<a href="course-single.html">WordPress Blogging, Tumblr
-													and Blogger</a>
-											</h4>
-											<div class="shopmeta">
-												<span class="pull-left">12 views</span>
-												<div class="pull-right">
-													<span class="pull-left"><i
-														class="fa fa-thumbs-o-up text-primary"></i>102 </span>
-												</div>
-												<!-- end rating -->
-											</div>
-											<!-- end shop-meta -->
-										</div>
-										<!-- end shop-item-title -->
-									</div>
-									<!-- end relative -->
-								</div>
-								<!-- end col -->
-							</div>
-							<div class="col-md-3 pricing-item">
-								<div class="item cat1 cat2">
-									<div class="shop-item-list entry">
-										<div class="">
-											<img
-												src="${pageContext.request.contextPath}/resources/static/img/upload/course_04.png"
-												alt="">
-											<div class="magnifier"></div>
-										</div>
-										<div class="shop-item-title clearfix">
-											<h4>
-												<a href="course-single.html">WordPress Blogging, Tumblr
-													and Blogger</a>
-											</h4>
-											<div class="shopmeta">
-												<span class="pull-left">12 views</span>
-												<div class="pull-right">
-													<span class="pull-left"><i
-														class="fa fa-thumbs-o-up text-primary"></i>102 </span>
-												</div>
-												<!-- end rating -->
-											</div>
-											<!-- end shop-meta -->
-										</div>
-										<!-- end shop-item-title -->
-									</div>
-									<!-- end relative -->
-								</div>
-								<!-- end col -->
-							</div>
-							<div class="col-md-3 pricing-item">
-								<div class="item cat2">
-									<div class="shop-item-list entry">
-										<div class="">
-											<img
-												src="${pageContext.request.contextPath}/resources/static/img/upload/course_02.png"
-												alt="">
-											<div class="magnifier"></div>
-										</div>
-										<div class="shop-item-title clearfix">
-											<h4>
-												<a href="course-single.html">Graphic Design & Logo
-													Mockups Course</a>
-											</h4>
-											<div class="shopmeta">
-												<span class="pull-left">12 views</span>
-												<div class="pull-right">
-													<span class="pull-left"><i
-														class="fa fa-thumbs-o-up text-primary"></i>102 </span>
-												</div>
-												<!-- end rating -->
-											</div>
-											<!-- end shop-meta -->
-										</div>
-										<!-- end shop-item-title -->
-									</div>
-									<!-- end relative -->
-								</div>
-								<!-- end col -->
-							</div>
+							
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="pricing-table pricing-3">
-						<div class="row row-0">
-							<div class="col-md-3 pricing-item">
-								<div class="item cat1">
-									<div class="shop-item-list entry">
-										<div class="">
-											<img
-												src="${pageContext.request.contextPath}/resources/static/img/upload/course_01.png"
-												alt="">
-											<div class="magnifier"></div>
-										</div>
-										<div class="shop-item-title clearfix">
-											<h4 class="text-center">
-												<a href="course-single.html">Web Design & Development</a>
-											</h4>
-											<div class="shopmeta">
-												<span class="pull-left">12 views</span>
-												<div class="pull-right">
-													<span class="pull-left"><i
-														class="fa fa-thumbs-o-up text-primary"></i>102 </span>
-												</div>
-												<!-- end rating -->
-											</div>
-											<!-- end shop-meta -->
-										</div>
-										<!-- end shop-item-title -->
-									</div>
-									<!-- end relative -->
-								</div>
-								<!-- end col -->
-							</div>
-							<div class="col-md-3 pricing-item">
-								<div class="item cat1 cat2">
-									<div class="shop-item-list entry">
-										<div class="">
-											<img
-												src="${pageContext.request.contextPath}/resources/static/img/upload/course_04.png"
-												alt="">
-											<div class="magnifier"></div>
-										</div>
-										<div class="shop-item-title clearfix">
-											<h4>
-												<a href="course-single.html">WordPress Blogging, Tumblr
-													and Blogger</a>
-											</h4>
-											<div class="shopmeta">
-												<span class="pull-left">12 views</span>
-												<div class="pull-right">
-													<span class="pull-left"><i
-														class="fa fa-thumbs-o-up text-primary"></i>102 </span>
-												</div>
-												<!-- end rating -->
-											</div>
-											<!-- end shop-meta -->
-										</div>
-										<!-- end shop-item-title -->
-									</div>
-									<!-- end relative -->
-								</div>
-								<!-- end col -->
-							</div>
-							<div class="col-md-3 pricing-item">
-								<div class="item cat1 cat2">
-									<div class="shop-item-list entry">
-										<div class="">
-											<img
-												src="${pageContext.request.contextPath}/resources/static/img/upload/course_04.png"
-												alt="">
-											<div class="magnifier"></div>
-										</div>
-										<div class="shop-item-title clearfix">
-											<h4>
-												<a href="course-single.html">WordPress Blogging, Tumblr
-													and Blogger</a>
-											</h4>
-											<div class="shopmeta">
-												<span class="pull-left">12 views</span>
-												<div class="pull-right">
-													<span class="pull-left"><i
-														class="fa fa-thumbs-o-up text-primary"></i>102 </span>
-												</div>
-												<!-- end rating -->
-											</div>
-											<!-- end shop-meta -->
-										</div>
-										<!-- end shop-item-title -->
-									</div>
-									<!-- end relative -->
-								</div>
-								<!-- end col -->
-							</div>
-							<div class="col-md-3 pricing-item">
-								<div class="item cat2">
-									<div class="shop-item-list entry">
-										<div class="">
-											<img
-												src="${pageContext.request.contextPath}/resources/static/img/upload/course_02.png"
-												alt="">
-											<div class="magnifier"></div>
-										</div>
-										<div class="shop-item-title clearfix">
-											<h4>
-												<a href="course-single.html">Graphic Design & Logo
-													Mockups Course</a>
-											</h4>
-											<div class="shopmeta">
-												<span class="pull-left">12 views</span>
-												<div class="pull-right">
-													<span class="pull-left"><i
-														class="fa fa-thumbs-o-up text-primary"></i>102 </span>
-												</div>
-												<!-- end rating -->
-											</div>
-											<!-- end shop-meta -->
-										</div>
-										<!-- end shop-item-title -->
-									</div>
-									<!-- end relative -->
-								</div>
-								<!-- end col -->
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
+					<div class="row">
 					<div class="col-sm-12 text-center">
 						<button type="submit" name="btnLoadMore"
 							class="btn btn-outline btn-rounded btn-success">
