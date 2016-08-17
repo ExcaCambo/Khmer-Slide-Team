@@ -9,14 +9,8 @@ app.controller('documentListCtrl', function($scope, $filter, $http,
 
 		// check to make sure the form is completely valid
 		if ($scope.insertForm.$valid) {
-			swal({
-                title: "បញ្ចូលទិន្នន័យ!",
-                text:  "ទិន្នន័យត្រូវបានបញ្ចូលបានសម្រាច់",
-                type: "success",
-                timer: 3000,
-                showConfirmButton: false
-            });
-        window.setTimeout(function(){ } ,3000);
+			swal("បញ្ចូលទិន្នន័យ!", "ទិន្នន័យត្រូវបានបញ្ចូលបានសម្រាច់",
+					"success");
 			location.reload();
 			// $scope.insert();
 		}

@@ -12,7 +12,7 @@
 					</button>
 					<div class="logo">
 						<a class="navbar-brand" href="index.html"><img
-							src="${pageContext.request.contextPath}/resources/static/front-end/img/logo_design.png"
+							src="${pageContext.request.contextPath}/resources/static/front-end/img/Orange_view logo_50.png"
 							alt=""></a>
 					</div>
 				</div>

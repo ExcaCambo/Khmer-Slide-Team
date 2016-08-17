@@ -54,7 +54,6 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 	$scope.photo = "default-user-image.png";
 	$scope.date = $filter('date')(new Date(), 'dd-MMM-yyyy');
 	$scope.insert = function() {
-		alert($scope.ddlRole);
 		$http({
 			url : 'http://localhost:8080/rest/user',
 			data : {
@@ -84,7 +83,6 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 	
 //	=================================Edit User Function=================================
 	$scope.update = function(id) {
-		// alert(id);
 		$http({
 			url : 'http://localhost:8080/rest/user/' + id + '',
 			method : 'GET'
@@ -100,7 +98,6 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 		}, function() {
 
 		});
-	//	alert($scope.ddlGender);
 	}
 	// Get Path Variable from URL
 	var url = $location.absUrl();
@@ -108,9 +105,6 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 	$scope.update(userId);
 
 	$scope.submit = function() {
-	//	alert($scope.ddlGender);
-	alert($scope.usertype);
-		
 		$http({
 			url : 'http://localhost:8080/rest/user/',
 			data : {

@@ -79,3 +79,14 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/plugins/bootstrap-fileinput/js/plugins/canvas-to-blob.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/plugins/bootstrap-fileinput/js/fileinput.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/page-content/file-uploads/bootstrap-file-input.js"></script>
+    
+    <!-- Angular Js -->
+	<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/static/js/angular-datatables.min.js"></script>
+	<!-- my document file -->
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/user/my-document.js"></script>
+     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/user/save-list.js"></script>
+         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/category.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/doc-list.js"></script>

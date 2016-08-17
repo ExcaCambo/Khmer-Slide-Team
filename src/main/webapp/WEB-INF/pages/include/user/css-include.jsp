@@ -54,7 +54,7 @@
     <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <!-- Sweet Alert-->
-<%--     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/plugins/sweetalert/sweetalert.css"> --%>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/plugins/sweetalert/dist/sweetalert.css">
 <%--  	<!-- Bootstrap TouchSpin-->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css">
     

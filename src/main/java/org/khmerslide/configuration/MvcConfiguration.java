@@ -1,9 +1,14 @@
 package org.khmerslide.configuration;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 public class MvcConfiguration extends WebMvcConfigurerAdapter {
@@ -25,7 +30,8 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		registry.addViewController("/user/index").setViewName("/user/index");
 		registry.addViewController("/user/home").setViewName("/user/index");
 		registry.addViewController("/user/my-document").setViewName("/user/my-document");
-		registry.addViewController("/user/history").setViewName("/user/history");
+		registry.addViewController("/user/save-list").setViewName("/user/save-list");
+		registry.addViewController("/user/history").setViewName("/user/view-history");
 		registry.addViewController("/user/upload-file").setViewName("/user/upload-file");
 //		registry.addViewController("/user").setViewName("/user/user");
 //		registry.addViewController("/dba").setViewName("/dba");
@@ -43,8 +49,30 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
-				.allowedMethods("GET","POST","DELETE","PUT","OPTIONS","PATCH")
-				.allowedOrigins("*");
+		.allowedMethods("GET","POST","DELETE","PUT","OPTIONS","PATCH")
+		.allowedOrigins("*");
+	}
+	
+	 @Bean(name = "multipartResolver")
+	    public CommonsMultipartResolver multipartResolver() {
+	        CommonsMultipartResolver resolver = new CommonsMultipartResolver();        
+	        resolver.setMaxUploadSizePerFile(52428800); 
+	        return resolver;
+	    }
+	 
+	
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+		registry.addResourceHandler("/files/images/**").addResourceLocations("file:/opt/images/");
+	}
+	
+	@Bean
+	public ViewResolver viewResolver(){
+		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+		resolver.setPrefix("/WEB-INF/pages/");
+		resolver.setSuffix(".jsp");
+		return resolver;
 	}
 	
 }
