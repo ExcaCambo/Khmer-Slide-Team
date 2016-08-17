@@ -47,7 +47,7 @@
 											<div class="">
 												<img
 													src="${pageContext.request.contextPath}/resources/static/img/upload/{{H.DOC_ID.THUMBNAIL}}"
-													alt="">
+													alt="" class="media-object" width="100" height="250">
 												<div class="magnifier"></div>
 											</div>
 											<div class="shop-item-title clearfix">
