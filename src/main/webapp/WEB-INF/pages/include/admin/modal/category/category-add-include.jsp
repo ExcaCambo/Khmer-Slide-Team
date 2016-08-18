@@ -39,7 +39,7 @@
 												<label for="ddlIcon">អាយខុនតំណាង</label>
 <label class="text-danger"> *</label>
 <select id="ddlIcon" name="ddlIcon" data-rule-required="true" ng-model="ddlIcon"
-	class="form-control" style="font-family: 'FontAwesome', Helvetica;">
+	class="form-control" style="font-family:'FontAwesome', Arial;">
 	<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
 	<option value="fa fa-car">&#xf1b9; រថយន្ត
 	</option>
@@ -49,13 +49,12 @@
 	</option>
 	<option value="fa fa-bar-chart">&#xf080; ស្ថិតិ
 	</option>
-	<option value="fa fa-book"><i class="fa fa-book"
-			aria-hidden="true"></i> សៀវភៅ
+	<option value="fa fa-book" data-icon="fa-book">&#xf02d; សៀវភៅ
 	</option>
-	<option value="fa fa-briefcase"><i class="fa fa-briefcase"
-			aria-hidden="true"></i> កាតាប
+	<option value="fa fa-briefcase"><span class="fa fa-briefcase"
+			aria-hidden="true"></span> កាតាប
 	</option>
-	<option value="fa fa-building"><i class="fa fa-building"
+	<option value="fa fa-building" class="fa fa-building"><i 
 			aria-hidden="true"></i> អគារ
 	</option>
 	<option value="fa fa-calculator"><i class="fa fa-calculator"

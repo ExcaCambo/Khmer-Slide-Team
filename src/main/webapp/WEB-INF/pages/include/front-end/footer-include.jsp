@@ -33,33 +33,9 @@
                                 <hr>
                             </div>
 
-                            <ul class="popular-courses">
-                                <li>
-                                    <a href="single-course.html" title=""><img class="img-thumbnail" src="${pageContext.request.contextPath}/resources/static/front-end/upload/service_01.png" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="single-course.html" title=""><img class="img-thumbnail" src="${pageContext.request.contextPath}/resources/static/front-end/upload/service_02.png" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="single-course.html" title=""><img class="img-thumbnail" src="${pageContext.request.contextPath}/resources/static/front-end/upload/service_03.png" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="single-course.html" title=""><img class="img-thumbnail" src="${pageContext.request.contextPath}/resources/static/front-end/upload/service_04.png" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="single-course.html" title=""><img class="img-thumbnail" src="${pageContext.request.contextPath}/resources/static/front-end/upload/service_05.png" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="single-course.html" title=""><img class="img-thumbnail" src="${pageContext.request.contextPath}/resources/static/front-end/upload/service_06.png" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="single-course.html" title=""><img class="img-thumbnail" src="${pageContext.request.contextPath}/resources/static/front-end/upload/service_07.png" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="single-course.html" title=""><img class="img-thumbnail" src="${pageContext.request.contextPath}/resources/static/front-end/upload/service_08.png" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="single-course.html" title=""><img class="img-thumbnail" src="${pageContext.request.contextPath}/resources/static/front-end/upload/service_09.png" alt=""></a>
+                            <ul class="popular-courses" data-ng-controller="documentCtrl">
+                                <li data-ng-repeat="dp in popularDocument" data-ng-if="$index<12">
+                                    <a href="/view/doc={{ dp.DOC_ID }}"" title=""><img class="img-thumbnail" src="http://localhost:9999{{ dp.THUMBNAIL }}" alt="" title="{{ dp.DOC_TITLE }}"></a>
                                 </li>
                             </ul>
                         </div><!-- end widget -->

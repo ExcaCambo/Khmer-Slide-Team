@@ -44,8 +44,8 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
-									<form id="login-form" action="http://phpoll.com/login/process"
-										method="post" role="form" style="display: block;">
+									<form action="login" id="frmLogin" method="POST" method="post"
+										role="form" style="display: block;">
 										<div class="form-group">
 											<input type="text" name="username" id="username" tabindex="1"
 												class="form-control" placeholder="ឈ្មោះអ្នកប្រើប្រាស់"
@@ -76,9 +76,8 @@
 											</div>
 										</div>
 									</form>
-									<form id="register-form"
-										action="http://phpoll.com/register/process" method="post"
-										role="form" style="display: none;">
+									<form id="register-form" action="#" method="post" role="form"
+										style="display: none;">
 										<div class="form-group">
 											<div class="row">
 												<div class="col-sm-12">
@@ -97,6 +96,63 @@
 			</div>
 		</div>
 	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#frmLogin")
+					.submit(
+							function(e) {
+								e.preventDefault();
+
+								$
+										.ajax({
+											url : "${pageContext.request.contextPath}/login",
+											type : "POST",
+											data : $("#frmLogin").serialize(),
+											//   	            beforeSend: function (xhr) {
+											//   	                xhr.setRequestHeader("X-Ajax-call", "true");
+											//   	            },
+											success : function(data) {
+												alert(data);
+												if (data == 9999) {
+													alert("PLEASE LOGIN AGAIN");
+												} else {
+													location.href = "${pageContext.request.contextPath}"
+															+ data;
+												}
+
+												//console.log(data);
+												/* if(data == "User account is locked")
+												{
+													alert(data);
+												}
+												else if(data == "User is disabled")
+												{
+													alert(data);
+												}
+												else if(data == "Bad credentials")
+												{
+													alert(data);
+												}else{
+													alert("Logined success.");
+													location.href = "${pageContext.request.contextPath}/"+data;
+													console.log(data);
+												} */
+
+											},
+											error : function(data) {
+												console.log(data);
+											}
+										});
+								/* end ajax */
+							});
+			/* end fuction submit */
+
+		});
+		/* end function */
+	</script>
+
 
 	<!-- end wrapper -->
 	<!-- including js from include/front-end/js-include.jsp -->

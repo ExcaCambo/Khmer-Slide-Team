@@ -88,5 +88,4 @@ public class AdminController {
 	public String commentPage() {
 		return "admin/comment";
 	}
-
 }

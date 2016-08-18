@@ -19,6 +19,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,6 +49,31 @@ public class DocumentController {
 	public ResponseEntity<Map<String , Object>> document(){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/docs/get-document", HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value={"/{id}"}, method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> documentById(@PathVariable("id") int id){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/docs/get-document-by-id?doc_id=" + id, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value={"/popular"}, method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> popularDocument( 
+			@RequestParam(value = "page", required = false , defaultValue="1") int page 
+		    , @RequestParam(value="item" , required = false , defaultValue="10") int item){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/docs/get-document-popular-post", HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value={"/latest"}, method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> latestDocument( 
+			@RequestParam(value = "page", required = false , defaultValue="1") int page 
+		    , @RequestParam(value="item" , required = false , defaultValue="10") int item){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/docs/get-document-recent-post", HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	

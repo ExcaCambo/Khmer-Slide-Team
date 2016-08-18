@@ -1,3 +1,8 @@
+	        <!-- Angular Js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/front-end/homePage.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/front-end/viewPage.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/static/front-end/js/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/static/front-end/js/bootstrap.min.js"></script>
 	<%-- <script src="${pageContext.request.contextPath}/resources/static/front-end/js/retina.js"></script> --%>
@@ -8,6 +13,7 @@
     <!-- SLIDER REV -->
     <script src="${pageContext.request.contextPath}/resources/static/front-end/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/static/front-end/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    
     <script>
     jQuery(document).ready(function() {
         jQuery('.tp-banner').show().revolution(
@@ -84,3 +90,4 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/plugins/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/page-content/dashboard/index.js"></script>
+    

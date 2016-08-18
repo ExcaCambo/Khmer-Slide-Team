@@ -33,20 +33,13 @@
 							data-toggle="dropdown" class="dropdown-toggle"><i
 								class="fa fa-list-ul"></i> មីនុយ <b class="fa fa-angle-down"></b></a>
 							<ul class="dropdown-menu">
-								<li>
+								<li data-ng-controller="categoryCtrl">
 									<div class="ttmenu-content">
 										<div class="row">
-											<div class="col-md-12">
+											<div class="col-md-6" data-ng-repeat="c in category">
 												<div class="box">
 													<ul>
-														<li><a href="/category/search-category">ការអប់រំកម្រឺតវិទ្យាល័យ</a></li>
-														<li><a href="#">វិទ្យាសាស្ត្រកុំព្យូទ័រ</a></li>
-														<li><a href="#">ជំនាញឯកទេស</a></li>
-														<li><a href="#">ភាសាសាស្ត្រ</a></li>
-														<li><a href="#">វប្បធម៍ និង សិល្បៈ</a></li>
-														<li><a href="#">សង្គម</a></li>
-														<li><a href="#">កសិកម្ម</a></li>
-														<li><a href="#">ការកំសាន្ត</a></li>
+														<li><a href="/category/search-category">{{ c.CAT_NAME }}</a></li>
 													</ul>
 												</div>
 												<!-- end box -->

@@ -6,7 +6,7 @@
 <!-- including style from include/front-end/css-include.jsp -->
 <jsp:include page="../include/front-end/css-include.jsp"></jsp:include>
 </head>
-<body>
+<body data-ng-app="homePage">
 	<div id="loader">
 		<div class="loader-container">
 			<img
@@ -19,7 +19,7 @@
 		<!-- including header from include/front-end/header-include.jsp -->
 		<jsp:include page="../include/front-end/header-include.jsp"></jsp:include>
 
-		<section class="white section">
+		<section class="white section" data-ng-controller="viewCtrl">
 			<div class="container">
 				<div class="row">
 					<div id="course-content" class="col-md-8">
@@ -28,49 +28,48 @@
 								<div
 									class='embed-container embed-responsive embed-responsive-4by3'>
 									<iframe
-										src="https://docs.google.com/presentation/d/1E59nEYMieNSMEZlAVpbbDggJtiCuLoLr4_8Tn-MXL2g/embed?start=true&loop=true&delayms=30000"
+										data-ng-src="{{ urls }}"
 										frameborder="0"
 										allowfullscreen="true" mozallowfullscreen="true" 
 										webkitallowfullscreen="true" allowprint="true"></iframe>
-										<!-- <iframe src="https://drive.google.com/file/d/0B2WJOSpqcAkyLW1wWFBuNm1FNTA/preview" width="640" height="480"></iframe> -->
+										<!-- <iframe src="https://drive.google.com/file/d/0B2WJOSpqcAkyLW1wWFBuNm1FNTA/preview"></iframe> -->
 								</div>
 							</div>
 							<!-- end blog-image -->
 
-							<h3 class="course-title">ភាសា Java</h3>
+							<h3 class="course-title" data-ng-bind="txtTitle"></h3>
 							<div class="row">
 								<div class="col-md-6">
 									<div class="media">
 										<div class="media-left">
 											<a href="#"> <img class="media-object"
-												src="${pageContext.request.contextPath}/resources/static/img/upload/student_01.png"
+												src="http://localhost:9999{{ uploaderPhoto }}"
 												alt="Generic placeholder image">
 											</a>
 										</div>
 
 										<div class="media-body">
-											<h4 class="media-heading">អត្ថបទដោយ: ឃួន សុវណ្ណវត្ថី</h4>
+											<h4 class="media-heading">អត្ថបទដោយ: {{ uploadBy }}</h4>
 											<div class="rating">
-												<h5>កាលបរិច្ឆេទបញ្ចូល: 06 August, 2016</h5>
+												<h5>កាលបរិច្ឆេទបញ្ចូល: {{ date }}</h5>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-6 text-right">
 									<span><strong class="ng-binding"><i
-											class="fa fa-eye"></i>152&nbsp;បានមើល</strong></span>
+											class="fa fa-eye"></i> {{ view }}&nbsp;បានអាន</strong></span>
 											<hr>
 									<span id="vote"><i
 										class="fa fa-thumbs-o-up fa-2x"
 										style="padding: 0px 10px; color: #333333; cursor: pointer;"
-										onclick="#"></i><strong>Like&nbsp;<b
-											style="color: #007500;">3</b></strong></span>
+										onclick="#" title="ពេញចិត្ត"></i><strong> ចំនួន​ &nbsp;<b
+											style="color: #e34b11;">{{ like }}</b></strong> ពេញចិត្ត</span> |
 									<span id="vote"><i
-										class="fa fa-share fa-2x"
+										class="fa fa-share-alt-square fa-2x"
 										style="padding: 0px 10px; color: #333333; cursor: pointer;"
-										onclick="#"></i><strong><b
-											style="color: #007500;">3</b></strong></span>
-											<a target="_blank" href="https://doc-0s-00-docs.googleusercontent.com/docs/securesc/o8d3aeh10i695dohadddsupdtrqm10sq/i18iu7g1h3v8nv968putrm5u470meqjm/1470650400000/04935114392850846203/08106199349295072376/0BxYRX7DKrlC4cnhIWHVCbHA2NEk?e=download">Download File</a>
+										onclick="#" title="ចែកចាយបន្ត"></i> ចំនួន <strong><b
+											style="color: #e34b11;">{{ share }}</b></strong> ចែកចាយបន្ត</span>
 
 									<div class="btn-group">
 
@@ -93,11 +92,7 @@
 							</div>
 							<hr class="invis">
 							<h4>ពត៌មានបន្ថែម:</h4>
-							<p>It uses a dictionary of over 200 Latin words, combined
-								with a handful of model sentence structures, to generate Lorem
-								Ipsum which looks reasonable. The generated Lorem Ipsum is
-								therefore always free from repetition, injected humour, or
-								non-characteristic words etc.</p>
+							<p>{{ description }}</p>
 						</div>
 						<!-- end desc -->
 						<hr class="invis">
@@ -285,24 +280,7 @@
 									</tbody>
 								</table>
 							</div>
-							<%-- <ul class="popular-courses">
-								<li><a href="single-course.html" title=""><img
-										class="img-thumbnail"
-										src="${pageContext.request.contextPath}/resources/static/front-end/upload/service_01.png"
-										alt=""></a></li>
-								<li><a href="single-course.html" title=""><img
-										class="img-thumbnail"
-										src="${pageContext.request.contextPath}/resources/static/front-end/upload/service_02.png"
-										alt=""></a></li>
-								<li><a href="single-course.html" title=""><img
-										class="img-thumbnail"
-										src="${pageContext.request.contextPath}/resources/static/front-end/upload/service_03.png"
-										alt=""></a></li>
-								<li><a href="single-course.html" title=""><img
-										class="img-thumbnail"
-										src="${pageContext.request.contextPath}/resources/static/front-end/upload/service_04.png"
-										alt=""></a></li>
-							</ul> --%>
+						
 							<hr class="invis">
 
 							<div id="reviews" class="feedbacks">
@@ -320,142 +298,10 @@
 						</div> -->
 				</div>
 				<!-- end col -->
-
-				<%-- 				<hr class="invis">
-
-				<div class="row">
-					<div class="col-md-12">
-						<div class="section-title text-center">
-							<h4>អត្ថបទស្រដៀង</h4>
-							<p>ខាងក្រោមនេះជាអត្ថបទស្រដៀងអត្ថបទខាងលើ</p>
-						</div>
-					</div>
-					<!-- end col -->
-				</div>
-
-				<div id="owl-similar" class="owl-custom">
-					<div class="owl-featured">
-						<div class="shop-item-list entry">
-							<div class="">
-								<img
-									src="${pageContext.request.contextPath}/resources/static/front-end/upload/course_01.png"
-									alt="">
-								<div class="magnifier"></div>
-							</div>
-							<div class="shop-item-title clearfix">
-								<h4>
-									<a href="course-single.html">Learn Web Design & Development</a>
-								</h4>
-								<div class="shopmeta">
-									<span class="pull-left">12 views</span>
-									<div class="pull-right">
-										<span class="pull-left"><i
-											class="fa fa-thumbs-o-up text-primary"></i>102 Likes</span>
-									</div>
-								</div>
-							</div>
-							<div class="visible-buttons">
-								<a href="#"><span class="fa fa-eye" title="ចូលមើលអត្ថបទនេះ"></span></a>
-								<a href="#"><span class="fa fa-share"
-									title="ចែករំលែកបន្តនូវអត្ថបទមួយនេះ"></span></a>
-							</div>
-						</div>
-						<!-- end relative -->
-					</div>
-					<!-- end col -->
-
-					<div class="owl-featured">
-						<div class="shop-item-list entry">
-							<div class="">
-								<img
-									src="${pageContext.request.contextPath}/resources/static/front-end/upload/course_02.png"
-									alt="">
-								<div class="magnifier"></div>
-							</div>
-							<div class="shop-item-title clearfix">
-								<h4>
-									<a href="course-single.html">Graphic Design & Logo Mockups
-										Course</a>
-								</h4>
-								<div class="shopmeta">
-									<span class="pull-left">12 views</span>
-									<div class="pull-right">
-										<span class="pull-left"><i
-											class="fa fa-thumbs-o-up text-primary"></i>102 Likes</span>
-									</div>
-								</div>
-							</div>
-							<div class="visible-buttons">
-								<a href="#"><span class="fa fa-eye" title="ចូលមើលអត្ថបទនេះ"></span></a>
-								<a href="#"><span class="fa fa-share"
-									title="ចែករំលែកបន្តនូវអត្ថបទមួយនេះ"></span></a>
-							</div>
-						</div>
-					</div>
-
-					<div class="owl-featured">
-						<div class="shop-item-list entry">
-							<div class="">
-								<img
-									src="${pageContext.request.contextPath}/resources/static/front-end/upload/course_03.png"
-									alt="">
-								<div class="magnifier"></div>
-							</div>
-							<div class="shop-item-title clearfix">
-								<h4>
-									<a href="course-single.html">Social Media Network &
-										Marketing</a>
-								</h4>
-								<div class="shopmeta">
-									<span class="pull-left">12 views</span>
-									<div class="pull-right">
-										<span class="pull-left"><i
-											class="fa fa-thumbs-o-up text-primary"></i>102 Likes</span>
-									</div>
-								</div>
-								<!-- end shop-meta -->
-							</div>
-							<div class="visible-buttons">
-								<a href="#"><span class="fa fa-eye" title="ចូលមើលអត្ថបទនេះ"></span></a>
-								<a href="#"><span class="fa fa-share"
-									title="ចែករំលែកបន្តនូវអត្ថបទមួយនេះ"></span></a>
-							</div>
-						</div>
-					</div>
-					<!-- end col -->
-
-					<div class="owl-featured">
-						<div class="shop-item-list entry">
-							<div class="">
-								<img
-									src="${pageContext.request.contextPath}/resources/static/front-end/upload/course_04.png"
-									alt="">
-								<div class="magnifier"></div>
-							</div>
-							<div class="shop-item-title clearfix">
-								<h4>
-									<a href="course-single.html">WordPress Blogging, Tumblr and
-										Blogger</a>
-								</h4>
-								<div class="shopmeta">
-									<span class="pull-left">12 views</span>
-									<div class="pull-right">
-										<span class="pull-left"><i
-											class="fa fa-thumbs-o-up text-primary"></i>102 Likes</span>
-									</div>
-								</div>
-								<!-- end shop-meta -->
-							</div>
-							<div class="visible-buttons">
-								<a href="#"><span class="fa fa-eye" title="ចូលមើលអត្ថបទនេះ"></span></a>
-								<a href="#"><span class="fa fa-share"
-									title="ចែករំលែកបន្តនូវអត្ថបទមួយនេះ"></span></a>
-							</div>
-						</div>
-					</div> --%>
 			</div>
+			</section>
 	</div>
-	</section>
+	
 	<!-- end section -->
 	<!-- including footer from include/front-end/footer-include.jsp -->
 	<jsp:include page="../include/front-end/footer-include.jsp"></jsp:include>
@@ -485,7 +331,6 @@
 		<!-- end container -->
 	</section>
 	<!-- end section -->
-	</div>
 	<!-- end wrapper -->
 	<!-- including js from include/front-end/js-include.jsp -->
 	<jsp:include page="../include/front-end/js-include.jsp"></jsp:include>
