@@ -25,7 +25,7 @@ var app = angular.module('commentList', ["datatables"]);
 
 			$scope.list = function(){
 				$http({
-				url: 'http://localhost:8080/rest/comment',
+				url: '/rest/comment',
 				method: 'GET'
 			}).then(function(repsonse){
 				// console.log(repsonse);

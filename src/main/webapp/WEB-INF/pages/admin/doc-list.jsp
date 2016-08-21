@@ -76,7 +76,7 @@
 											<div class="media">
 												<div class="media-left avatar">
 													<img
-														src="http://localhost:9999{{ d.THUMBNAIL }}"
+														src="{{ urls }}{{ d.THUMBNAIL }}"
 														alt="" class="media-object" width="150" height="100"><span
 														class="status bg-success"></span>
 												</div>

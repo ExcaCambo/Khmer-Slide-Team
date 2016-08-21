@@ -23,7 +23,7 @@ var app = angular.module('documentList', ["datatables"]);
 
 			$scope.list = function(){
 				$http({
-				url: 'http://localhost:8080/rest/document',
+				url: '/rest/document',
 				method: 'GET'
 			}).then(function(repsonse){
 				//console.log(repsonse);

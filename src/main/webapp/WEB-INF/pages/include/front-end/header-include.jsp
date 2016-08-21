@@ -11,7 +11,7 @@
 							class="fa fa-bars"></span>
 					</button>
 					<div class="logo">
-						<a class="navbar-brand" href="index.html"><img
+						<a class="navbar-brand" href="/index.ks"><img
 							src="${pageContext.request.contextPath}/resources/static/front-end/img/Orange_view logo_50.png"
 							alt=""></a>
 					</div>
@@ -28,7 +28,7 @@
 				</form>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="index"><i class="fa fa-home"></i>ទំព័រដើម</a></li>
+						<li><a href="/index.ks"><i class="fa fa-home"></i>ទំព័រដើម</a></li>
 						<li class="dropdown ttmenu-half"><a href="index9.html#"
 							data-toggle="dropdown" class="dropdown-toggle"><i
 								class="fa fa-list-ul"></i> មីនុយ <b class="fa fa-angle-down"></b></a>
@@ -39,7 +39,7 @@
 											<div class="col-md-6" data-ng-repeat="c in category">
 												<div class="box">
 													<ul>
-														<li><a href="/category/search-category">{{ c.CAT_NAME }}</a></li>
+														<li><a href="/category/?cat={{ c.CAT_ID }}">{{ c.CAT_NAME }}</a></li>
 													</ul>
 												</div>
 												<!-- end box -->

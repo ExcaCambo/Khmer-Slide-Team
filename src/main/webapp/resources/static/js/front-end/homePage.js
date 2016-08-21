@@ -1,16 +1,36 @@
 var app = angular.module('homePage', []);
 
+//========================== function get param from url==========================================
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
 //create controller
 app.controller('viewCtrl', function ($scope, $http, $filter, $location, $sce) {
 	$scope.document = '';
+	$scope.cat ='';
+	$scope.limit = 6;
+//	$scope.thumb = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+	$scope.thumb = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
+	
+
 	
 //	=================================View Document Function=================================
 	$scope.docId = function(id) {
 		$http({
-			url : 'http://localhost:8080/rest/document/' + id + '',
+			url : '/rest/document/' + id + '',
 			method : 'GET'
 		}).then(function(response) {
-			console.log(response);
+		//	console.log(response);
 			$scope.document = response.data.DATA[0];
 			$scope.txtTitle = $scope.document.DOC_TITLE;
 			$scope.docUrl = $scope.document.URL;
@@ -23,6 +43,8 @@ app.controller('viewCtrl', function ($scope, $http, $filter, $location, $sce) {
 			
 			$scope.uploadBy = $scope.document.USER.USER_NAME;
 			$scope.uploaderPhoto = $scope.document.USER.PHOTO;
+			$scope.cat = $scope.document.CATEGORY.CAT_ID;
+			
 			if($scope.docType==1){
 				$scope.urls = $sce.trustAsResourceUrl("https://docs.google.com/presentation/d/"+ $scope.docUrl +"/embed?start=true&loop=true&delayms=30000");
 			}else if($scope.docType==2){
@@ -30,6 +52,8 @@ app.controller('viewCtrl', function ($scope, $http, $filter, $location, $sce) {
 			}else if($scope.docType==3){
 				$scope.urls = $sce.trustAsResourceUrl("https://docs.google.com/document/d/"+ $scope.docUrl +"/preview");
 			}
+//			category =$scope.cat;
+//			alert(category);
 			
 //			$scope.ddlStatus = $scope.user.STATUS + '';
 //			$scope.ddlGender = $scope.user.GENDER;
@@ -42,28 +66,139 @@ app.controller('viewCtrl', function ($scope, $http, $filter, $location, $sce) {
 	}	
 	
 	// Get Path Variable from URL
-	var url = $location.absUrl();
-	var doc = url.substr(url.lastIndexOf("=") + 1);
+//	var url = $location.absUrl();
+	var doc = getUrlVars()["doc"];
 	$scope.docId(doc);
+	
 	
 	//$scope.test = "https://docs.google.com/presentation/d/"+ $scope.docUrl +"/embed?start=true&loop=true&delayms=30000";
 	
+//	=================================Recommend Document Function=================================
+	var limit = $scope.limit;
+	var formData = new FormData();
+	formData.append('item', limit);
+	//var category = $scope.cat;
+	$scope.recom = '';
+	$scope.recommend = function(id) {
+		//alert(limit);
+		$http({
+			url : '/rest/document/recomment/' + id + '',
+			method : 'GET',
+			enctype : 'multipart/form-data',
+		}).then(function(response) {
+			//console.log(response);
+			$scope.recom = response.data.DATA;
 
-    
-//    urls.push({domain: });
+			
+		}, function() {
+
+		});
+	}	
+	// Get Path Variable from URL
+//	var urlCat = $location.absUrl();
+	var cat = getUrlVars()["cat"];;
+	$scope.recommend(cat);
+
+	//=================================Update Number View of Document Function=================================
+	
+	var doc = getUrlVars()["doc"];
+	$scope.doc_id = doc;
+	$scope.submit = function() {
+		//alert($scope.view);
+		$http({
+			url : '/rest/document/udpate-document/view',
+			data : {
+				"doc_id": $scope.doc_id,
+				 "viewed": $scope.view + 1
+			},
+			method : 'PUT'
+		}).then(function(response) {
+		//	console.log(response);
+			$scope.docId(doc);
+		}, function() {
+		});
+	}
+
     
     
 	
 });
 
-	//create controller
+//create controller
+app.controller('documentByCatCtrl', function ($scope, $http, $filter, $location, $sce) {
+	$scope.document = '';
+	$scope.limit = 6;
+//	$scope.thumb = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+	$scope.thumb = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
+	
+
+	
+//	=================================Get Document By CATEGORY ID Function=================================
+	$scope.catId = function(id) {
+		$http({
+			url : '/rest/document/by-cat-id/' + id + '',
+			method : 'GET'
+		}).then(function(response) {
+		//	console.log(response);
+			$scope.document = response.data.DATA;
+			
+		}, function() {
+
+		});
+	}	
+	
+	// Get Path Variable from URL
+//	var url = $location.absUrl();
+	var cat = getUrlVars()["cat"];
+	$scope.catId(cat);
+	
+	
+	//$scope.test = "https://docs.google.com/presentation/d/"+ $scope.docUrl +"/embed?start=true&loop=true&delayms=30000";
+	
+//	=================================Recommend Document Function=================================
+//	var limit = $scope.limit;
+//	var formData = new FormData();
+//	formData.append('item', limit);
+//	//var category = $scope.cat;
+//	$scope.recom = '';
+//	$scope.recommend = function(id) {
+//		alert(limit);
+//		$http({
+//			url : '/rest/document/recomment/' + id + '',
+//			method : 'GET',
+//			enctype : 'multipart/form-data',
+//		}).then(function(response) {
+//			//console.log(response);
+//			$scope.recom = response.data.DATA;
+//
+//			
+//		}, function() {
+//
+//		});
+//	}	
+//	// Get Path Variable from URL
+////	var urlCat = $location.absUrl();
+//	var cat = getUrlVars()["cat"];;
+//	$scope.recommend(cat);
+
+
+    
+    
+	
+});
+
+
+
+	//==============================create category controller of Home Page===========================================
 	app.controller('categoryCtrl', function ($scope, $http, $filter) {
 		$scope.category = '';
+
 		
+
 //	 	=================================List of Category=================================
 			$scope.list = function(){
 				$http({
-				url: 'http://localhost:8080/rest/category/get-main-category/',
+				url: '/rest/category/get-main-category/',
 				method: 'GET'
 			}).then(function(repsonse){
 				// console.log(repsonse);
@@ -88,8 +223,9 @@ app.controller('viewCtrl', function ($scope, $http, $filter, $location, $sce) {
             scope.initCarousel = function(element) {
               // provide any default options you want
                 var defaultOptions = {
+//                		loop:true,
 //                		autoplay: true,
-//                        autoplayTimeout:5000,
+//                        autoplayTimeout:1000,
                 		responsive:{
                             0:{
                                 items:1,
@@ -133,15 +269,62 @@ app.controller('viewCtrl', function ($scope, $http, $filter, $location, $sce) {
 }]);
 	
 	
-	//create controller
-	app.controller('documentCtrl', function ($scope, $http, $filter) {
-		$scope.popularDocument = '';
+	//==============================create category controller of Category Page===========================================
+	app.controller('catCtrl', function ($scope, $http, $filter) {
+		$scope.category = '';
+
 		
+//	 	=================================Get Category By ID=================================
+		$scope.catID = function(id){
+			$http({
+			url: '/rest/category/'+ id +'',
+			method: 'GET'
+		}).then(function(repsonse){
+			// console.log(repsonse);
+			$scope.category=repsonse.data.DATA[0];
+			$scope.txtMainCategory = $scope.category.CAT_NAME;
+		 
+		}, function(){
+
+		});
+		}
+
+//	 	=================================Get Sub Category By Parent ID=================================
+		$scope.subCategory = '';
+		$scope.subID = function(id){
+			$http({
+			url: '/rest/category/category-by-parent-id/'+ id +'',
+			method: 'GET'
+		}).then(function(repsonse){
+			 console.log(repsonse);
+			$scope.subCategory=repsonse.data.DATA;
+			//$scope.txtSubCategory = $scope.subCategory.CAT_NAME;
+		 
+		}, function(){
+
+		});
+		}
+		
+		
+		var cat = getUrlVars()["cat"];
+		$scope.catID(cat);
+		$scope.subID(cat);
+		
+			
+
+});
+	
+	
+	//create controller
+	app.controller('documentCtrl', function ($scope, $http, $filter, $sce) {
+		$scope.popularDocument = '';
+//		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
 		
 //	 	=================================List of Popular Document=================================
 			$scope.docPopularList = function(){
 				$http({
-				url: 'http://localhost:8080/rest/document/popular/',
+				url: '/rest/document/popular/',
 				method: 'GET'
 			}).then(function(repsonse){
 				 //console.log(repsonse);
@@ -152,6 +335,8 @@ app.controller('viewCtrl', function ($scope, $http, $filter, $location, $sce) {
 			}
 
 			$scope.docPopularList();
+
+
 			
 
 }).directive("owlCarouselDoc", function() {
@@ -207,13 +392,15 @@ app.controller('viewCtrl', function ($scope, $http, $filter, $location, $sce) {
 }]);
 	
 	//create controller
-	app.controller('latestDocumentCtrl', function ($scope, $http, $filter) {	
+	app.controller('latestDocumentCtrl', function ($scope, $http, $filter, $sce) {	
 		$scope.latestDocument = '';
+//		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
 	
 // 	=================================List of Latest Document=================================
 	$scope.docLatestList = function(){
 		$http({
-		url: 'http://localhost:8080/rest/document/latest/',
+		url: '/rest/document/latest/',
 		method: 'GET'
 	}).then(function(repsonse){
 		 //console.log(repsonse);
@@ -277,5 +464,80 @@ link: function(scope, element) {
 }
 };
 }]);
+	
+	
+	//create controller
+	app.controller('commentCtrl', function ($scope, $http, $filter, $location, $sce) {
+		$scope.comment = '';
+		$scope.cat ='';
+//		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
+		
+		
+//		========================== function get param from url==========================================
+		function getUrlVars()
+		{
+		    var vars = [], hash;
+		    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+		    for(var i = 0; i < hashes.length; i++)
+		    {
+		        hash = hashes[i].split('=');
+		        vars.push(hash[0]);
+		        vars[hash[0]] = hash[1];
+		    }
+		    return vars;
+		}
+		
+//		=================================Get Comment Function=================================
+		$scope.commentId = function(id) {
+			$http({
+				url : '/rest/comment/by-document/' + id + '',
+				method : 'GET'
+			}).then(function(response) {
+				//console.log(response);
+				$scope.comment = response.data.DATA;
+				
+			}, function() {
+
+			});
+		}	
+		
+		// Get Path Variable from URL
+//		var url = $location.absUrl();
+		var com = getUrlVars()["doc"];;
+		$scope.commentId(com);
+		
+		
+		//$scope.test = "https://docs.google.com/presentation/d/"+ $scope.docUrl +"/embed?start=true&loop=true&delayms=30000";
+		
+//		=================================Comment Document Function=================================
+//		var urlCat = $location.absUrl();
+		var doc = getUrlVars()["doc"];
+		$scope.doc = doc;
+		$scope.date = $filter('date')(new Date(), 'dd-MMM-yyyy');
+		$scope.insertComment = function() {
+			$http({
+//				 url : 'http://192.168.178.152:9999/api/docs/add-ducument',
+				url : "/rest/comment",
+				data : {
+					  "cmt_text": $scope.txtComment,
+					  "cmt_date": $scope.date,
+					  "status": 1,
+					  "user_id": 2,
+					  "doc_id": $scope.doc,
+					  "description": $scope.txtComment
+				},
+				method : 'POST',
+			}).then(function(response) {
+			//	console.log(response.data);
+				$scope.txtComment = '';
+				$scope.commentId(doc);
+
+			}, function() {
+
+			});
+		}   
+		
+	});
 
 	

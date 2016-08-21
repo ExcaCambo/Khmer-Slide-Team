@@ -14,7 +14,7 @@ var app = angular.module('viewPage', []);
 		$scope.docId = function(id) {
 			alert(id);
 			$http({
-				url : 'http://localhost:8080/rest/document/' + id + '',
+				url : '/rest/document/' + id + '',
 				method : 'GET'
 			}).then(function(response) {
 				console.log(response);

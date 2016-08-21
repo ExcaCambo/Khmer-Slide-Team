@@ -7,6 +7,8 @@
   	<jsp:include page="../include/admin/css-include.jsp"></jsp:include>
     <%-- <%@ include file="../include/css-include.jsp" %> --%>
   </head>
+  <sec:authorize access="isAuthenticated()">	
+						
   <body data-sidebar-color="sidebar-light" class="sidebar-light">
     <!-- Header start-->
     <header>
@@ -288,4 +290,5 @@
 	<!-- including js from include/admin/js-include.jsp -->
 	<jsp:include page="../include/admin/dashboard-js-include.jsp"></jsp:include>
   </body>
+  </sec:authorize>
 </html>

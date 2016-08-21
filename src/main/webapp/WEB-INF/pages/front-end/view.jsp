@@ -26,7 +26,7 @@
 						<div class="course-description">
 							<div class="blog-image">
 								<div
-									class='embed-container embed-responsive embed-responsive-4by3'>
+									class='embed-responsive embed-responsive-4by3'>
 									<iframe
 										data-ng-src="{{ urls }}"
 										frameborder="0"
@@ -105,7 +105,7 @@
 									aria-expanded="false" aria-controls="collapseExample">
 									មតិយោបល់របស់អ្នកប្រើប្រាស់?</a>
 							</p>
-							<div class="collapse" id="collapseExample">
+							<div class="collapse" id="collapseExample" data-ng-controller="commentCtrl">
 								<div class="well">
 									<div class="media">
 										<div class="media-left">
@@ -118,82 +118,26 @@
 										<div class="media-body">
 											<h4 class="media-heading">John DOE</h4>
 											<div class="form-group">
-												<textarea id="txtDescription" name="txtDescription"
-													class="form-control" placeholder="បញ្ចេញយោបល់..."></textarea>
+												<textarea id="txtComment" name="txtComment" data-ng-model="txtComment"
+													class="form-control" placeholder="បញ្ចេញយោបល់..." data-ng-keypress="($event.which === 13)?insertComment():0"></textarea>
 											</div>
 										</div>
 									</div>
-									<div class="media">
+									<div class="media" data-ng-repeat="com in comment">
 										<div class="media-left">
 											<a href="page-shop-single.html#"> <img
 												class="media-object"
-												src="${pageContext.request.contextPath}/resources/static/img/upload/student_01.png"
+												src="{{ thumb }}{{ com.USER.PHOTO }}"
 												alt="Generic placeholder image">
 											</a>
 										</div>
 										<div class="media-body">
-											<h4 class="media-heading">John DOE</h4>
+											<h4 class="media-heading">{{ com.USER.USER_NAME }}</h4>
 											<div class="rating">
-												<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-													class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-													class="fa fa-star-o"></i>
+												<h5>កាលបរិច្ឆេទបញ្ចូល: {{ com.CMT_DATE }}</h5>
 											</div>
 											<!-- end rating -->
-											<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-												metus scelerisque ante sollicitudin commodo. Cras purus
-												odio, vestibulum in vulputate at, tempus viverra turpis.
-												Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-												lacinia congue felis in faucibus.</p>
-										</div>
-									</div>
-									<!-- end media -->
-
-									<div class="media">
-										<div class="media-left">
-											<a href="page-shop-single.html#"> <img
-												class="media-object"
-												src="${pageContext.request.contextPath}/resources/static/img/upload/student_02.png"
-												alt="Generic placeholder image">
-											</a>
-										</div>
-										<div class="media-body">
-											<h4 class="media-heading">Amanda FOXOE</h4>
-											<div class="rating">
-												<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-													class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-													class="fa fa-star-o"></i>
-											</div>
-											<!-- end rating -->
-											<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-												metus scelerisque ante sollicitudin commodo. Cras purus
-												odio, vestibulum in vulputate at, tempus viverra turpis.
-												Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-												lacinia congue felis in faucibus.</p>
-										</div>
-									</div>
-									<!-- end media -->
-
-									<div class="media">
-										<div class="media-left">
-											<a href="page-shop-single.html#"> <img
-												class="media-object"
-												src="${pageContext.request.contextPath}/resources/static/img/upload/student_03.png"
-												alt="Generic placeholder image">
-											</a>
-										</div>
-										<div class="media-body">
-											<h4 class="media-heading">Mark BOBS</h4>
-											<div class="rating">
-												<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-													class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-													class="fa fa-star"></i>
-											</div>
-											<!-- end rating -->
-											<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-												metus scelerisque ante sollicitudin commodo. Cras purus
-												odio, vestibulum in vulputate at, tempus viverra turpis.
-												Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-												lacinia congue felis in faucibus.</p>
+											<p>{{ com.CMT_TEXT }}</p>
 										</div>
 									</div>
 									<!-- end media -->
@@ -206,7 +150,7 @@
 					</div>
 					<!-- end col -->
 
-					<div id="course-left-sidebar" class="col-md-4">
+					<div id="course-left-sidebar" class="col-md-4" data-ng-controller="viewCtrl">
 						<div class="widget">
 							<!-- <div class="widget-title"> -->
 							<h4 style="margin-top: 0px; line-height: 0.8 !important;">អត្ថបទស្រដៀង:</h4>
@@ -214,66 +158,24 @@
 							<div class="course-table">
 								<table class="table" id="doc-table">
 									<thead>
-										<!-- 									<tr>
-										<th>Type</th>
-									</tr> -->
 									</thead>
 									<tbody>
-										<tr>
+										<tr data-ng-repeat="r in recom">
 											<td>
 												<div class="media-left">
-													<a href="../view"> <img
-														src="${pageContext.request.contextPath}/resources/static/img/thumbnails/course_01.png"
+													<a href="/view/?doc={{ r.DOC_ID }}&cat={{ r.CATEGORY.CAT_ID }}" title="{{r.DOC_TITLE}}"> <img
+														src="{{ thumb }}{{ r.THUMBNAIL }}"
 														alt="" class="media-object" width="150" height="100">
 													</a>
 												</div>
 												<div class="media-body">
 													<h5 class="media-heading">
-														ភាសា Java
+														{{ r.DOC_TITLE }}
 														<button class="btn btn-outline btn-rounded bg-danger">
 															<i class="fa fa-file-powerpoint-o text-white"></i>
 														</button>
 													</h5>
-													<p class="text-muted mb-0">បញ្ចូលដោយ: ណែម សុធា</p>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="media-left">
-													<a href="#"> <img
-														src="${pageContext.request.contextPath}/resources/static/img/thumbnails/course_02.png"
-														alt="" class="media-object" width="150" height="100">
-													</a>
-												</div>
-												<div class="media-body">
-													<h5 class="media-heading">
-														ភាសា Java
-														<button class="btn btn-outline btn-rounded bg-danger">
-															<i class="fa fa-file-powerpoint-o text-white"></i>
-														</button>
-													</h5>
-													<p class="text-muted mb-0">បញ្ចូលដោយ: ណែម សុធា</p>
-												</div>
-											</td>
-										</tr>
-										<tr>
-										<tr>
-											<td>
-												<div class="media-left">
-													<a href="#"> <img
-														src="${pageContext.request.contextPath}/resources/static/img/thumbnails/course_02.png"
-														alt="" class="media-object" width="150" height="100">
-													</a>
-												</div>
-												<div class="media-body">
-													<h5 class="media-heading">
-														ភាសា Java
-														<button class="btn btn-outline btn-rounded bg-danger">
-															<i class="fa fa-file-powerpoint-o text-white"></i>
-														</button>
-													</h5>
-													<p class="text-muted mb-0">បញ្ចូលដោយ: ណែម សុធា</p>
+													<p class="text-muted mb-0">បញ្ចូលដោយ: {{ r.USER.USER_NAME }}</p>
 												</div>
 											</td>
 										</tr>
@@ -285,7 +187,7 @@
 
 							<div id="reviews" class="feedbacks">
 								<p>
-									<a class="btn btn-default btn-block" role="button" href="#"><i
+									<a type="button" class="btn btn-default btn-block" role="button" data-ng-click="requestMore(15)"><i
 										class="fa fa-refresh"></i> ទាញបន្ថែម</a>
 								</p>
 							</div>

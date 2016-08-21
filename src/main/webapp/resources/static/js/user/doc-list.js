@@ -2,15 +2,24 @@ var app = angular.module('documentList', [ "datatables" ]);
 
 // create controller
 app.controller('documentListCtrl', function($scope, $filter, $http,
-		DTOptionsBuilder) {
+		DTOptionsBuilder, $sce) {
 	$scope.document = '';
 	$scope.FILE_URL = '';
+//	$scope.urls = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+	$scope.urls = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
 	$scope.submitForm = function() {
 
 		// check to make sure the form is completely valid
 		if ($scope.insertForm.$valid) {
-			swal("បញ្ចូលទិន្នន័យ!", "ទិន្នន័យត្រូវបានបញ្ចូលបានសម្រាច់",
-					"success");
+//			swal({
+//                title: "បញ្ចូលទិន្នន័យ!",
+//                text:  "ទិន្នន័យត្រូវបានបញ្ចូលបានសម្រាច់",
+//                type: "success",
+//                timer: 3000,
+//                showConfirmButton: false
+//            });
+//        window.setTimeout(function(){ } ,3000);
+		//	$scope.insertDoc();
 			location.reload();
 			// $scope.insert();
 		}
@@ -36,7 +45,7 @@ app.controller('documentListCtrl', function($scope, $filter, $http,
 
 	$scope.list = function() {
 		$http({
-			url : 'http://localhost:8080/rest/document',
+			url : '/rest/document',
 			method : 'GET'
 		}).then(function(repsonse) {
 			// console.log(repsonse);
@@ -63,7 +72,8 @@ app.controller('documentListCtrl', function($scope, $filter, $http,
 		formData.append('category', ddlCategories);
 		 $.ajaxSetup({
 			 	globle: false,
-				url : "http://localhost:9999/api/docs/add-ducument/file",
+//				url : "http://192.168.178.152:9999/api/docs/add-ducument/file",
+			 	url : "http://192.168.1.104:9999/api/docs/add-ducument/file",
 				type : "POST",
 				enctype : 'multipart/form-data',
 	            beforeSend: function (xhr) {
@@ -117,7 +127,8 @@ app.controller('documentListCtrl', function($scope, $filter, $http,
 		formData.append('img', $("#input-10")[0].files[0]);
 		 $.ajaxSetup({
 			 	globle: false,
-				url : "http://localhost:9999/api/docs/add-ducument/thumbnail",
+//				url : "http://192.168.178.152:9999/api/docs/add-ducument/thumbnail",
+			 	url : "http://192.168.1.104:9999/api/docs/add-ducument/thumbnail",
 				type : "POST",
 				enctype : 'multipart/form-data',
 	            beforeSend: function (xhr) {
@@ -193,11 +204,14 @@ app.controller('documentListCtrl', function($scope, $filter, $http,
 	}
 	// end document type
 
-	$scope.txtUploadBy = 1;
+	$scope.txtUploadBy = 3;
 	$scope.date = $filter('date')(new Date(), 'dd-MMM-yyyy');
 	$scope.insertDoc = function() {
+		alert($scope.txtUploadBy);
 		$http({
-			 url : 'http://localhost:9999/api/docs/add-ducument',
+//			 url : 'http://192.168.178.152:9999/api/docs/add-ducument',
+			url : "http://192.168.1.104:9999/api/docs/add-ducument",
+			
 			data : {
 				"doc_title" : $scope.txtTitle,
 				"uploaded_date" : $scope.date,

@@ -35,7 +35,7 @@
 
                             <ul class="popular-courses" data-ng-controller="documentCtrl">
                                 <li data-ng-repeat="dp in popularDocument" data-ng-if="$index<12">
-                                    <a href="/view/doc={{ dp.DOC_ID }}"" title=""><img class="img-thumbnail" src="http://localhost:9999{{ dp.THUMBNAIL }}" alt="" title="{{ dp.DOC_TITLE }}"></a>
+                                    <a href="/view/doc={{ dp.DOC_ID }}"" title=""><img class="img-thumbnail" src="{{ thumb }}{{ dp.THUMBNAIL }}" alt="" title="{{ dp.DOC_TITLE }}"></a>
                                 </li>
                             </ul>
                         </div><!-- end widget -->

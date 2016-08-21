@@ -12,7 +12,7 @@
 
 			$scope.list = function(){
 				$http({
-				url: 'http://localhost:8080/rest/user-type',
+				url: '/rest/user-type',
 				method: 'GET'
 			}).then(function(repsonse){
 				// console.log(repsonse);

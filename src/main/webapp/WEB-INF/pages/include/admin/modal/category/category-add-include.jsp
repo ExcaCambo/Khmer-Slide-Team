@@ -12,7 +12,7 @@
 						<span aria-hidden="true"><i class="ti-close"></i></span>
 					</button>
 					<h3 id="myAnimationModalLabel"
-						class="modal-title text-primary text-center">បញ្ចូលមីនុយថ្មី្មី</h3>
+						class="modal-title text-primary text-center">បញ្ចូលមីនុយថ្មី្ម</h3>
 				</div>
 				<div class="modal-body">
 					<div class="row">
@@ -26,7 +26,7 @@
 													class="text-danger"> *</label> <input id="txtCatName"
 													type="text" name="txtCatName" ng-model="txtCatName"
 													placeholder="Enter category name" data-rule-required="true"
-													data-rule-rangelength="[3,30]" class="form-control">
+													data-rule-rangelength="[3,100]" class="form-control">
 											</div>
 											<div class="form-group">
 												<label for="ddlCategory">ស្ថិតក្រោមមីនុយ</label> <select
@@ -37,84 +37,65 @@
 											</div>
 											<div class="form-group">
 												<label for="ddlIcon">អាយខុនតំណាង</label>
-<label class="text-danger"> *</label>
-<select id="ddlIcon" name="ddlIcon" data-rule-required="true" ng-model="ddlIcon"
-	class="form-control" style="font-family:'FontAwesome', Arial;">
-	<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
-	<option value="fa fa-car">&#xf1b9; រថយន្ត
-	</option>
-	<option value="fa fa-balance-scale">&#xf24e; ជញ្ចីញ
-	</option>
-	<option value="fa fa-university">&#xf19c; សកលវិទ្យាល័យ
-	</option>
-	<option value="fa fa-bar-chart">&#xf080; ស្ថិតិ
-	</option>
-	<option value="fa fa-book" data-icon="fa-book">&#xf02d; សៀវភៅ
-	</option>
-	<option value="fa fa-briefcase"><span class="fa fa-briefcase"
-			aria-hidden="true"></span> កាតាប
-	</option>
-	<option value="fa fa-building" class="fa fa-building"><i 
-			aria-hidden="true"></i> អគារ
-	</option>
-	<option value="fa fa-calculator"><i class="fa fa-calculator"
-			aria-hidden="true"></i> ម៉ាសីុនគិតលេខ
-	</option>
-	<option value="fa fa-calendar"><i class="fa fa-calendar"
-			aria-hidden="true"></i> ប្រតិទិន
-	</option>
-	<option value="fa fa-camera"><i class="fa fa-camera"
-			aria-hidden="true"></i> ម៉ាសីុនថតរូប
-	</option>
-	<option value="fa fa-code"><i class="fa fa-code"
-			aria-hidden="true"></i> កូដ
-	</option>
-	<option value="fa fa-credit-card-alt"><i
-			class="fa fa-credit-card-alt" aria-hidden="true"></i> កាតក្រេឌីត
-	</option>
-	<option value="fa fa-database"><i class="fa fa-database"
-			aria-hidden="true"></i> ដែតាបែស
-	</option>
-	<option value="fa fa-desktop"><i class="fa fa-desktop"
-			aria-hidden="true"></i> ដែសថប
-	</option>
-	<option value="fa fa-flask"><i class="fa fa-flask"
-			aria-hidden="true"></i> គីមី
-	</option>
-	<option value="fa fa-film"><i class="fa fa-film"
-			aria-hidden="true"></i> វីដេអូ
-	</option>
-	<option value="fa fa-picture-o"><i class="fa fa-picture-o"
-			aria-hidden="true"></i> រូបភាព
-	</option>
-	<option value="fa fa-industry"><i class="fa fa-industry"
-			aria-hidden="true"></i> រោងចក្រ
-	</option>
-	<option value="fa fa-language"><i class="fa fa-language"
-			aria-hidden="true"></i> ភាសា
-	</option>
-	<option value="fa fa-money"><i class="fa fa-money"
-			aria-hidden="true"></i> លុយ
-	</option>
-	<option value="fa fa-newspaper-o"><i class="fa fa-newspaper-o"
-			aria-hidden="true"></i> កាសែត
-	</option>
-	<option value="a fa-recycle"><i class="fa fa-recycle"
-			aria-hidden="true"></i> បរិស្ថាន
-	</option>
-	<option value="fa fa-server"><i class="fa fa-server"
-			aria-hidden="true"></i> ម៉ាសីុនសឺវឺ
-	</option>
-	<option value="fa fa-server"><i class="fa fa-server"
-			aria-hidden="true"></i> ណេតវឺក
-	</option>
-	<option value="fa fa-futbol-o"><i class="fa fa-futbol-o"
-			aria-hidden="true"></i> កីឡា
-	</option>
-	<option value="fa fa-heartbeat"><i class="fa fa-heartbeat"
-			aria-hidden="true"></i> សុខភាព
-	</option>
-</select>
+												<label class="text-danger"> *</label>
+												<select id="ddlIcon" name="ddlIcon" data-rule-required="true" ng-model="ddlIcon"
+													class="form-control" style="font-family:'FontAwesome', Arial;">
+													<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
+													<option value="fa fa-car">&#xf1b9; រថយន្ត
+													</option>
+													<option value="fa fa-balance-scale">&#xf24e; ជញ្ចីញ
+													</option>
+													<option value="fa fa-university">&#xf19c; សកលវិទ្យាល័យ
+													</option>
+													<option value="fa fa-bar-chart">&#xf080; ស្ថិតិ
+													</option>
+													<option value="fa fa-book" data-icon="fa-book">&#xf02d; សៀវភៅ
+													</option>
+													<option value="fa fa-briefcase">&#xf0b1; កាតាប
+													</option>
+													<option value="fa fa-building" class="fa fa-building">&#xf19c; អគារ
+													</option>
+													<option value="fa fa-calculator">&#xf1ec; ម៉ាសីុនគិតលេខ
+													</option>
+													<option value="fa fa-calendar">&#xf073; ប្រតិទិន
+													</option>
+													<option value="fa fa-camera">&#xf083; ម៉ាសីុនថតរូប
+													</option>
+													<option value="fa fa-code">&#xf121; កូដ
+													</option>
+													<option value="fa fa-credit-card-alt">&#xf1f0; កាតក្រេឌីត
+													</option>
+													<option value="fa fa-database">&#xf1c0; ដែតាបែស
+													</option>
+													<option value="fa fa-desktop">&#xf108; កុំព្យូទ័រ
+													</option>
+													<option value="fa fa-flask">&#xf0c3; គីមី
+													</option>
+													<option value="fa fa-film">&#xf008; វីដេអូ
+													</option>
+													<option value="fa fa-picture-o">&#xf03e; រូបភាព
+													</option>
+													<option value="fa fa-industry">&#xf275; រោងចក្រ
+													</option>
+													<option value="fa fa-language">&#xf1ab; ភាសា
+													</option>
+													<option value="fa fa-money">&#xf0d6; លុយ
+													</option>
+													<option value="fa fa-newspaper-o">&#xf1ea; កាសែត
+													</option>
+													<option value="fa fa-recycle">&#xf1b8; បរិស្ថាន
+													</option>
+													<option value="fa fa-server">&#xf233; ម៉ាសីុនសឺវឺ
+													</option>
+													<option value="fa fa-server">&#xf233; ណេតវឺក
+													</option>
+													<option value="fa fa-futbol-o">&#xf1e3; កីឡា
+													</option>
+													<option value="fa fa-heartbeat">&#xf21e; សុខភាព
+													</option>
+													<option value="fa fa-users">&#xf0c0; សង្គម
+													</option>
+												</select>
 											</div>
 											<div class="form-group">
 												<textarea id="txtDescription" name="txtDescription"

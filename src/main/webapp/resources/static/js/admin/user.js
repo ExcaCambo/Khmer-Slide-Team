@@ -2,14 +2,22 @@ var app = angular.module('userList', [ "datatables" ]);
 
 // create controller
 app.controller('userListCtrl', function($scope, $filter, $http,
-		DTOptionsBuilder, $location) {
+		DTOptionsBuilder, $location, $sce) {
 	$scope.user = '';
+//	$scope.urls = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+	$scope.urls = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
 	$scope.submitForm = function() {
 
 		// check to make sure the form is completely valid
 		if ($scope.insertForm.$valid) {
-			swal("បញ្ចូលទិន្នន័យ!", "ទិន្នន័យត្រូវបានបញ្ចូលបានសម្រាច់",
-					"success");
+			swal({
+              title: "បញ្ចូលទិន្នន័យ",
+              text:  "ទិន្នន័យត្រូវបានបញ្ចូលបានសម្រាច់",
+              type: "success",
+              timer: 3000,
+              showConfirmButton: false
+          });
+      window.setTimeout(function(){ } ,3000);
 			// $scope.insert();
 		}
 
@@ -34,7 +42,7 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 
 	$scope.list = function() {
 		$http({
-			url : 'http://localhost:8080/rest/user',
+			url : '/rest/user',
 			method : 'GET'
 		}).then(function(repsonse) {
 			// console.log(repsonse);
@@ -51,11 +59,11 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 		$scope.usertype = roleId;
 	}
 	$scope.status = 1;
-	$scope.photo = "default-user-image.png";
+	$scope.photo = "/resources/static/img/users/default-user-image.png";
 	$scope.date = $filter('date')(new Date(), 'dd-MMM-yyyy');
 	$scope.insert = function() {
 		$http({
-			url : 'http://localhost:8080/rest/user',
+			url : '/rest/user',
 			data : {
 				"user_name" : $scope.txtName,
 				"gender" : $scope.ddlGender,
@@ -76,7 +84,15 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 			$scope.txtConfirmPassword = '';
 			$scope.list();
 		}, function() {
-
+			swal({
+				  title: "បរាជ័យ",
+				  text: "សូមអភ័យទិន្នន័យដែលលោកអ្នកព្យាយាមបញ្ចូលគឺមិនបានជោគជ័យទេ, សូមទំនាក់ទំនងទៅកាន់ក្រុមវិស្វករជំនាញ",
+				  type: "warning",
+				  timer: 3000,
+				  showCancelButton: false,
+				  closeOnConfirm: false
+				});
+				window.setTimeout(function(){ } ,3000);
 		});
 	}
 
@@ -84,7 +100,7 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 //	=================================Edit User Function=================================
 	$scope.update = function(id) {
 		$http({
-			url : 'http://localhost:8080/rest/user/' + id + '',
+			url : '/rest/user/' + id + '',
 			method : 'GET'
 		}).then(function(response) {
 			$scope.user = response.data.DATA[0];
@@ -96,7 +112,7 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 			$scope.ddlRole = $scope.user.ROLE.ROLE_ID + '';
 			
 		}, function() {
-
+			
 		});
 	}
 	// Get Path Variable from URL
@@ -106,7 +122,7 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 
 	$scope.submit = function() {
 		$http({
-			url : 'http://localhost:8080/rest/user/',
+			url : '/rest/user/',
 			data : {
 				"user_id" : $scope.USER_ID,
 				"user_name" : $scope.txtName,
@@ -119,10 +135,26 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 			method : 'PUT'
 		}).then(function(response) {
 			console.log(response);
-			swal("កំណែប្រែ!", "ទិន្នន័យត្រូវបានកែប្រែបានសម្រាច់", "success");
+			swal({
+	              title: "កំណែប្រែទិន្នន័យ",
+	              text:  "ទិន្នន័យត្រូវបានកែប្រែបានសម្រាច់",
+	              type: "success",
+	              timer: 3000,
+	              showConfirmButton: false
+	          });
+			window.setTimeout(function(){ } ,3000);
 			window.location.href = "/admin/user-list";
 		}, function() {
-
+			swal({
+				  title: "បរាជ័យ",
+				  text: "សូមអភ័យទិន្នន័យដែលលោកអ្នកព្យាយាមធ្វើកំណែប្រែគឺមិនបានជោគជ័យទេ, សូមទំនាក់ទំនងទៅកាន់ក្រុមវិស្វករជំនាញ",
+				  type: "warning",
+				  timer: 3000,
+				  showCancelButton: false,
+				  closeOnConfirm: false,
+				  showConfirmButton: false
+				});
+				window.setTimeout(function(){ } ,3000);
 		});
 	}
 
@@ -136,14 +168,15 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 			showCancelButton : true,
 			confirmButtonColor : "#DD6B55",
 			confirmButtonText : "បាទ/ចាស, លុប",
+			timer: 3000,
 			cancelButtonText : "បោះបង់",
-			closeOnConfirm : false,
-			closeOnCancel : false
+			closeOnConfirm : true,
+			closeOnCancel : true
 		}, function(isConfirm) {
 
 			if (isConfirm) {
 				$http({
-					url : 'http://localhost:8080/rest/user/status',
+					url : '/rest/user/status',
 					data : {
 						user_id : id,
 						status : 3,
@@ -156,10 +189,17 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 				}), (function() {
 
 				});
-				swal("លុប!", "ទិន្នន័យបានលុបរួចរាល់", "success");
+				swal({
+		              title: "លុប",
+		              text:  "ទិន្នន័យបានលុបរួចរាល់",
+		              type: "success",
+		              timer: 3000,
+		              showConfirmButton: false
+		          });
+				window.setTimeout(function(){ } ,3000);
 			} else {
-				swal("បោះបង់", "ទិន្នន័យរបស់អ្នកមានសុវត្ថិភាពដូចដើម :)",
-						"error");
+//				swal("បោះបង់", "ទិន្នន័យរបស់អ្នកមានសុវត្ថិភាពដូចដើម :)",
+//						"error");
 			}
 		})
 	}

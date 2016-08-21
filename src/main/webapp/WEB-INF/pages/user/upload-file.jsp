@@ -54,7 +54,7 @@
 													class="text-danger"> *</label> <input id="txtTitle"
 													type="text" name="txtTitle" ng-model="txtTitle"
 													placeholder="Enter title" data-rule-required="true"
-													data-rule-rangelength="[3,30]" class="form-control" required="required">
+													data-rule-rangelength="[3,100]" class="form-control" required="required">
 											</div>
 
 											<div class="form-group" data-ng-controller="categoryListCtrl">

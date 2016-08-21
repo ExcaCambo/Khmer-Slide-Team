@@ -114,9 +114,25 @@
 											//   	                xhr.setRequestHeader("X-Ajax-call", "true");
 											//   	            },
 											success : function(data) {
-												alert(data);
+												/* swal({
+										              title: "ជោគជ័យ",
+										              text:  "សូមអរគុណ",
+										              type: "success",
+										              timer: 3000,
+										              showConfirmButton: false
+										          }); */
+										      window.setTimeout(function(){ } ,3000);
 												if (data == 9999) {
-													alert("PLEASE LOGIN AGAIN");
+													swal({
+														  title: "បរាជ័យ",
+														  text: "សូមអភ័យទោសលោកអ្នកមិនអាចចូលទៅកាន់ប្រព័ន្ធបានទេ! សូមពិនិត្យមើល Email & Password ម្តងទៀត",
+														  type: "warning",
+														  timer: 3000,
+														  showCancelButton: false,
+														  closeOnConfirm: false,
+														  showConfirmButton: false
+														});
+														window.setTimeout(function(){ } ,3000);
 												} else {
 													location.href = "${pageContext.request.contextPath}"
 															+ data;

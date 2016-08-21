@@ -27,7 +27,7 @@ var app = angular.module('saveList',["datatables"]);
 				
 					$http({
 						method: 'GET',
-						url: 'http://localhost:8080/rest/save-list/get-savelist'
+						url: '/rest/save-list/get-savelist'
 						
 					}).then(function(repsonse){
 						/*console.log(savelist);*/
@@ -45,7 +45,7 @@ var app = angular.module('saveList',["datatables"]);
 				
 				$http({
 					method: 'DELETE',
-					url: 'http://localhost:8080/rest/save-list/delete-savelist/'+ SL_ID
+					url: '/rest/save-list/delete-savelist/'+ SL_ID
 				}).then(function(repsonse){
 					//console.log(repsonse);
 					alert("DELETE SUCCESS");

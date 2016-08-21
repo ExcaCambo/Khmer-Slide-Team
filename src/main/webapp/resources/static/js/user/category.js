@@ -25,7 +25,7 @@ var app = angular.module('categoryList', ["datatables"]);
 
 			$scope.list = function(){
 				$http({
-				url: 'http://localhost:8080/rest/category',
+				url: '/rest/category',
 				method: 'GET'
 			}).then(function(repsonse){
 				// console.log(repsonse);
@@ -50,7 +50,7 @@ var app = angular.module('categoryList', ["datatables"]);
 			$scope.date = $filter('date')(new Date(), 'dd-MMM-yyyy');
 			$scope.insert = function() {
 				$http({
-					url : 'http://localhost:8080/rest/category',
+					url : '/rest/category',
 					data :{
 						  "parent_id": $scope.id,
 						  "cat_name": $scope.txtCatName,

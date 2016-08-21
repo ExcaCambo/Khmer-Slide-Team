@@ -64,6 +64,20 @@ public class CategoryController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	@RequestMapping(value={"/{id}"}, method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> categoryById(@PathVariable("id") int id){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/category/get-category-by-id/" + id, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value={"/category-by-parent-id/{id}"}, method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> categoryByParentId(@PathVariable("id") int id){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/category/get-category-by-parent-id/" + id, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
 	@RequestMapping(value={"/get-main-category"}, method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> mainCategory(){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);

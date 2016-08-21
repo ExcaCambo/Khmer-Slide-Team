@@ -11,7 +11,7 @@
 							class="fa fa-bars"></span>
 					</button>
 					<div class="logo">
-						<a class="navbar-brand" href="index.html"><img
+						<a class="navbar-brand" href="/index.ks"><img
 							src="${pageContext.request.contextPath}/resources/static/front-end/img/logo.png"
 							alt=""></a>
 					</div>
@@ -28,7 +28,7 @@
 				</form> -->
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="../index"><i class="fa fa-home"></i>ទំព័រដើម</a></li>
+						<li><a href="/index.ks"><i class="fa fa-home"></i>ទំព័រដើម</a></li>
 						<li><a href="#"><i class="fa fa-info-circle"></i> អំពីយើង</a></li>
 						<li><a href="#"><i class="fa fa-mobile"></i> ទំនាក់ទំនង</a></li>
 						<li><a href="#"><i class="fa fa-sign-in"></i> គណនី</a></li>
@@ -87,6 +87,7 @@
 		style="transform: translate3d(0px, 142px, 0px);"></div>
 </section>
 
+
 <section class="white section nopaddingbottom">
 	<div class="container">
 		<div class="row">
@@ -99,77 +100,43 @@
 		</div>
 		<!-- end row -->
 
-		<div class="row">
+		<div class="row" data-ng-controller="categoryCtrl">
 			<div class="col-md-12">
-				<div id="owl-featured" class="owl-custom">
-					<div class="owl-featured">
-						<div class="feature-list">
-							<i class="fa fa-graduation-cap alignleft"></i>
-							<p>
-								<strong>ការអប់រំកម្រឺតវិទ្យាល័យ</strong>
-							</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiing elit.
-								Integer lorem quam..</p>
-						</div>
-						<!-- end service -->
+				<div class="owl-featured">
+					<data-owl-carousel class="owl-carousel"
+						data-options="{navigation: false, pagination: true, rewindNav : false}">
+					<div owl-carousel-item="" ng-repeat="i in categoryLength"
+						class="item"
+						ng-init="i = $parent.start; $parent.start=$parent.start+2;">
+						<span ng-init="i=(i==null)?0:i"></span> <a
+							href="/category/?cat={{ category[i].CAT_ID }}"
+							title="{{ category[i].CAT_NAME }}">
+							<div class="feature-list">
+								<i class="{{ category[i].ICON }} alignleft"></i>
+								<p>
+									<a href="/category/?cat={{ category[i].CAT_ID }}"
+										title="{{ category[i].CAT_NAME }}"> <strong>{{
+											category[i].CAT_NAME }}</strong>
+									</a>
+								</p>
+								<p>{{ category[i].DESCRIPTION }}</p>
+							</div>
+						</a> <a href="/category/?cat={{ category[i+1].CAT_ID }}"
+							title="{{ category[i+1].CAT_NAME }}">
+							<div class="feature-list">
+								<i class="{{ category[i+1].ICON }} alignleft"></i>
+								<p>
+									<a href="/category/?cat={{ category[i+1].CAT_ID }}"
+										title="{{ category[i+1].CAT_NAME }}"> <strong>{{
+											category[i+1].CAT_NAME }}</strong>
+									</a>
+								</p>
+								<p>{{ category[i+1].DESCRIPTION }}</p>
+							</div>
+						</a>
 						<hr class="invis">
-
-						<div class="feature-list">
-							<i class="fa fa-lock alignleft"></i>
-							<p>
-								<strong>វិទ្យាសាស្ត្រកុំព្យូទ័រ</strong>
-							</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiing elit.
-								Integer lorem quam..</p>
-						</div>
 					</div>
-					<!-- end col -->
-
-					<div class="owl-featured">
-						<div class="feature-list">
-							<i class="fa fa-shopping-cart alignleft"></i>
-							<p>
-								<strong>ជំនាញឯកទេស</strong>
-							</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiing elit.
-								Integer lorem quam..</p>
-						</div>
-						<!-- end service -->
-						<hr class="invis">
-
-						<div class="feature-list">
-							<i class="fa fa-file-o alignleft"></i>
-							<p>
-								<strong>ភាសាសាស្ត្រ</strong>
-							</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiing elit.
-								Integer lorem quam..</p>
-						</div>
-					</div>
-					<!-- end col -->
-
-					<div class="owl-featured">
-						<div class="feature-list">
-							<i class="fa fa-question alignleft"></i>
-							<p>
-								<strong>សង្គម</strong>
-							</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiing elit.
-								Integer lorem quam..</p>
-						</div>
-						<!-- end service -->
-						<hr class="invis">
-
-						<div class="feature-list">
-							<i class="fa fa-trophy alignleft"></i>
-							<p>
-								<strong>កសិកម្ម</strong>
-							</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiing elit.
-								Integer lorem quam..</p>
-						</div>
-					</div>
-					<!-- end col -->
+					</data-owl-carousel>
 				</div>
 			</div>
 		</div>

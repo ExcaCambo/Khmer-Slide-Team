@@ -107,7 +107,7 @@
 											ng-change="role(ddlRole)" required="required">
 											<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
 											<option value="{{ut.ROLE_ID}}" ng-repeat="ut in userType">{{(ut.ROLE_NAME)
-												== 'admin' ? 'អ្នកគ្រប់គ្រងប្រព័ន្ធ':'អ្នកប្រើប្រាស់'}}</option>
+												== 'ROLE_ADMIN' ? 'អ្នកគ្រប់គ្រងប្រព័ន្ធ':'អ្នកប្រើប្រាស់'}}</option>
 										</select>
 									</div>
 									<div class="form-group">

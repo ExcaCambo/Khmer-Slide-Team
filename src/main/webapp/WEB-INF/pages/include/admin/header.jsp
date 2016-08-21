@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>      
+    pageEncoding="UTF-8"%>
+        <%@page import="org.khmerslide.entities.User"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@page import="org.springframework.security.core.Authentication"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+     
       <div class="search-bar closed">
         <form>
           <div class="input-group input-group-lg">
@@ -80,13 +85,14 @@
             <div class="media mt-0">
               <div class="media-left avatar"><img src="${pageContext.request.contextPath}/resources/static/img/users/default-user-image.png" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
               <div class="media-right media-middle pl-0">
-                <p class="fs-12 mb-0">សួរស្តី! Jayz Walker</p>
+                <p class="fs-12 mb-0">សួរស្តី! <sec:authentication property="principal.username" /></p>
+				<%-- <p style="display:none" id="user_id"> <sec:authentication property="principal.id" /></p> --%>
               </div>
             </div></a>
           <ul aria-labelledby="dropdownMenu2" class="dropdown-menu fs-12 animated fadeInDown">
             <li><a href="profile.jsp"><i class="ti-user mr-5"></i> គណនី</a></li>
             <li><a href="profile.jsp"><i class="ti-settings mr-5"></i> ការកំណត់គណនី</a></li>
-            <li><a href="login.jsp"><i class="ti-power-off mr-5"></i> ចាកចេញ</a></li>
+            <li><a href="../logout"><i class="ti-power-off mr-5"></i> ចាកចេញ</a></li>
           </ul>
         </li>
         <li><a href="javascript:;" role="button" class="right-sidebar-toggle bubble header-icon"><i class="ti-layout-sidebar-right"></i></a></li>

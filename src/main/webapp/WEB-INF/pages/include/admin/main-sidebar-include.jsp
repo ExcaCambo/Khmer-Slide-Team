@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	        <%@page import="org.khmerslide.entities.User"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@page import="org.springframework.security.core.Authentication"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <div class="user">
 	<div id="esp-user-profile" data-percent="100"
 		style="height: 130px; width: 130px; line-height: 100px; padding: 15px;"
@@ -9,8 +13,8 @@
 			alt="" class="avatar img-circle"><span
 			class="status bg-success"></span>
 	</div>
-	<h4 class="fs-16 text-muted mt-15 mb-5 fw-300">Jayz Walker</h4>
-	<p class="mb-0 text-muted">Admin</p>
+	<h4 class="fs-16 text-muted mt-15 mb-5 fw-300"><sec:authentication property="principal.username" /></h4>
+	<p class="mb-0 text-muted">Administrator</p>
 </div>
 <ul class="list-unstyled navigation mb-0">
 	<li class="sidebar-category pt-0">Main</li>

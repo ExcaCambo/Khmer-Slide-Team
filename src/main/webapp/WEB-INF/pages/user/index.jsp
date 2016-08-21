@@ -42,13 +42,13 @@
 									<div class="shop-item-list entry">
 										<div class="">
 											<img
-												src="http://localhost:9999{{ D.THUMBNAIL }}"
+												src="{{ urls }}{{ D.THUMBNAIL }}"
 												alt="" class="media-object">
 											<div class="magnifier"></div>
 										</div>
 										<div class="shop-item-title clearfix">
-											<h4 class="text-center">
-												<a href="course-single.html">{{D.DOC_TITLE}}</a>
+											<h4 class="text-center" id="subStr">
+												<a href="course-single.html" title="{{D.DOC_TITLE}}">{{ D.DOC_TITLE}}</a>
 											</h4>
 											<div class="shopmeta">
 												<span class="pull-left">{{D.VIEWED}} views</span>

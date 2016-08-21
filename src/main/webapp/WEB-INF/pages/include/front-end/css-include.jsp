@@ -5,7 +5,7 @@
 	<meta name="keywords" content="">
 
 	<title>KhmerSLIDE | Finding any document in Khmer language here.</title>
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/front-end/img/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/front-end/img/favicon.ico" type="image/x-icon" />
 	<link rel="apple-touch-icon" href="${pageContext.request.contextPath}/resources/static/front-end/img/apple-touch-icon.png" />
 	<link rel="apple-touch-icon" sizes="57x57" href="${pageContext.request.contextPath}/resources/static/front-end/img/apple-touch-icon-57x57.png" />
 	<link rel="apple-touch-icon" sizes="72x72" href="${pageContext.request.contextPath}/resources/static/front-end/img/apple-touch-icon-72x72.png" />
@@ -23,9 +23,13 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/front-end/css/menu.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/front-end/css/carousel.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/front-end/css/style.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/css/substring.css">
 
 	<!-- COLORS -->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/front-end/css/custom.css">
+	
+	<!-- Sweet Alert-->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/plugins/sweetalert/dist/sweetalert.css">
 	
 	<style>
 .embed-container {

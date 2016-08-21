@@ -3,7 +3,17 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/front-end/homePage.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/front-end/viewPage.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/static/front-end/js/jquery.min.js"></script>
+	<script
+		src="http://dmypbau5frl9g.cloudfront.net/assets/market/core/index-033b5427b56df3a606e88cb177b6f4a5.js"
+		type="text/javascript"></script>
+			<script
+		src="${pageContext.request.contextPath}/resources/static/front-end/category/js/custom.js"
+		type="text/javascript"></script>
+			<script>
+		$(function() {
+			viewloader.execute(Views);
+		});
+	</script>
 	<script src="${pageContext.request.contextPath}/resources/static/front-end/js/bootstrap.min.js"></script>
 	<%-- <script src="${pageContext.request.contextPath}/resources/static/front-end/js/retina.js"></script> --%>
     <script src="${pageContext.request.contextPath}/resources/static/front-end/js/wow.js"></script>
@@ -13,6 +23,8 @@
     <!-- SLIDER REV -->
     <script src="${pageContext.request.contextPath}/resources/static/front-end/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/static/front-end/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+        <!-- Sweet Alert -->
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/plugins/sweetalert/dist/sweetalert-dev.js"></script>
     
     <script>
     jQuery(document).ready(function() {

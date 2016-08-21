@@ -1,8 +1,10 @@
 var app = angular.module('saveList', ["datatables"]);
 
 	//create controller
-	app.controller('saveListCtrl', function ($scope, $http, DTOptionsBuilder) {
+	app.controller('saveListCtrl', function ($scope, $http, DTOptionsBuilder, $sce) {
 		$scope.savelist = '';
+//		$scope.urls = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+		$scope.urls = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
 		// DataTables configurable options
 	    $scope.dtOptions = DTOptionsBuilder.newOptions()
 	        .withLanguage({
@@ -23,7 +25,7 @@ var app = angular.module('saveList', ["datatables"]);
 
 			$scope.list = function(){
 				$http({
-				url: 'http://localhost:8080/rest/save-list/get-savelist',
+				url: '/rest/save-list/get-savelist',
 				method: 'GET'
 			}).then(function(repsonse){
 				//console.log(repsonse);

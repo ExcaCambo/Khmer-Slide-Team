@@ -126,23 +126,28 @@
 								class="item"
 								ng-init="i = $parent.start; $parent.start=$parent.start+2;">
 								<span ng-init="i=(i==null)?0:i"></span>
-								<div class="feature-list">
-									<i class="{{ category[i].ICON }} alignleft"></i>
-									<p>
-										<strong>{{ category[i].CAT_NAME }}</strong>
-									</p>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiing elit.
-										Integer lorem quam..</p>
-								</div>
-
-								<div class="feature-list">
-									<i class="{{ category[i+1].ICON }} alignleft"></i>
-									<p>
-										<strong>{{ category[i+1].CAT_NAME }}</strong>
-									</p>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiing elit.
-										Integer lorem quam..</p>
-								</div>
+								<a href="/category/?cat={{ category[i].CAT_ID }}" title="{{ category[i].CAT_NAME }}">
+									<div class="feature-list">
+										<i class="{{ category[i].ICON }} alignleft"></i>
+										<p>
+											<a href="/category/?cat={{ category[i].CAT_ID }}" title="{{ category[i].CAT_NAME }}">
+											<strong>{{ category[i].CAT_NAME }}</strong>
+											</a>
+										</p>
+										<p>{{ category[i].DESCRIPTION }}</p>
+									</div>
+								</a>
+								<a href="/category/?cat={{ category[i+1].CAT_ID }}" title="{{ category[i+1].CAT_NAME }}">
+									<div class="feature-list">
+										<i class="{{ category[i+1].ICON }} alignleft"></i>
+										<p>
+											<a href="/category/?cat={{ category[i+1].CAT_ID }}" title="{{ category[i+1].CAT_NAME }}">
+												<strong>{{ category[i+1].CAT_NAME }}</strong>
+											</a>
+										</p>
+										<p>{{ category[i+1].DESCRIPTION }}</p>
+									</div>
+								</a>
 								<hr class="invis">
 							</div>
 							</data-owl-carousel>
@@ -177,17 +182,17 @@
 					data-options="{navigation: false, pagination: true, rewindNav : false}">
 				<div owl-carousel-latest-document="" ng-repeat="ld in latestDocument"
 					class="item">
-					<a href="/view/doc={{ ld.DOC_ID }}"><div class="shop-item-list entry"
+					<a href="/view/?doc={{ ld.DOC_ID }}&cat={{ ld.CATEGORY.CAT_ID }}" title="{{ld.DOC_TITLE}}"><div class="shop-item-list entry"
 						style="margin-right: 10px; margin-left: 10px;">
 						<div class="">
 							<img
-								src="http://localhost:9999{{ ld.THUMBNAIL }}"
+								src="{{ thumb }}{{ ld.THUMBNAIL }}"
 								alt="">
 							<div class="magnifier"></div>
 						</div>
 						<div class="shop-item-title clearfix">
-							<h4 class="text-center">
-								<a href="/view/doc={{ ld.DOC_ID }}">{{ ld.DOC_TITLE }}</a>
+							<h4 class="text-center" id="subStr">
+								<a href="/view/?doc={{ ld.DOC_ID }}&cat={{ ld.CATEGORY.CAT_ID }}" title="{{ld.DOC_TITLE}}">{{ ld.DOC_TITLE }}</a>
 							</h4>
 							<div class="shopmeta">
 								<span class="pull-left">ចូលអាន: {{ ld.VIEWED }} ដង</span>
@@ -198,7 +203,7 @@
 							</div>
 						</div>
 						<div class="visible-buttons">
-							<a href="/view/doc={{ ld.DOC_ID }}"><span class="fa fa-eye" title="ចូលមើលអត្ថបទនេះ"></span></a>
+							<a href="/view/?doc={{ ld.DOC_ID }}&cat={{ ld.CATEGORY.CAT_ID }}"><span class="fa fa-eye" title="ចូលមើលអត្ថបទនេះ"></span></a>
 							<a href="#"><span class="fa fa-share"
 								title="ចែករំលែកបន្តនូវអត្ថបទមួយនេះ"></span></a>
 						</div>
@@ -226,21 +231,21 @@
 					data-options="{navigation: false, pagination: true, rewindNav : false}">
 				<div owl-carousel-document="" ng-repeat="d in popularDocument"
 					class="item">
-					<a href="/view/doc={{ d.DOC_ID }}">
+					<a type="button" href="/view/?doc={{ d.DOC_ID }}&cat={{ d.CATEGORY.CAT_ID }}" title="{{d.DOC_TITLE}}" data-ng-click="submit()">
 					<div class="shop-item-list entry"
 						style="margin-right: 10px; margin-left: 10px;">
 						<div class="">
 							<img
-								src="http://localhost:9999{{ d.THUMBNAIL }}"
+								src="{{ thumb }}{{ d.THUMBNAIL }}"
 								alt="">
 							<div class="magnifier"></div>
 						</div>
 						<div class="shop-item-title clearfix">
-							<h4 class="text-center">
-								<a href="/view/doc={{ d.DOC_ID }}">{{ d.DOC_TITLE }}</a>
+							<h4 class="text-center" id="subStr">
+								<a type="button" href="/view/?doc={{ d.DOC_ID }}&cat={{ d.CATEGORY.CAT_ID }}" title="{{d.DOC_TITLE}}" data-ng-click="submit()">{{ d.DOC_TITLE }}</a>
 							</h4>
 							<div class="shopmeta">
-								<span class="pull-left">ចូលអាន: {{ d.VIEWED }} ដង</span>
+								<span class="pull-left" data-ng-model="view">ចូលអាន: {{ d.VIEWED }} ដង</span>
 								<div class="pull-right">
 									<span class="pull-left">ពេញចិត្ត: {{ d.LIKED }} <i
 										class="fa fa-thumbs-o-up fa-lg text-primary"></i></span>
@@ -248,7 +253,7 @@
 							</div>
 						</div>
 						<div class="visible-buttons">
-							<a href="/view/doc={{ d.DOC_ID }}"><span class="fa fa-eye" title="ចូលមើលអត្ថបទនេះ"></span></a>
+							<a type="button" href="/view/?doc={{ d.DOC_ID }}&cat={{ d.CATEGORY.CAT_ID }}" data-ng-click="submit()"><span class="fa fa-eye" title="ចូលមើលអត្ថបទនេះ"></span></a>
 							<a href="#"><span class="fa fa-share"
 								title="ចែករំលែកបន្តនូវអត្ថបទមួយនេះ"></span></a>
 						</div>

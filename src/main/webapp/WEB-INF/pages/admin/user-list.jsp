@@ -73,7 +73,7 @@
 											<div class="media">
 												<div class="media-left avatar">
 													<img
-														src="${pageContext.request.contextPath}/resources/static/img/users/{{ u.PHOTO }}"
+														src="{{ urls }}{{ u.PHOTO }}"
 														alt="" class="media-object img-circle"><span
 														class="status bg-success"></span>
 												</div>
@@ -85,7 +85,7 @@
 										</td>
 										<td>{{u.GENDER}}</td>
 
-										<td>{{(u.ROLE.ROLE_NAME) == 'admin' ? 'អ្នកគ្រប់គ្រងប្រព័ន្ធ':'អ្នកប្រើប្រាស់'}}</td>
+										<td>{{(u.ROLE.ROLE_NAME) == 'ROLE_ADMIN' ? 'អ្នកគ្រប់គ្រងប្រព័ន្ធ':'អ្នកប្រើប្រាស់'}}</td>
 
 										<td class="text-center" ng-class="(u.STATUS == 1) ? 'text-success':'text-danger'"><i ng-class="(u.STATUS == 1) ? 'ti-check' : 'ti-close'"></i></td>
 										<td>

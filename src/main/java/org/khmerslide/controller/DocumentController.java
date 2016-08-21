@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.khmerslide.entities.input.AddDocument;
 import org.khmerslide.entities.input.AddUser;
+import org.khmerslide.entities.input.UpdateViewDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -77,10 +78,37 @@ public class DocumentController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	@RequestMapping(value={"/recomment/{id}"}, method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> recommentDocument(@PathVariable("id") int id,
+			@RequestParam(value = "page", required = false , defaultValue="1") int page 
+		    , @RequestParam(value="limit" , required = false , defaultValue="5") int limit){
+		System.out.println(limit);
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/docs/get-document-recomment?cat_id=" + id, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value={"/by-cat-id/{id}"}, method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> getDocumentByCatId(@PathVariable("id") int id,
+			@RequestParam(value = "page", required = false , defaultValue="1") int page 
+		    , @RequestParam(value="limit" , required = false , defaultValue="10") int limit){
+		System.out.println(limit);
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/docs/get-document/by-category-id?cat_id=" + id, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Map<String , Object>> addDocument(@RequestBody AddDocument addDocument){
 		HttpEntity<Object> request = new HttpEntity<Object>(addDocument,header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/docs/add-document", HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value={"/udpate-document/view"}, method = RequestMethod.PUT)
+	public ResponseEntity<Map<String , Object>> updateViewDocument(@RequestBody UpdateViewDocument updateViewDocument){
+		HttpEntity<Object> request = new HttpEntity<Object>(updateViewDocument,header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/update-document/view", HttpMethod.PUT , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	

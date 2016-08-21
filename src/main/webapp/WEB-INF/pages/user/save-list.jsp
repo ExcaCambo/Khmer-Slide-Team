@@ -61,7 +61,7 @@
 													<div class="media-left">
 														<a href="#">
 														<img
-															src="http://localhost:9999{{ SL.DOC_ID.THUMBNAIL }}"
+															src="{{ urls }}{{ SL.DOC_ID.THUMBNAIL }}"
 															alt="" class="media-object" width="100" height="70"></a>
 															<span class="status bg-success"></span>
 													</div>
