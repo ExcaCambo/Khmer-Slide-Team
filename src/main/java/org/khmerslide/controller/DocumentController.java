@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.khmerslide.entities.input.AddDocument;
 import org.khmerslide.entities.input.AddUser;
+import org.khmerslide.entities.input.EditUser;
+import org.khmerslide.entities.input.UpdateDocument;
 import org.khmerslide.entities.input.UpdateViewDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -102,6 +104,13 @@ public class DocumentController {
 	public ResponseEntity<Map<String , Object>> addDocument(@RequestBody AddDocument addDocument){
 		HttpEntity<Object> request = new HttpEntity<Object>(addDocument,header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/docs/add-document", HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT)
+	public ResponseEntity<Map<String , Object>> editDocument(@RequestBody UpdateDocument updateDocument){	
+		HttpEntity<Object> request = new HttpEntity<Object>(updateDocument,header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/docs/update-document", HttpMethod.PUT , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	

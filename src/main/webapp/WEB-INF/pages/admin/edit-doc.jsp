@@ -7,7 +7,7 @@
 <jsp:include page="../include/admin/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
-<body data-sidebar-color="sidebar-light" class="sidebar-light">
+<body data-sidebar-color="sidebar-light" class="sidebar-light" data-ng-app="CombineModule">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/admin/header.jsp -->
@@ -50,78 +50,94 @@
 				<!-- including user-board from include/admin/doc-board-include.jsp -->
 				<jsp:include page="../include/admin/doc-board-include.jsp"></jsp:include>
 
-				<div class="row">
+				<div class="row" data-ng-controller="documentListCtrl">
 				<div class="col-md-12">
 					<div class="widget">
 						<div class="widget-heading text-center">
 							<h3 class="widget-title">កំណែប្រែពត៌មានរបស់ឯកសារ</h3>
 						</div>
 						<div class="widget-body">
-							<form id="form-vertical" method="post" novalidate="novalidate">
-								<div class="col-md-6">
-									<div class="form-group">
-										<label for="txtTitle">ចំណងជើងឯកសារ</label><label class="text-danger"> *</label> <input id="txtTitle"
-											type="text" name="txtTitle" placeholder="Enter title"
-											data-rule-required="true" data-rule-rangelength="[3,30]"
-											class="form-control">
-									</div>
-									<div class="form-group">
-										<label for="ddlType">ប្រភេទឯកសារ</label><label class="text-danger"> *</label> <select id="ddlType"
-											name="ddlType" data-rule-required="true"
-											class="form-control">
-											<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
-											<option value="1">Slide</option>
-											<option value="2">PDF</option>
-											<option value="3">Microsoft Word</option>
-										</select>
-									</div>
-								</div>
-								
-								<div class="col-md-6">
-								<div class="form-group">
-									<label for="ddlCategory">ស្ថិតក្នុងមីនុយ</label><label class="text-danger"> *</label> <select id="ddlCategory"
-										name="ddlCategory" data-rule-required="true"
-										class="form-control">
-										<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
-										<option value="computer science">វិទ្យាសាស្ត្រកុំព្យូទ័រ</option>
-										<option value="web design">ការរចនាគេហទំព័រ</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="ddlStatus">ស្ថានភាព</label><label class="text-danger"> *</label> <select id="ddlStatus"
-										name="ddlStatus" data-rule-required="true"
-										class="form-control">
-										<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
-										<option value="1">ដំណើរការ</option>
-										<option value="2">មិនដំណើរការ</option>
-									</select>
-								</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<textarea id="txtDescription" name="txtDescription"
-										class="form-control" placeholder="ពត៌មានបន្ថែម"></textarea>
-									</div>
-										<div class="form-group">
-											<input id="txtUploadDate" type="hidden" name="txtUploadDate"
-												class="form-control">
+								<form id="form-vertical" method="post" name="insertForm"
+									novalidate="novalidate">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="txtTitle">ចំណងជើងឯកសារ</label><label
+													class="text-danger"> *</label> <input id="txtTitle"
+													type="text" name="txtTitle" ng-model="txtTitle"
+													placeholder="Enter title" data-rule-required="true"
+													data-rule-rangelength="[3,100]" class="form-control" required="required">
+											</div>
+
+											<div class="form-group" data-ng-controller="categoryListCtrl">
+												<label for="ddlCategories">ស្ថិតក្រោមមីនុយ</label> <select
+													id="ddlCategories" name="ddlCategories"
+													class="form-control" data-ng-model="ddlCategories"
+													data-ng-change="categories(ddlCategories)" required="required">
+													<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
+													<option value="{{ca.CAT_ID}}"
+														data-ng-repeat="ca in category">{{ca.CAT_NAME}}</option>
+												</select>
+											</div>
 										</div>
-										<div class="form-group">
-										<input id="txtUploadBy"
-											type="hidden" name="txtUploadBy" class="form-control">
+
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="txtImg">រូបភាពគំរបមុខឯកសារ</label> <input
+													id="input-10" type="file" accept="image/*"
+													class="file-loading" ng-model="txtImg">
+											</div>
+
+											<div class="form-group">
+												<label for="ddlStatus">ស្ថានភាព</label><label
+													class="text-danger"> *</label> <select id="ddlStatus"
+													name="ddlStatus" ng-model="ddlStatus"
+													ng-change="status(ddlStatus)" data-rule-required="true"
+													class="form-control" required="required">
+													<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
+													<option value="1">ដំណើរការ</option>
+													<option value="2">មិនដំណើរការ</option>
+												</select>
+											</div>
+										</div>
 									</div>
-									<div class="form-group">
-										<input id="txtURL"
-											type="hidden" name="txtURL" class="form-control">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="txtSource">ប្រភពឯកសារ</label> <input
+													id="txtSource" type="text" name="txtSource"
+													ng-model="txtSource" class="form-control"
+													placeholder="Ex: www.khmerslide.org">
+											</div>
+											<div class="form-group">
+												<textarea id="txtDescription" name="txtDescription"
+													ng-model="txtDescription" class="form-control"
+													placeholder="ពត៌មានបន្ថែម"></textarea>
+											</div>
+											<div class="form-group">
+												<input id="txtUploadDate" type="hidden" name="txtUploadDate"
+													class="form-control">
+											</div>
+											<div class="form-group">
+												<input id="txtUploadBy" type="hidden" name="txtUploadBy"
+													class="form-control">
+											</div>
+											<div class="form-group">
+												<input id="txtURL" type="hidden" name="txtURL"
+													class="form-control">
+											</div>
+										</div>
 									</div>
-								</div>
-								<div class="text-right">
-									<a href="user-list" class="btn btn-raised btn-danger"><i class="ti-close"></i> បោះបង់</a>
-									<button type="submit" name="btnSubmit"
-										class="btn btn-raised btn-success"><i class="ti-check"></i> យល់ព្រម</button>
-								</div>
-							</form>
-						</div>
+									<div class="text-right">
+										<a href="doc-list" class="btn btn-raised btn-danger"><i
+											class="ti-close"></i> បោះបង់</a>
+										<button type="submit" name="btnSubmit" ng-click="insertDoc()"
+											class="btn btn-raised btn-success" ng-disabled="insertForm.$invalid">
+											<i class="ti-pencil"></i> កែប្រែ
+										</button>
+									</div>
+								</form>
+							</div>
 					</div>
 					</div>
 				</div>

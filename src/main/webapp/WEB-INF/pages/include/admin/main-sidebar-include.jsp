@@ -26,18 +26,18 @@
 		aria-controls="collapseUser" class="collapsed"><i class="ti-user"></i><span
 			class="sidebar-title">អ្នកប្រើប្រាស់</span></a>
 		<ul id="collapseUser" class="list-unstyled collapse">
-			<li><a href="user-list">តារាង</a></li>
-			<li><a href="add-user">បញ្ចូលថ្មី</a></li>
-			<li><a href="edit-user">កំណែប្រែថ្មី</a></li>
+			<li><a href="/admin/user-list">តារាង</a></li>
+			<li><a href="/admin/add-user">បញ្ចូលថ្មី</a></li>
+			<!-- <li><a href="edit-user">កំណែប្រែថ្មី</a></li> -->
 		</ul></li>
 	<li class="panel"><a role="button" data-toggle="collapse"
 		data-parent=".navigation" href="#collapseDoc" aria-expanded="false"
 		aria-controls="collapseDoc" class="collapsed"><i
 			class="ti-bookmark-alt"></i><span class="sidebar-title">ឯកសារ</span></a>
 		<ul id="collapseDoc" class="list-unstyled collapse">
-			<li><a href="doc-list">តារាង</a></li>
+			<li><a href="/admin/doc-list">តារាង</a></li>
 			<li><a href="add-doc">បញ្ចូលថ្មី</a></li>
-			<li><a href="edit-doc">កំណែប្រែថ្មី</a></li>
+			<!-- <li><a href="/admin/edit-doc/">កំណែប្រែថ្មី</a></li> -->
 			<li><a href="confirm-doc">យល់ព្រម</a></li>
 			<!-- <li class="panel"><a role="button" data-toggle="collapse" data-parent="#collapseSlide" href="#collapseSlide" aria-expanded="false" aria-controls="collapseSlide" class="collapsed">Slide</a>
                 <ul id="collapseSlide" class="list-unstyled collapse">
@@ -64,13 +64,13 @@
                 </ul>
               </li> -->
 		</ul></li>
-	<li class="panel"><a href="category"><i class="ti-menu-alt"></i><span
+	<li class="panel"><a href="/admin/category"><i class="ti-menu-alt"></i><span
 			class="sidebar-title">មីនុយ</span></a>
 	</li>
-	<li class="panel"><a href="save-list"><i class="ti-folder"></i><span
+	<li class="panel"><a href="/admin/save-list"><i class="ti-folder"></i><span
 			class="sidebar-title">បញ្ជីររក្សាទុករបស់អ្នកប្រើប្រាស់</span></a>
 	</li>
-	<li class="panel"><a href="comment"><i class="ti-comments"></i><span
+	<li class="panel"><a href="/admin/comment"><i class="ti-comments"></i><span
 			class="sidebar-title">យោបល់របស់អ្នកប្រើប្រាស់</span></a>
 	</li>
 	<li class="sidebar-category">ជំនួយ</li>
