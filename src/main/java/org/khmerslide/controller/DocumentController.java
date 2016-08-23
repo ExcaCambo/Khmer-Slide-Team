@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.khmerslide.entities.input.AddDocument;
 import org.khmerslide.entities.input.AddUser;
+import org.khmerslide.entities.input.EditUserStatus;
+import org.khmerslide.entities.input.UpdateDocument;
+import org.khmerslide.entities.input.UpdateStatusDocument;
 import org.khmerslide.entities.input.UpdateViewDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -105,13 +108,33 @@ public class DocumentController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
-	@RequestMapping(value={"/udpate-document/view"}, method = RequestMethod.PUT)
-	public ResponseEntity<Map<String , Object>> updateViewDocument(@RequestBody UpdateViewDocument updateViewDocument){
-		HttpEntity<Object> request = new HttpEntity<Object>(updateViewDocument,header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/update-document/view", HttpMethod.PUT , request , Map.class) ;
+	
+	@RequestMapping(method = RequestMethod.PUT)
+	public ResponseEntity<Map<String , Object>> editDocument(@RequestBody UpdateDocument updateDocument){	
+		HttpEntity<Object> request = new HttpEntity<Object>(updateDocument,header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/docs/update-document", HttpMethod.PUT , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	@RequestMapping(value={"/update-document/view"}, method = RequestMethod.PUT)
+	public ResponseEntity<Map<String , Object>> updateViewDocument(@RequestBody UpdateViewDocument updateViewDocument){
+		HttpEntity<Object> request = new HttpEntity<Object>(updateViewDocument,header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/docs/update-document/view", HttpMethod.PUT , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 	
+//	@RequestMapping(value="/delete/{id}", method = RequestMethod.DELETE)
+//	public ResponseEntity<Map<String , Object>> deleteDocument(@PathVariable("id") int id){		
+//		HttpEntity<Object> request = new HttpEntity<Object>(id, header);
+//		ResponseEntity<Map> response = rest.exchange(WS_URL + "/docs/delete-document/" + id, HttpMethod.DELETE , request , Map.class) ;
+//		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+//	}
+	
+	@RequestMapping(value="/delete", method = RequestMethod.PUT)
+	public ResponseEntity<Map<String , Object>> deleteDocument(@RequestBody UpdateStatusDocument status){		
+		HttpEntity<Object> request = new HttpEntity<Object>(status, header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/docs/delete-document", HttpMethod.PUT , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 
 }

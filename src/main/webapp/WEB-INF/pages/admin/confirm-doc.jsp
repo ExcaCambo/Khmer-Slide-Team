@@ -39,8 +39,8 @@
 											តារាង</a></li>
 									<li><a href="add-doc"><i class="ti-plus mr-5"></i>
 											បញ្ចូលថ្មី</a></li>
-									<li><a href="edit-doc"><i class="ti-pencil mr-5"></i>
-											កំណែប្រែថ្មី</a></li>
+									<!-- <li><a href="edit-doc"><i class="ti-pencil mr-5"></i>
+											កំណែប្រែថ្មី</a></li> -->
 								</ul></li>
 							<li class="active">យល់ព្រម</li>
 						</ol>

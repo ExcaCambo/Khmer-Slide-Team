@@ -1,4 +1,30 @@
 var app = angular.module('userList', [ "datatables" ]);
+//create controller
+app.controller('sessoinCtrl', function($scope, $filter, $http, $sce) {
+	$scope.user = '';
+//$scope.urls = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+$scope.urls = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
+//================================= User By ID Function=================================
+$scope.Admin = adminId;
+
+$scope.User = function(id) {
+	$http({
+		url : '/rest/user/' + id + '',
+		method : 'GET'
+	}).then(function(response) {
+		//console.log(response);
+		$scope.user = response.data.DATA[0];
+		$scope.USER_ID = $scope.user.USER_ID;
+		$scope.txtName = $scope.user.USER_NAME;
+		$scope.photo = $scope.user.PHOTO;
+		$scope.role = $scope.user.ROLE.ROLE_ID;
+		
+	}, function() {
+		
+	});
+}
+$scope.User(adminId);
+});
 
 // create controller
 app.controller('userListCtrl', function($scope, $filter, $http,
@@ -130,7 +156,6 @@ app.controller('userListCtrl', function($scope, $filter, $http,
 				"password" : $scope.txtPassword,
 				"status" : $scope.ddlStatus,
 				"role_id" : $scope.usertype
-			// AGE: $scope.upAge
 			},
 			method : 'PUT'
 		}).then(function(response) {

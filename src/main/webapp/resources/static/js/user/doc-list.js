@@ -1,5 +1,33 @@
 var app = angular.module('documentList', [ "datatables" ]);
 
+//=============================Session================================================
+//create controller
+app.controller('sessoinCtrl', function($scope, $filter, $http, $sce) {
+	$scope.user = '';
+//$scope.urls = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+$scope.urls = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
+//================================= User By ID Function=================================
+
+$scope.User = function(id) {
+	$http({
+		url : '/rest/user/' + id + '',
+		method : 'GET'
+	}).then(function(response) {
+		//console.log(response);
+		$scope.user = response.data.DATA[0];
+		$scope.USER_ID = $scope.user.USER_ID;
+		$scope.txtName = $scope.user.USER_NAME;
+		$scope.photo = $scope.user.PHOTO;
+		$scope.role = $scope.user.ROLE.ROLE_ID;
+		
+	}, function() {
+		
+	});
+}
+$scope.User(userId);
+});
+
+
 // create controller
 app.controller('documentListCtrl', function($scope, $filter, $http,
 		DTOptionsBuilder, $sce) {
@@ -11,15 +39,14 @@ app.controller('documentListCtrl', function($scope, $filter, $http,
 
 		// check to make sure the form is completely valid
 		if ($scope.insertForm.$valid) {
-//			swal({
-//                title: "បញ្ចូលទិន្នន័យ!",
-//                text:  "ទិន្នន័យត្រូវបានបញ្ចូលបានសម្រាច់",
-//                type: "success",
-//                timer: 3000,
-//                showConfirmButton: false
-//            });
-//        window.setTimeout(function(){ } ,3000);
-		//	$scope.insertDoc();
+			swal({
+                title: "បញ្ចូលទិន្នន័យ!",
+                text:  "ទិន្នន័យត្រូវបានបញ្ចូលបានសម្រាច់",
+                type: "success",
+                timer: 3000,
+                showConfirmButton: false
+            });
+        window.setTimeout(function(){ } ,3000);
 			location.reload();
 			// $scope.insert();
 		}
@@ -72,8 +99,8 @@ app.controller('documentListCtrl', function($scope, $filter, $http,
 		formData.append('category', ddlCategories);
 		 $.ajaxSetup({
 			 	globle: false,
-//				url : "http://192.168.178.152:9999/api/docs/add-ducument/file",
-			 	url : "http://192.168.1.104:9999/api/docs/add-ducument/file",
+				url : "http://192.168.178.152:9999/api/docs/add-ducument/file",
+//			 	url : "http://192.168.1.104:9999/api/docs/add-ducument/file",
 				type : "POST",
 				enctype : 'multipart/form-data',
 	            beforeSend: function (xhr) {
@@ -109,11 +136,11 @@ app.controller('documentListCtrl', function($scope, $filter, $http,
 			processData : false, // tell jQuery not to process the data
 			contentType : false, // tell jQuery not to set contentType
 			success : function(data) {
-				console.log(data);
+			//	console.log(data);
 				$scope.FILE_URL = data.FILE_URL;
 			},
 			error : function(data) {
-				console.log(data);
+				//console.log(data);
 			}
 		});
 		
@@ -127,8 +154,8 @@ app.controller('documentListCtrl', function($scope, $filter, $http,
 		formData.append('img', $("#input-10")[0].files[0]);
 		 $.ajaxSetup({
 			 	globle: false,
-//				url : "http://192.168.178.152:9999/api/docs/add-ducument/thumbnail",
-			 	url : "http://192.168.1.104:9999/api/docs/add-ducument/thumbnail",
+				url : "http://192.168.178.152:9999/api/docs/add-ducument/thumbnail",
+//			 	url : "http://192.168.1.104:9999/api/docs/add-ducument/thumbnail",
 				type : "POST",
 				enctype : 'multipart/form-data',
 	            beforeSend: function (xhr) {
@@ -163,7 +190,7 @@ app.controller('documentListCtrl', function($scope, $filter, $http,
 			processData : false, // tell jQuery not to process the data
 			contentType : false, // tell jQuery not to set contentType
 			success : function(data) {
-				console.log(data);
+			//	console.log(data);
 //				swal({
 //                    title: "បញ្ចូលបានជោគជ័យ!",
 //                    text:  "សូមអរគុណ",
@@ -176,7 +203,7 @@ app.controller('documentListCtrl', function($scope, $filter, $http,
 				$scope.image = data.IMAGE;
 			},
 			error : function(data) {
-				console.log(data);
+				//console.log(data);
 			}
 		});
 		
@@ -204,13 +231,13 @@ app.controller('documentListCtrl', function($scope, $filter, $http,
 	}
 	// end document type
 
-	$scope.txtUploadBy = 3;
+	$scope.txtUploadBy = userId;
 	$scope.date = $filter('date')(new Date(), 'dd-MMM-yyyy');
 	$scope.insertDoc = function() {
 		alert($scope.txtUploadBy);
 		$http({
-//			 url : 'http://192.168.178.152:9999/api/docs/add-ducument',
-			url : "http://192.168.1.104:9999/api/docs/add-ducument",
+			 url : 'http://192.168.178.152:9999/api/docs/add-ducument',
+//			url : "http://192.168.1.104:9999/api/docs/add-ducument",
 			
 			data : {
 				"doc_title" : $scope.txtTitle,

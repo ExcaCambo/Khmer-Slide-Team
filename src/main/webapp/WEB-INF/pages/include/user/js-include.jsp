@@ -88,5 +88,5 @@
 	<!-- my document file -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/user/my-document.js"></script>
      <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/user/save-list.js"></script>
-         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/category.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/admin/doc-list.js"></script>
+         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/user/category.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/user/doc-list.js"></script>

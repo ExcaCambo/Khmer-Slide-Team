@@ -32,7 +32,7 @@
 												<label for="ddlCategory">ស្ថិតក្រោមមីនុយ</label> <select
 													id="ddlCategory" name="ddlCategory" class="form-control" ng-model="ddlCategory" ng-change="categ(ddlCategory)" >
 													<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
-													<option value="{{ca.CAT_ID}}, {{ca.FOLDER}}" data-ng-repeat="ca in category">{{ca.CAT_NAME}}</option>
+													<option value="{{ca.CAT_ID}}, {{ca.FOLDER}}" data-ng-repeat="ca in category | orderBy:'CAT_NAME'">{{ca.CAT_NAME}}</option>
 												</select>
 											</div>
 											<div class="form-group">

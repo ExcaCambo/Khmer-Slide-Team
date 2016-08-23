@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div class="user">
+<div class="user" ng-controller="sessoinCtrl">
 	<div id="esp-user-profile" data-percent="100"
 		style="height: 130px; width: 130px; line-height: 100px; padding: 15px;"
 		class="easy-pie-chart">
 		<img
-			src="${pageContext.request.contextPath}/resources/static/img/users/21.jpg"
+			src="{{ urls }}{{ photo }}"
 			alt="" class="avatar img-circle"><span
 			class="status bg-success"></span>
 	</div>
-	<h4 class="fs-16 text-muted mt-15 mb-5 fw-300">Jayz Walker</h4>
+	<h4 class="fs-16 text-muted mt-15 mb-5 fw-300">{{ txtName }}</h4>
 	<p class="mb-0 text-muted">User</p>
 </div>
 <ul class="list-unstyled navigation mb-0">
@@ -31,28 +31,3 @@
 	</li>
 	
 </ul>
-<!-- <div class="sidebar-category">Server Status</div>
-<div class="sidebar-widget">
-	<ul class="list-unstyled pl-25 pr-25">
-		<li class="mb-20">
-			<div class="block clearfix mb-10">
-				<span class="pull-left fs-12 text-muted">CPU Used</span><span
-					class="pull-right label label-outline label-warning">65%</span>
-			</div>
-			<div class="progress progress-xs bg-light mb-0">
-				<div role="progressbar" data-transitiongoal="65"
-					class="progress-bar progress-bar-warning"></div>
-			</div>
-		</li>
-		<li class="mb-20">
-			<div class="block clearfix mb-10">
-				<span class="pull-left fs-12 text-muted">Bandwidth</span><span
-					class="pull-right label label-outline label-danger">80%</span>
-			</div>
-			<div class="progress progress-xs bg-light mb-0">
-				<div role="progressbar" data-transitiongoal="80"
-					class="progress-bar progress-bar-danger"></div>
-			</div>
-		</li>
-	</ul>
-</div> -->

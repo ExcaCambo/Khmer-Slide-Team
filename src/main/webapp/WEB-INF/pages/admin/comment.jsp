@@ -62,19 +62,15 @@
 									<tbody>
 										<tr ng-repeat="c in comment | orderBy:'DOC_TITLE'">
 											<td>{{ $index +1 }}</td>
-											<td>{{c.DOC_ID.DOC_TITLE}}</td>
-											<td>{{c.USER_ID.USER_NAME}}</td>
+											<td>{{c.DOC.DOC_TITLE}}</td>
+											<td>{{c.USER.USER_NAME}}</td>
 											<td class="text-center" ng-class="(c.STATUS == 1) ? 'text-success':'text-danger'"><i ng-class="(c.STATUS == 1) ? 'ti-check' : 'ti-close'"></i></td>
 											<td>
 												<div role="toolbar" aria-label="Toolbar with button groups"
 													class="btn-toolbar">
 													<div role="group" aria-label="First group"
 														class="btn-group">
-														<button type="button" class="btn btn-outline btn-success"
-															data-toggle="modal" data-target=".modalView">
-															<i class="ti-eye"></i>
-														</button>
-														<button type="button" class="btn btn-outline btn-danger">
+														<button type="button" class="btn btn-outline btn-danger" ng-click="deleteComment(c.CMT_ID)">
 															<i class="ti-trash"></i>
 														</button>
 													</div>

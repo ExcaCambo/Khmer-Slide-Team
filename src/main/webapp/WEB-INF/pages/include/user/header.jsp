@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>      
+    pageEncoding="UTF-8"%>
+    <%@page import="org.khmerslide.entities.User"%>
+<%@page
+	import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@page import="org.springframework.security.core.Authentication"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+	<div ng-controller="sessoinCtrl">      
       <div class="search-bar closed">
       <!--   <form>
           <div class="input-group input-group-lg">
@@ -78,16 +85,21 @@
         </li>
         <li class="dropdown visible-lg visible-md"><a id="dropdownMenu2" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle header-icon lh-1 pt-15 pb-15">
             <div class="media mt-0">
-              <div class="media-left avatar"><img src="${pageContext.request.contextPath}/resources/static/img/users/21.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+              <div class="media-left avatar"><img src="{{ urls }}{{ photo }}" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
               <div class="media-right media-middle pl-0">
-                <p class="fs-12 mb-0">សួរស្តី! Jayz Walker</p>
+                <p class="fs-12 mb-0">សួរស្តី! {{ txtName }}</p>
               </div>
             </div></a>
           <ul aria-labelledby="dropdownMenu2" class="dropdown-menu fs-12 animated fadeInDown">
             <li><a href="profile.jsp"><i class="ti-user mr-5"></i> គណនី</a></li>
             <li><a href="profile.jsp"><i class="ti-settings mr-5"></i> ការកំណត់គណនី</a></li>
-            <li><a href="login.jsp"><i class="ti-power-off mr-5"></i> ចាកចេញ</a></li>
+            <li><a href="/logout"><i class="ti-power-off mr-5"></i> ចាកចេញ</a></li>
           </ul>
         </li>
         <li><a href="upload-file" role="button" class="bubble header-icon"><i class="ti-export"></i> <span>Upload</span></a></li>
       </ul>
+      </div>
+      
+      <script type="text/javascript">
+      	var userId = '<sec:authentication property="principal.id"/>';
+      </script>

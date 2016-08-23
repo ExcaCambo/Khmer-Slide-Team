@@ -7,7 +7,7 @@
 <jsp:include page="../include/admin/css-include.jsp"></jsp:include>
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
-<body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="documentList" ng-controller="documentListCtrl">
+<body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="documentList">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/admin/header.jsp -->
@@ -35,11 +35,11 @@
 								role="button">ឯកសារ</a>
 								<ul aria-labelledby="dropdownMenu2"
 									class="dropdown-menu fs-12 animated fadeInDown">
-									<li><a href="add-doc"><i class="ti-plus mr-5"></i>
+									<li><a href="/admin/add-doc"><i class="ti-plus mr-5"></i>
 											បញ្ចួលថ្មី</a></li>
-									<li><a href="edit-doc"><i class="ti-pencil mr-5"></i>
-											កំណែប្រែថ្មី</a></li>
-									<li><a href="confirm-doc"><i class="ti-check mr-5"></i>
+									<!-- <li><a href="/admin/edit-doc"><i class="ti-pencil mr-5"></i>
+											កំណែប្រែថ្មី</a></li> -->
+									<li><a href="admin/confirm-doc"><i class="ti-check mr-5"></i>
 											យល់ព្រម</a></li>
 								</ul></li>
 							<li class="active">តារាង</li>
@@ -51,7 +51,7 @@
 				<!-- including user-board from include/admin/doc-board-include.jsp -->
 				<jsp:include page="../include/admin/doc-board-include.jsp"></jsp:include>
 
-				<div class="row">
+				<div class="row"  ng-controller="documentListCtrl">
 					<div class="col-md-12">
 						<div class="widget no-border">
 							<table id="doc-list-table" style="width: 100%"
@@ -112,10 +112,10 @@
 													<button type="button" class="btn btn-outline btn-success">
 														<i class="ti-eye"></i>
 													</button>
-													<button type="button" class="btn btn-outline btn-warning">
+													<a href="/admin/edit-doc/{{ d.DOC_ID }}" type="button" class="btn btn-outline btn-warning">
 														<i class="ti-pencil"></i>
-													</button>
-													<button type="button" class="btn btn-outline btn-danger">
+													</a>
+													<button type="button" class="btn btn-outline btn-danger" ng-click="remove(d.DOC_ID)">
 														<i class="ti-trash"></i>
 													</button>
 												</div>

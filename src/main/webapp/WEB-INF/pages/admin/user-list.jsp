@@ -39,8 +39,8 @@
 									class="dropdown-menu fs-12 animated fadeInDown">
 									<li><a href="add-user"><i class="fa fa-user-plus mr-5"></i>
 											បញ្ចួលថ្មី</a></li>
-									<li><a href="edit-user"><i class="ti-pencil mr-5"></i>
-											កំណែប្រែថ្មី</a></li>
+									<!-- <li><a href="edit-user"><i class="ti-pencil mr-5"></i>
+											កំណែប្រែថ្មី</a></li> -->
 								</ul></li>
 							<li class="active">តារាង</li>
 						</ol>
@@ -93,7 +93,7 @@
 												class="btn-toolbar">
 												<div role="group" aria-label="First group" class="btn-group">
 													<button type="button" class="btn btn-outline btn-success" 
-													data-toggle="modal" data-target=".modalView" ng-click="view({{ u.USER_ID }})">
+													data-toggle="modal" data-target=".modalView" ng-click="view(u.USER_ID)">
 														<i class="ti-eye"></i>
 													</button>
 													<a type="button" href="/admin/edit-user/{{u.USER_ID}}" class="btn btn-outline btn-warning">

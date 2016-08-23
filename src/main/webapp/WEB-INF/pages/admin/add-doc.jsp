@@ -38,8 +38,8 @@
 									class="dropdown-menu fs-12 animated fadeInDown">
 									<li><a href="doc-list"><i class="fa fa-table mr-5"></i>
 											តារាង</a></li>
-									<li><a href="edit-doc"><i class="ti-pencil mr-5"></i>
-											កំណែប្រែថ្មី</a></li>
+									<!-- <li><a href="edit-doc"><i class="ti-pencil mr-5"></i>
+											កំណែប្រែថ្មី</a></li> -->
 									<li><a href="confirm-doc"><i class="ti-check mr-5"></i>
 											យល់ព្រម</a></li>
 								</ul></li>
@@ -78,7 +78,7 @@
 													data-ng-change="categories(ddlCategories)" required="required">
 													<option value="">-- សូមធ្វើការជ្រើសរើស --</option>
 													<option value="{{cat.CAT_ID}},{{cat.FOLDER}}"
-														data-ng-repeat="cat in category">{{cat.CAT_NAME}}</option>
+														data-ng-repeat="cat in category | orderBy:'CAT_NAME'">{{cat.CAT_NAME}}</option>
 												</select>
 											</div>
 										</div>

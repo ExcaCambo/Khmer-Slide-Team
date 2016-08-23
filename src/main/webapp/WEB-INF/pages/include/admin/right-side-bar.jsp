@@ -2,16 +2,16 @@
 	pageEncoding="UTF-8"%>
 <aside class="right-sidebar closed">
 	<ul role="tablist" class="nav nav-tabs nav-justified nav-sidebar">
-		<li role="presentation" class="active"><a href="#role"
+		<!-- <li role="presentation" class="active"><a href="#role"
 			aria-controls="role" role="tab" data-toggle="tab"><i
-				class="ti-user"></i> តួនាទី</a></li>
+				class="ti-user"></i> តួនាទី</a></li> -->
 		<li role="presentation"><a href="#type" aria-controls="type"
 			role="tab" data-toggle="tab"><i class="ti-bookmark-alt"></i>
 				ប្រភេទឯកសារ</a></li>
 	</ul>
 	<div data-mcs-theme="minimal-dark"
 		class="tab-content nav-sidebar-content mCustomScrollbar">
-		<div id="role" role="tabpanel" class="tab-pane fade in active">
+<!-- 		<div id="role" role="tabpanel" class="tab-pane fade in active">
 			<div class="row" ng-app="userTypeList"
 				ng-controller="userTypeListCtrl">
 				<div class="widget">
@@ -104,7 +104,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		<div id="type" role="tabpanel" class="tab-pane fade in active">
 			<div class="row">

@@ -8,7 +8,7 @@
 <%-- <%@ include file="../include/css-include.jsp" %> --%>
 </head>
 <body data-sidebar-color="sidebar-light" class="sidebar-light"
-	data-ng-app="User">
+	ng-app="User">
 	<!-- Header start-->
 	<header>
 		<!-- including header from include/admin/header.jsp -->
@@ -38,8 +38,8 @@
 									class="dropdown-menu fs-12 animated fadeInDown">
 									<li><a href="user-list"><i class="fa fa-table mr-5"></i>
 											តារាង</a></li>
-									<li><a href="edit-user"><i class="ti-pencil mr-5"></i>
-											កំណែប្រែថ្មី</a></li>
+									<!-- <li><a href="edit-user"><i class="ti-pencil mr-5"></i>
+											កំណែប្រែថ្មី</a></li> -->
 								</ul></li>
 							<li class="active">បញ្ចូលថ្មី</li>
 						</ol>
@@ -50,7 +50,7 @@
 				<!-- including user-board from include/admin/user-board-include.jsp -->
 				<jsp:include page="../include/admin/user-board-include.jsp"></jsp:include>
 
-				<div class="row" data-ng-controller="userListCtrl">
+				<div class="row" ng-controller="userListCtrl">
 					<div class="col-md-12">
 						<div class="widget">
 							<div class="widget-heading text-center">
@@ -95,7 +95,7 @@
 												<option value="ស្រី">ស្រី</option>
 											</select>
 										</div>
-										<div class="form-group" data-ng-controller="userTypeListCtrl">
+										<div class="form-group" ng-controller="userTypeListCtrl">
 											<label for="ddlRole">តួនាទី</label><label class="text-danger">
 												*</label> <select id="ddlRole" name="ddlRole" ng-model="ddlRole"
 												data-rule-required="true" class="form-control"

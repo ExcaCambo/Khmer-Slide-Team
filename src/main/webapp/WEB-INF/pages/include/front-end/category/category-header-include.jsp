@@ -16,22 +16,13 @@
 							alt=""></a>
 					</div>
 				</div>
-				<!-- end navbar-header -->
-				<!-- 				<form class="search-form pull-left hidden-xs">
-					<div class="form-group has-feedback mb-0">
-						<input type="text" aria-describedby="inputSearchFor"
-							placeholder="ស្វែងរក..." style="width: 350px"
-							class="form-control rounded"><span aria-hidden="true"
-							class="fa fa-search form-control-feedback"></span><span
-							id="inputSearchFor" class="sr-only">(default)</span>
-					</div>
-				</form> -->
+
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="/index.ks"><i class="fa fa-home"></i>ទំព័រដើម</a></li>
 						<li><a href="#"><i class="fa fa-info-circle"></i> អំពីយើង</a></li>
 						<li><a href="#"><i class="fa fa-mobile"></i> ទំនាក់ទំនង</a></li>
-						<li><a href="#"><i class="fa fa-sign-in"></i> គណនី</a></li>
+						<li><a href="/login"><i class="fa fa-sign-in"></i> គណនី</a></li>
 					</ul>
 					<!-- end nav navbar-nav -->
 				</div>
@@ -48,14 +39,14 @@
 <section class="page-section -theme-themeforest"
 	data-view="parallaxBackground">
 	<div class="page-section__content">
-		<div class="grid-container">
-			<div class="h-text-align-center">
+		<div class="grid-container"​>
+			<div class="h-text-align-center"​​​​​​ data-ng-controller="catCtrl">
 				<h2 class="t-heading -size-xxl -color-light is-hidden-phone">
-					24,60 អត្ថបទមាននៅក្នុង: ការអប់រំថ្នាក់វិទ្យាល័យ</h2>
+					24,60 អត្ថបទមាននៅក្នុង: {{ txtMainCategory  }}</h2>
 
 				<h2
 					class="t-heading -size-l -color-light is-hidden-tablet-and-above">
-					ការអប់រំថ្នាក់វិទ្យាល័យ: 24,60 អត្ថបទ</h2>
+					{{ txtMainCategory  }}: 24,60 អត្ថបទ</h2>
 
 				<h3
 					class="t-heading -size-s -color-light -weight-normal h-mb3 is-hidden-phone">

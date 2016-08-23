@@ -4,6 +4,8 @@ import java.util.Map;
 
 import org.khmerslide.entities.input.AddCategory;
 import org.khmerslide.entities.input.AddUser;
+import org.khmerslide.entities.input.EditUser;
+import org.khmerslide.entities.input.UpdateCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -22,32 +24,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @RequestMapping("/rest/category")
 public class CategoryController {
-	
-//	@RequestMapping(value = { "/", "/index", "/home" })
-//	public String adminPage() {
-//		return "user/index";
-//	}
-//	
-//	@RequestMapping(value = { "/upload-file"})
-//	public String uploadPage() {
-//		return "user/upload-file";
-//	}
-//	
-//	@RequestMapping(value = { "/history"})
-//	public String historyPage() {
-//		return "user/view-history";
-//	}
-//	
-//	@RequestMapping(value = { "/my-document"})
-//	public String myDocumentPage() {
-//		return "user/my-document";
-//	}
-//	
-//	@RequestMapping(value = { "/save-list"})
-//	public String saveListPage() {
-//		return "user/save-list";
-//	}
-	
+
 	@Autowired
 	private HttpHeaders header;
 	
@@ -89,6 +66,20 @@ public class CategoryController {
 	public ResponseEntity<Map<String , Object>> addCategory(@RequestBody AddCategory addCat){		
 		HttpEntity<Object> request = new HttpEntity<Object>(addCat,header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/category/add-category", HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT)
+	public ResponseEntity<Map<String , Object>> editCategory(@RequestBody UpdateCategory editCategory){	
+		HttpEntity<Object> request = new HttpEntity<Object>(editCategory,header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/category/update-category", HttpMethod.PUT , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/delete/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Map<String , Object>> deleteCategory(@PathVariable("id") int id){		
+		HttpEntity<Object> request = new HttpEntity<Object>(id, header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/category/delete-category/" + id, HttpMethod.DELETE , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	

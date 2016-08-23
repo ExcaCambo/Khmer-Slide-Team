@@ -36,7 +36,7 @@
 								</div>
 							</div>
 							<!-- end blog-image -->
-
+							<input type="hidden" value="${param.doc}" id="doc-id">
 							<h3 class="course-title" data-ng-bind="txtTitle"></h3>
 							<div class="row">
 								<div class="col-md-6">
@@ -107,16 +107,16 @@
 							</p>
 							<div class="collapse" id="collapseExample" data-ng-controller="commentCtrl">
 								<div class="well">
-									<div class="media">
+									<div class="media" ng-controller="sessoinCtrl">
 										<div class="media-left">
 											<a href="page-shop-single.html#"> <img
 												class="media-object"
-												src="${pageContext.request.contextPath}/resources/static/img/upload/student_01.png"
+												src="{{ urls }}{{ photo }}"
 												alt="Generic placeholder image">
 											</a>
 										</div>
 										<div class="media-body">
-											<h4 class="media-heading">John DOE</h4>
+											<h4 class="media-heading">{{ txtName }}</h4>
 											<div class="form-group">
 												<textarea id="txtComment" name="txtComment" data-ng-model="txtComment"
 													class="form-control" placeholder="បញ្ចេញយោបល់..." data-ng-keypress="($event.which === 13)?insertComment():0"></textarea>
@@ -160,7 +160,7 @@
 									<thead>
 									</thead>
 									<tbody>
-										<tr data-ng-repeat="r in recom">
+										<tr data-ng-repeat="r in recom" data-ng-if="r.CATEGORY.CAT_ID != '${param.doc}'">
 											<td>
 												<div class="media-left">
 													<a href="/view/?doc={{ r.DOC_ID }}&cat={{ r.CATEGORY.CAT_ID }}" title="{{r.DOC_TITLE}}"> <img
@@ -171,9 +171,18 @@
 												<div class="media-body">
 													<h5 class="media-heading">
 														{{ r.DOC_TITLE }}
-														<button class="btn btn-outline btn-rounded bg-danger">
-															<i class="fa fa-file-powerpoint-o text-white"></i>
-														</button>
+													<button class="btn btn-outline btn-rounded btn-default"
+														data-ng-if="r.TYPE == '1'">
+														<i class="fa fa-file-powerpoint-o text-white"></i>
+													</button>
+													<button class="btn btn-outline btn-rounded btn-default"
+														data-ng-if="r.TYPE == '2'">
+														<i class="fa fa-file-pdf-o text-white"></i>
+													</button>
+													<button class="btn btn-outline btn-rounded btn-default"
+														data-ng-if="r.TYPE == '3'"">
+														<i class="fa fa-file-word-o text-white"></i>
+													</button>
 													</h5>
 													<p class="text-muted mb-0">បញ្ចូលដោយ: {{ r.USER.USER_NAME }}</p>
 												</div>

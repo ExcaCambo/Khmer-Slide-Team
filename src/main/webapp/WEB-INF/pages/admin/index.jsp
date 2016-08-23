@@ -5,11 +5,9 @@
   <head>
   	<!-- including style from include/admin/css-include.jsp -->
   	<jsp:include page="../include/admin/css-include.jsp"></jsp:include>
-    <%-- <%@ include file="../include/css-include.jsp" %> --%>
   </head>
-  <sec:authorize access="isAuthenticated()">	
 						
-  <body data-sidebar-color="sidebar-light" class="sidebar-light">
+  <body data-sidebar-color="sidebar-light" class="sidebar-light" ng-app="index">
     <!-- Header start-->
     <header>
 		<!-- including header from include/admin/header.jsp -->
@@ -290,5 +288,4 @@
 	<!-- including js from include/admin/js-include.jsp -->
 	<jsp:include page="../include/admin/dashboard-js-include.jsp"></jsp:include>
   </body>
-  </sec:authorize>
 </html>

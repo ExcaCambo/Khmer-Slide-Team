@@ -1,5 +1,31 @@
 var app = angular.module('homePage', []);
 
+//	=========================Session========================================
+app.controller('sessoinCtrl', function($scope, $filter, $http, $sce) {
+	$scope.user = '';
+//$scope.urls = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+$scope.urls = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
+//================================= User By ID Function=================================
+
+$scope.User = function(id) {
+	$http({
+		url : '/rest/user/' + id + '',
+		method : 'GET'
+	}).then(function(response) {
+		//console.log(response);
+		$scope.user = response.data.DATA[0];
+		$scope.USER_ID = $scope.user.USER_ID;
+		$scope.txtName = $scope.user.USER_NAME;
+		$scope.photo = $scope.user.PHOTO;
+		$scope.role = $scope.user.ROLE.ROLE_ID;
+		
+	}, function() {
+		
+	});
+}
+$scope.User(logId);
+});
+
 //========================== function get param from url==========================================
 function getUrlVars()
 {
@@ -23,6 +49,26 @@ app.controller('viewCtrl', function ($scope, $http, $filter, $location, $sce) {
 	$scope.thumb = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
 	
 
+//	=================================Update Number View of Document Function=================================
+	var isUpdate = false;
+	var doc_id = $('#doc-id').val();
+	
+	$scope.submit = function() {
+		var view = parseInt($scope.document.VIEWED)+1;
+		$http({
+			url : '/rest/document/update-document/view',
+			data : {
+				"doc_id": doc_id,
+				"viewed": view
+			},
+			method : 'PUT'
+		}).then(function(response) {
+			isUpdate = true;
+			$scope.docId(doc_id);
+			
+		}, function() {
+		});
+	}
 	
 //	=================================View Document Function=================================
 	$scope.docId = function(id) {
@@ -52,6 +98,10 @@ app.controller('viewCtrl', function ($scope, $http, $filter, $location, $sce) {
 			}else if($scope.docType==3){
 				$scope.urls = $sce.trustAsResourceUrl("https://docs.google.com/document/d/"+ $scope.docUrl +"/preview");
 			}
+			
+			if(!isUpdate)
+				$scope.submit();
+			
 //			category =$scope.cat;
 //			alert(category);
 			
@@ -68,7 +118,8 @@ app.controller('viewCtrl', function ($scope, $http, $filter, $location, $sce) {
 	// Get Path Variable from URL
 //	var url = $location.absUrl();
 	var doc = getUrlVars()["doc"];
-	$scope.docId(doc);
+	//$scope.docId(doc);
+	$scope.docId(doc_id);
 	
 	
 	//$scope.test = "https://docs.google.com/presentation/d/"+ $scope.docUrl +"/embed?start=true&loop=true&delayms=30000";
@@ -100,24 +151,24 @@ app.controller('viewCtrl', function ($scope, $http, $filter, $location, $sce) {
 	$scope.recommend(cat);
 
 	//=================================Update Number View of Document Function=================================
-	
-	var doc = getUrlVars()["doc"];
-	$scope.doc_id = doc;
-	$scope.submit = function() {
-		//alert($scope.view);
-		$http({
-			url : '/rest/document/udpate-document/view',
-			data : {
-				"doc_id": $scope.doc_id,
-				 "viewed": $scope.view + 1
-			},
-			method : 'PUT'
-		}).then(function(response) {
-		//	console.log(response);
-			$scope.docId(doc);
-		}, function() {
-		});
-	}
+//	
+//	var doc = getUrlVars()["doc"];
+//	$scope.doc_id = doc;
+//	$scope.submit = function() {
+//		//alert($scope.view);
+//		$http({
+//			url : '/rest/document/udpate-document/view',
+//			data : {
+//				"doc_id": $scope.doc_id,
+//				 "viewed": $scope.view + 1
+//			},
+//			method : 'PUT'
+//		}).then(function(response) {
+//		//	console.log(response);
+//			$scope.docId(doc);
+//		}, function() {
+//		});
+//	}
 
     
     
@@ -523,7 +574,7 @@ link: function(scope, element) {
 					  "cmt_text": $scope.txtComment,
 					  "cmt_date": $scope.date,
 					  "status": 1,
-					  "user_id": 2,
+					  "user_id": logId,
 					  "doc_id": $scope.doc,
 					  "description": $scope.txtComment
 				},

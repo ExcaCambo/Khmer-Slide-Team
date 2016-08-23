@@ -73,7 +73,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr data-ng-repeat="c in category">
+										<tr data-ng-repeat="c in category | orderBy:'CAT_NAME'">
 											<td>{{ $index + 1}}</td>
 											<td>
 												<div class="media">
@@ -95,10 +95,10 @@
 													<div role="group" aria-label="First group"
 														class="btn-group">
 														<button type="button" class="btn btn-outline btn-warning"
-															data-toggle="modal" data-target=".modalEdit">
+															data-toggle="modal" data-target=".modalEdit" ng-click="update(c.CAT_ID)">
 															<i class="ti-pencil"></i>
 														</button>
-														<button type="button" class="btn btn-outline btn-danger">
+														<button type="button" class="btn btn-outline btn-danger" ng-click="remove(c.CAT_ID)">
 															<i class="ti-trash"></i>
 														</button>
 													</div>

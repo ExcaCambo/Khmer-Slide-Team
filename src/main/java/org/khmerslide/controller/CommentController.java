@@ -55,5 +55,14 @@ public class CommentController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	@RequestMapping(value={"/delete-comment/{cmt_id}"},method = RequestMethod.DELETE)
+	public ResponseEntity<Map<String , Object>> deleteComment(
+			@PathVariable(value="cmt_id") int cmt_id
+			){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/comment/delete-comment/"+ cmt_id , HttpMethod.DELETE , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+}
+	
 
 }
