@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="org.khmerslide.entities.User"%>
+<%-- <%@page import="org.khmerslide.entities.User"%>
 <%@page
 	import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@page import="org.springframework.security.core.Authentication"%>
 <%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+	uri="http://www.springframework.org/security/tags"%> --%>
 <header class="header">
 	<div class="container">
 		<div class="hovermenu ttmenu">
