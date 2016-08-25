@@ -3,8 +3,10 @@ var app = angular.module('homePage', []);
 //	=========================Session========================================
 app.controller('sessoinCtrl', function($scope, $filter, $http, $sce) {
 	$scope.user = '';
-//$scope.urls = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
-$scope.urls = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
+	$scope.urls = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+	$scope.photo = "/resources/static/img/users/default-user-image.png";
+
+//	$scope.urls = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
 //================================= User By ID Function=================================
 
 $scope.User = function(id) {
@@ -18,12 +20,51 @@ $scope.User = function(id) {
 		$scope.txtName = $scope.user.USER_NAME;
 		$scope.photo = $scope.user.PHOTO;
 		$scope.role = $scope.user.ROLE.ROLE_ID;
-		
 	}, function() {
+		
 		
 	});
 }
-$scope.User(logId);
+
+		if(logId != ""){
+			$scope.User(logId);
+			
+		}
+		
+//		=================================Comment Document Function=================================
+//		var urlCat = $location.absUrl();
+		var doc = getUrlVars()["doc"];
+		$scope.doc = doc;
+		$scope.date = $filter('date')(new Date(), 'dd-MMM-yyyy');
+		$scope.insertComment = function() {
+			$http({
+//				 url : 'http://192.168.178.152:9999/api/docs/add-ducument',
+				url : "/rest/comment",
+				data : {
+					  "cmt_text": $scope.txtComment,
+					  "cmt_date": $scope.date,
+					  "status": 1,
+					  "user_id": logId,
+					  "doc_id": $scope.doc,
+					  "description": $scope.txtComment
+				},
+				method : 'POST',
+			}).then(function(response) {
+			//	console.log(response.data);
+				$scope.txtComment = '';
+				$scope.commentId(doc);
+
+			}, function() {
+
+			});
+		} 
+		var comment = $("#txtComment").val();
+		if(logId != "" &&  comment != ""){
+			$scope.insertComment();
+			
+		}else if(comment != ""){
+			$scope.insertComment();
+		}
 });
 
 //========================== function get param from url==========================================
@@ -45,8 +86,8 @@ app.controller('viewCtrl', function ($scope, $http, $filter, $location, $sce) {
 	$scope.document = '';
 	$scope.cat ='';
 	$scope.limit = 6;
-//	$scope.thumb = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
-	$scope.thumb = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
+	$scope.thumb = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+//	$scope.thumb = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
 	
 
 //	=================================Update Number View of Document Function=================================
@@ -150,28 +191,6 @@ app.controller('viewCtrl', function ($scope, $http, $filter, $location, $sce) {
 	var cat = getUrlVars()["cat"];;
 	$scope.recommend(cat);
 
-	//=================================Update Number View of Document Function=================================
-//	
-//	var doc = getUrlVars()["doc"];
-//	$scope.doc_id = doc;
-//	$scope.submit = function() {
-//		//alert($scope.view);
-//		$http({
-//			url : '/rest/document/udpate-document/view',
-//			data : {
-//				"doc_id": $scope.doc_id,
-//				 "viewed": $scope.view + 1
-//			},
-//			method : 'PUT'
-//		}).then(function(response) {
-//		//	console.log(response);
-//			$scope.docId(doc);
-//		}, function() {
-//		});
-//	}
-
-    
-    
 	
 });
 
@@ -179,8 +198,8 @@ app.controller('viewCtrl', function ($scope, $http, $filter, $location, $sce) {
 app.controller('documentByCatCtrl', function ($scope, $http, $filter, $location, $sce) {
 	$scope.document = '';
 	$scope.limit = 6;
-//	$scope.thumb = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
-	$scope.thumb = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
+	$scope.thumb = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+//	$scope.thumb = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
 	
 
 	
@@ -203,38 +222,7 @@ app.controller('documentByCatCtrl', function ($scope, $http, $filter, $location,
 	var cat = getUrlVars()["cat"];
 	$scope.catId(cat);
 	
-	
-	//$scope.test = "https://docs.google.com/presentation/d/"+ $scope.docUrl +"/embed?start=true&loop=true&delayms=30000";
-	
-//	=================================Recommend Document Function=================================
-//	var limit = $scope.limit;
-//	var formData = new FormData();
-//	formData.append('item', limit);
-//	//var category = $scope.cat;
-//	$scope.recom = '';
-//	$scope.recommend = function(id) {
-//		alert(limit);
-//		$http({
-//			url : '/rest/document/recomment/' + id + '',
-//			method : 'GET',
-//			enctype : 'multipart/form-data',
-//		}).then(function(response) {
-//			//console.log(response);
-//			$scope.recom = response.data.DATA;
-//
-//			
-//		}, function() {
-//
-//		});
-//	}	
-//	// Get Path Variable from URL
-////	var urlCat = $location.absUrl();
-//	var cat = getUrlVars()["cat"];;
-//	$scope.recommend(cat);
-
-
-    
-    
+  
 	
 });
 
@@ -369,8 +357,8 @@ app.controller('documentByCatCtrl', function ($scope, $http, $filter, $location,
 	//create controller
 	app.controller('documentCtrl', function ($scope, $http, $filter, $sce) {
 		$scope.popularDocument = '';
-//		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
-		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
+		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+//		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
 		
 //	 	=================================List of Popular Document=================================
 			$scope.docPopularList = function(){
@@ -445,8 +433,8 @@ app.controller('documentByCatCtrl', function ($scope, $http, $filter, $location,
 	//create controller
 	app.controller('latestDocumentCtrl', function ($scope, $http, $filter, $sce) {	
 		$scope.latestDocument = '';
-//		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
-		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
+		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+//		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
 	
 // 	=================================List of Latest Document=================================
 	$scope.docLatestList = function(){
@@ -521,8 +509,8 @@ link: function(scope, element) {
 	app.controller('commentCtrl', function ($scope, $http, $filter, $location, $sce) {
 		$scope.comment = '';
 		$scope.cat ='';
-//		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
-		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
+		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.178.152:9999");
+//		$scope.thumb = $sce.trustAsResourceUrl("http://192.168.1.104:9999");
 		
 		
 //		========================== function get param from url==========================================
@@ -561,34 +549,69 @@ link: function(scope, element) {
 		
 		//$scope.test = "https://docs.google.com/presentation/d/"+ $scope.docUrl +"/embed?start=true&loop=true&delayms=30000";
 		
-//		=================================Comment Document Function=================================
-//		var urlCat = $location.absUrl();
-		var doc = getUrlVars()["doc"];
-		$scope.doc = doc;
-		$scope.date = $filter('date')(new Date(), 'dd-MMM-yyyy');
-		$scope.insertComment = function() {
-			$http({
-//				 url : 'http://192.168.178.152:9999/api/docs/add-ducument',
-				url : "/rest/comment",
-				data : {
-					  "cmt_text": $scope.txtComment,
-					  "cmt_date": $scope.date,
-					  "status": 1,
-					  "user_id": logId,
-					  "doc_id": $scope.doc,
-					  "description": $scope.txtComment
-				},
-				method : 'POST',
-			}).then(function(response) {
-			//	console.log(response.data);
-				$scope.txtComment = '';
-				$scope.commentId(doc);
-
-			}, function() {
-
-			});
-		}   
+  
 		
 	});
+	
+	// Sign Up
+	app.controller('signinctrl', function ($scope, $http) {
+		
+		var utc = new Date().toJSON().slice(0,10);
+		$scope.BlakPass = false;
+		$scope.noMatch = true;
+		$scope.match= function(){
+			if(typeof $scope.txtPassword === "undefined"){
+				$scope.BlakPass = true;
+				
+			}else{
+				$scope.BlakPass = false;
+				if($scope.txtPassword != $scope.txtConfirmPassword){
+					$scope.noMatch = true;
+				//	alert("NO Match " + $scope.tt + $scope.noMatch);
+				}else{
+					$scope.noMatch = false;
+					alert("OK Match " + $scope.tt + $scope.noMatch);
+				}
+			}
+		}
+		
+		//
+		$scope.test = function (){
+			alert(">> Working " + $scope.vf);
+		}
+		$scope.txtTEST = ">> OK";
+		//
+		
+		
+		$scope.signup = function(){
+			$http({
+				url: 'http://localhost:8080/rest/user',
+				method: 'POST',
+				data:{
+					"user_name": $scope.txtusername,
+					"gender": $scope.txtGender,
+					"email": $scope.txtemail,
+					"password":  $scope.txtPassword,
+					"photo": "/resources/static/img/users/default-user-image.png",
+					"registered_date": utc,
+					"status": 1,
+					"role_id": 2
+				}
+			}).then(function(repsonse){
+				alert($scope.txtusername + "  " + $scope.txtGender + "  " + $scope.txtemail +"  "+ $scope.txtPassword + "  "+ utc)
+				swal({   
+					title: "Congradulation !",   
+					text: "អ្នក បាន ចុះឈ្មោះជោគជ័យក្នុង KhmerSlide",
+					type: "success",
+					timer: 3000
+				},function(){
+					window.location.assign("/login");
+				});
+				
+			}, function(){
+	
+			});
+		}	
+});
 
 	
